@@ -1,26 +1,17 @@
-import {CssBaseline, ThemeProvider} from '@material-ui/core';
-import * as React from 'react'
-import * as ReactDOM from 'react-dom';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
-
 import App from './App';
-import theme from "./theme";
-import {BrowserRouter as Router} from 'react-router-dom';
-import {Provider} from "react-redux";
-import store from "./store/store";
-
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <Router>
-            <Provider store={store}>
-                <App/>
-            </Provider>
-        </Router>
-    </ThemeProvider>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
-//TODO: поработать над ререндером компонентов, какого черта они так часто и много перезагружаются
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
