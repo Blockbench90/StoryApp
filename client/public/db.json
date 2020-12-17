@@ -1,0 +1,138 @@
+{
+  "stories": [
+    {
+      "_id": "5f625ff6bd97609c15525e2b4",
+      "text": "Я использую компоненты Material-ui в проекте ReactJs, по какой-то причине мне нужно настроить некоторые компоненты, чтобы они реагировали в соответствии с шириной экрана.Я добавил media query и передал его как атрибут стиля в компонентах, но не работал, какую-либо идею?\n\nЯ использую такой код tweet",
+      "user": {
+        "fullName": "Test User",
+        "userName": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100x100?5"
+      }
+    },
+    {
+      "_id": "gafivm4k41m",
+      "text": "Тестовый твит Я использую компоненты Material-ui в проекте ReactJs, по какой-то причине мне нужно настроить некоторые компоненты, чтобы они реагировали в соответствии с шириной экрана.\n\nЯ добавил media query и передал его как атрибут стиля в компонентах, но не работал, какую-либо идею?\n\nЯ использую такой код",
+      "user": {
+        "fullName": "Test User",
+        "userName": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100x100?5"
+      },
+      "id": 2
+    },
+    {
+      "_id": "4d5sq8wbidu",
+      "text": "тест Я использую компоненты Material-ui в проекте ReactJs, по какой-то причине мне нужно настроить некоторые компоненты, чтобы они реагировали в соответствии с шириной экрана.\n\nЯ добавил media query и передал его как атрибут стиля в компонентах, но не работал, какую-либо идею?\n\nЯ использую такой код",
+      "user": {
+        "fullName": "Test User",
+        "userName": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100x100?5"
+      },
+      "id": 3
+    },
+    {
+      "_id": "m5c71euviwj",
+      "text": "ttt Я использую компоненты Material-ui в проекте ReactJs, по какой-то причине мне нужно настроить некоторые компоненты, чтобы они реагировали в соответствии с шириной экрана.\n\nЯ добавил media query и передал его как атрибут стиля в компонентах, но не работал, какую-либо идею?\n\nЯ использую такой код",
+      "user": {
+        "fullName": "Test User",
+        "userName": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100x100?5"
+      },
+      "id": 4
+    },
+    {
+      "_id": "oitx2o167i",
+      "text": "Я использую компоненты Material-ui в проекте ReactJs, по какой-то причине мне нужно настроить некоторые компоненты, чтобы они реагировали в соответствии с шириной экрана.\n\nЯ добавил media query и передал его как атрибут стиля в компонентах, но не работал, какую-либо идею?\n\nЯ использую такой код",
+      "user": {
+        "fullName": "Test User",
+        "userName": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100x100?5"
+      },
+      "id": 5
+    },
+    {
+      "_id": "pdzohox6lu",
+      "text": "Я использую компоненты Material-ui в проекте ReactJs, по какой-то причине мне нужно настроить некоторые компоненты, чтобы они реагировали в соответствии с шириной экрана.\n\nЯ добавил media query и передал его как атрибут стиля в компонентах, но не работал, какую-либо идею?\n\nЯ использую такой кодэто тестовый твит",
+      "user": {
+        "fullName": "Test User",
+        "userName": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100x100?5"
+      },
+      "id": 6
+    },
+    {
+      "_id": "zbrobf41w9d",
+      "text": "Я использую компоненты Material-ui в проекте ReactJs, по какой-то причине мне нужно настроить некоторые компоненты, чтобы они реагировали в соответствии с шириной экрана.\n\nЯ добавил media query и передал его как атрибут стиля в компонентах, но не работал, какую-либо идею?\n\nЯ использую такой код",
+      "user": {
+        "fullName": "Test User",
+        "userName": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100x100?5"
+      },
+      "id": 7
+    },
+    {
+      "_id": "te4l72npu0g",
+      "text": "asdfasdfasdfasdf",
+      "user": {
+        "fullName": "TEST",
+        "userName": "TEST",
+        "avatarUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcms-assets.tutsplus.com%2Fuploads%2Fusers%2F34%2Fposts%2F27871%2Fpreview_image%2Fjson.jpg&imgrefurl=https%3A%2F%2Fcode.tutsplus.com%2Fru%2Ftutorials%2Ffake-rest-api-up-and-running-using-json-server--cms-27871&tbnid=B_4qzkD3z8ejAM&vet=12ahUKEwjIqbG2ypHtAhXWxyoKHd_MAnwQMygBegUIARCVAQ..i&docid=3b_jvvIhbjOjEM&w=400&h=277&q=json%20server&ved=2ahUKEwjIqbG2ypHtAhXWxyoKHd_MAnwQMygBegUIARCVAQ"
+      },
+      "id": 8
+    },
+    {
+      "_id": "55j3fetodb6",
+      "text": "Reload page after whriten\n",
+      "user": {
+        "fullName": "TEST",
+        "userName": "TEST",
+        "avatarUrl": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcms-assets.tutsplus.com%2Fuploads%2Fusers%2F34%2Fposts%2F27871%2Fpreview_image%2Fjson.jpg&imgrefurl=https%3A%2F%2Fcode.tutsplus.com%2Fru%2Ftutorials%2Ffake-rest-api-up-and-running-using-json-server--cms-27871&tbnid=B_4qzkD3z8ejAM&vet=12ahUKEwjIqbG2ypHtAhXWxyoKHd_MAnwQMygBegUIARCVAQ..i&docid=3b_jvvIhbjOjEM&w=400&h=277&q=json%20server&ved=2ahUKEwjIqbG2ypHtAhXWxyoKHd_MAnwQMygBegUIARCVAQ"
+      },
+      "id": 9
+    }
+  ],
+  "tags": [
+    {
+      "_id": "5f625ff106bc4fd2a1e7bf710",
+      "name": "#HandOffRussianHistory",
+      "count": 12175
+    },
+    {
+      "_id": "5f625ff206bc4fda21e7bf710",
+      "name": "Навального",
+      "count": 442
+    },
+    {
+      "_id": "5f625ff406bc45f2da1e7bf710",
+      "name": "гитлер",
+      "count": 51321
+    },
+    {
+      "_id": "5f625f1f606b1c4fda1e7bf710",
+      "name": "Беларусь",
+      "count": 812812
+    }
+  ],
+  "users": [
+    {
+      "fullName": "Dickerson Mcleod",
+      "userName": "kirk",
+      "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+    },
+    {
+      "fullName": "Hewitt Nelson",
+      "userName": "matthews",
+      "avatarUrl": "https://source.unsplash.com/random/100x100?5"
+    },
+    {
+      "fullName": "Sloan Fowler",
+      "userName": "carr",
+      "avatarUrl": "https://source.unsplash.com/random/100x100?3"
+    }
+  ],
+  "user": {
+    "_id": "5f625ff606bc4fda1e7bf710",
+    "fullName": "Braen Ortega",
+    "userName": "ogtega",
+    "avatarUrl": "https://pbs.twimg.com/profile_images/796061890451542016/J-O1AguD_normal.jpg"
+  }
+}
