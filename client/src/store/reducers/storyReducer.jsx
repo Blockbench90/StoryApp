@@ -4,6 +4,7 @@ import {deleteStoryById, fetchStories} from "./storiesReducer";
 
 const SET_STORY = 'stories/SET_STORY_BY_ID'
 const EDIT_STORY = 'stories/EDIT_CURRENT_STORY_BY_ID'
+const CLEAR_STORY = 'stories/CLEAR_STORY'
 const initialState = {
     data: [],
     isLoaded: true,
@@ -26,7 +27,12 @@ const storyReducer = (state = initialState, action) => {
                 draft.isLoaded = true
             })
         }
-
+        case CLEAR_STORY: {
+            return produce(state, draft => {
+                draft.text = ''
+                draft.title = ''
+            })
+        }
         default:
             return state
     }
@@ -35,6 +41,7 @@ export default storyReducer
 
 export const fetchStory = (story) => ({type: SET_STORY, payload: story})
 export const editStory = (story) => ({type: EDIT_STORY, payload: story})
+export const clearStory = () => ({type: CLEAR_STORY})
 
 //получить конкретную историю по id
 export const fetchStoryData = (_id) => (dispatch) => {
@@ -56,7 +63,7 @@ export const editStoryById = (_id) => async (dispatch) => {
         if (response.payload._id) {
             console.log('id find, and go to delete')
             StoriesApi.deleteStory(response.payload._id).then((res) => {
-                console.log(res.status, "res.status after delete")
+
                 //если удаление прошло успешно, запрашиваю обновленный список стирис,
                 //для отображения актуальных данных
                 if(res.status === 200) {

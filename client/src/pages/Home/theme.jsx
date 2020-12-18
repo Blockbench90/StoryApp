@@ -246,6 +246,9 @@ export const useHomeStyles = makeStyles((theme) => ({
         marginTop: 10,
         paddingLeft: 70,
     },
+    addFormTextareaWrapper: {
+        width: '100%'
+    },
     addFormTextareaTitle: {
         width: '100%',
         border: '1px solid rgba(169, 187, 184, 0.19)',

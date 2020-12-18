@@ -8,7 +8,8 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import {useDispatch, useSelector} from "react-redux";
-import {createNewStoryData} from "../store/reducers/storiesReducer";
+import { createNewStoryData} from "../store/reducers/storiesReducer";
+import {clearStory} from "../store/reducers/storyReducer";
 
 
 const MAX_LENGTH = 3000;
@@ -23,7 +24,7 @@ export const AddStoryForm = ({classes, maxRows,}) => {
     //обновить компонент, если текст изменился
     useEffect(() => {
         console.log(story)
-        if (text !== story.text) {
+        if (text !== story.text && title !== story.title) {
             console.log(story.text, 'story text')
             setTitle(story.title)
             setText(story.text)
@@ -42,23 +43,23 @@ export const AddStoryForm = ({classes, maxRows,}) => {
     };
 
     const handleClickAddStory = () => {
-        // setData({title, text})
         dispatch(createNewStoryData({title, text}))
-        // console.log(data, 'Текст после нажатия кнопки в форме добаления')
         setTitle('')
         setText('')
+        dispatch(clearStory())
     };
 
     return (
         <div>
             <div className={classes.addFormBody}>
+                <div>
                 <Avatar
                     className={classes.storyAvatar}
                     alt={`Аватарка пользователя UserAvatar`}
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
                 />
-                <div>
-
+                </div>
+                <div className={classes.addFormTextareaWrapper}>
                 <TextareaAutosize
                     onChange={handleChangeTextareaTitle}
                     className={classes.addFormTextareaTitle}

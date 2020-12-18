@@ -63,6 +63,9 @@ export const FullStory = () => {
                             </div>
                         </Typography>
                     </div>
+                    <Typography variant="h4" align='center' gutterBottom>
+                        {data.title}
+                    </Typography>
                     <Typography className={classes.fullStoryText} gutterBottom>
                         {data.text}
                     </Typography>

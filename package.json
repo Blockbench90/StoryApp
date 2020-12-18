@@ -28,9 +28,6 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "ts-node server.ts",
-    "nodemon": "nodemon",
-    "server": "nodemon app.js",
-    "client": "npm run start --prefix client",
-    "def": "concurrently \"npm run server\" \"npm run client\""
+    "nodemon": "nodemon"
   }
 }

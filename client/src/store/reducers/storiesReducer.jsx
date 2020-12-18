@@ -4,6 +4,7 @@ import produce from "immer";
 const SET_STORIES = '/stories/SET_STORIES'
 const ADD_NEW_STORY = 'stories/ADD_NEW_STORY'
 const DELETE_STORY = 'stories/DELETE_STORY'
+
 const initialState = {
     items: [],
     isLoaded: true
@@ -28,6 +29,7 @@ const storiesReducer = (state = initialState, action) => {
                 draft.isLoaded = false
             })
         }
+
         default:
             return state;
     }
@@ -36,6 +38,7 @@ export default storiesReducer
 
 const setStories = (stories) => ({type: SET_STORIES, payload: stories})
 const addNewFormStory = (story) => ({type: ADD_NEW_STORY, payload: story})
+
 
 //получить все истории
 export const fetchStories = () => (dispatch) => {
