@@ -9,4 +9,5 @@
 "star": "concurrently \"yarn nodemon\" \"yarn client\""
 }
 
-
+-- при добавлении typesctipt в проект, возможно перестанет запускаться yarn start, 
+    пофиксить это можно, лишь удалить файл typeconfig

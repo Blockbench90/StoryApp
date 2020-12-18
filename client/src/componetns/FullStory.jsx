@@ -12,7 +12,7 @@ import {Divider, IconButton} from '@material-ui/core';
 import {useHomeStyles} from "../pages/Home/theme";
 import {useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import {fetchStoryData, fetchStory} from "../store/reducers/storyReducer";
+import {fetchStoryData, fetchStory} from "../store/reducers/story/storyReducer";
 import ava from '../assets/som_logo.jpg'
 import format from 'date-fns/format'
 import ruLang from 'date-fns/locale/ru'

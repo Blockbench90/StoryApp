@@ -1,18 +1,42 @@
-import {StoriesApi} from "../../restApi/storiesApi";
+import {StoriesApi} from "../../../restApi/storiesApi";
 import produce from "immer";
-import {deleteStoryById, fetchStories} from "./storiesReducer";
+import {fetchStories} from "../storiesReducer";
+import {LoadingStatus} from "../../types";
 
-const SET_STORY = 'stories/SET_STORY_BY_ID'
-const EDIT_STORY = 'stories/EDIT_CURRENT_STORY_BY_ID'
-const CLEAR_STORY = 'stories/CLEAR_STORY'
-const initialState = {
-    data: [],
+
+export enum AddStoryState {
+    LOADING = 'LOADING',
+    ERROR = 'ERROR',
+    NEVER = 'NEVER',
+}
+export interface Story {
+    _id: string
+    title?: string
+    text: string
+    createdAt: string
+    user: {
+        fullname: string
+        username: string
+        avatarUrl: string
+    }
+}
+export interface StoryState {
+    data?: Story;
+    LoadingStatus: LoadingStatus;
+    isLoaded?: boolean;
+    title?: string;
+    text: string
+}
+
+const initialState: StoryState = {
+    data: undefined,
+    LoadingStatus: LoadingStatus.NEVER,
     isLoaded: true,
     title: '',
     text: ''
 }
 //для манипуляций над определенной историей, к примеру редактированию
-const storyReducer = (state = initialState, action) => {
+const storyReducer = (state:StoryState = initialState, action) => {
     switch (action.type) {
         case SET_STORY: {
             return produce(state, draft => {

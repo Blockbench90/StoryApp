@@ -13,7 +13,7 @@ import {formatDate} from "../utils/formatDate";
 import Ava from '../assets/som_logo.jpg'
 import {useDispatch} from "react-redux";
 import {deleteStoryById} from "../store/reducers/storiesReducer";
-import {editStoryById} from "../store/reducers/storyReducer";
+import {editStoryById} from "../store/reducers/story/storyReducer";
 
 export const Story = ({_id, title, text, user, classes, createdAt}) => {
     const dispatch = useDispatch()
