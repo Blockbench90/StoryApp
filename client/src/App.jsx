@@ -8,6 +8,8 @@ import {fetchAuthMe} from "./store/reducers/userReducer";
 import {Profile} from "./pages/Profile/Profile";
 import {Home} from "./pages/Home/Home";
 import {useStylesSignIn} from "./pages/SingIn/theme";
+import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutlined";
+import {CircularProgress} from "@material-ui/core";
 
 const App = () => {
     console.log('app render')
@@ -39,13 +41,13 @@ const App = () => {
         isAuth ? history.push('/home') : history.push('/signin')
     }, [isAuth])
     //TODO: пофиксить багу с отображением страниц
-    // if(!isAuth){
-    //     return <div className={classes.loadingApp}>
-    //         <ImportContactsOutlinedIcon className={classes.loadingIcon} aria-label=""
-    //                                     color="secondary"/>
-    //         <CircularProgress className={classes.loadingCircul}/>
-    //     </div>
-    // }
+    if(!isAuth){
+        return <div className={classes.loadingApp}>
+            <ImportContactsOutlinedIcon className={classes.loadingIcon} aria-label=""
+                                        color="secondary"/>
+            <CircularProgress className={classes.loadingCircul}/>
+        </div>
+    }
     return (
         <div className="App">
             <Switch>

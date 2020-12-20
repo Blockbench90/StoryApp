@@ -12,11 +12,12 @@ import {Divider, IconButton} from '@material-ui/core';
 import {useHomeStyles} from "../pages/Home/theme";
 import {useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import {fetchStoryData, fetchStory} from "../store/reducers/story/storyReducer";
 import ava from '../assets/som_logo.jpg'
 import format from 'date-fns/format'
 import ruLang from 'date-fns/locale/ru'
 import {Story} from "./Story";
+import {fetchStoryAC} from "../store/reducers/story/actionCreators";
+import {fetchStoryDataById} from "../store/reducers/story/thunk";
 
 
 //компонент для отображения полной истории после нажатия на превью в странице Layout
@@ -30,10 +31,10 @@ export const FullStory = () => {
 
     useEffect(() => {
         if (id) {
-            dispatch(fetchStoryData(id))
+            dispatch(fetchStoryDataById(id))
         }
         return () => {
-            fetchStory(undefined)
+            fetchStoryAC(undefined)
         }
     }, [dispatch, id])
 

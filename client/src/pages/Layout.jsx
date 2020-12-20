@@ -4,7 +4,7 @@ import {HeaderMenu} from "../componetns/HeaderMenu";
 import {useHomeStyles} from "./Home/theme";
 import RightSide from "./Home/RightSide";
 import {useDispatch} from "react-redux";
-import {fetchStories} from "../store/reducers/storiesReducer";
+import {fetchStories} from "../store/reducers/stories/storiesReducer";
 
 
 const Layout = ({children}) => {

@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunk from "redux-thunk";
-import storiesReducer from "./reducers/storiesReducer";
+import storiesReducer from "./reducers/stories/storiesReducer";
 import storyReducer from "./reducers/story/storyReducer";
 import userReducer from "./reducers/userReducer";
 

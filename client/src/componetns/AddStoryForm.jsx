@@ -8,8 +8,9 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import {useDispatch, useSelector} from "react-redux";
-import { createNewStoryData} from "../store/reducers/storiesReducer";
-import {clearStory} from "../store/reducers/story/storyReducer";
+import { createNewStoryData} from "../store/reducers/stories/storiesReducer";
+import {clearStoryAC} from "../store/reducers/story/actionCreators";
+
 
 
 const MAX_LENGTH = 3000;
@@ -46,7 +47,7 @@ export const AddStoryForm = ({classes, maxRows,}) => {
         dispatch(createNewStoryData({title, text}))
         setTitle('')
         setText('')
-        dispatch(clearStory())
+        dispatch(clearStoryAC())
     };
 
     return (

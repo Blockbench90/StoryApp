@@ -9,7 +9,7 @@ import {Route} from "react-router-dom";
 import {FullStory} from "../../componetns/FullStory";
 import {useHomeStyles} from "./theme";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchStories} from "../../store/reducers/storiesReducer";
+import {fetchStories} from "../../store/reducers/stories/storiesReducer";
 import ScrollButton from "../../componetns/ScrollButton";
 
 
