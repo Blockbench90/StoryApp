@@ -4,7 +4,7 @@ import {HeaderMenu} from "../componetns/HeaderMenu";
 import {useHomeStyles} from "./Home/theme";
 import RightSide from "./Home/RightSide";
 import {useDispatch} from "react-redux";
-import {fetchStories} from "../store/reducers/stories/storiesReducer";
+import {fetchStoriesAC} from "../store/reducers/stories/actionCreators";
 
 
 const Layout = ({children}) => {
@@ -12,7 +12,7 @@ const Layout = ({children}) => {
     const classes = useHomeStyles()
 
     useEffect(() => {
-        dispatch(fetchStories())
+        dispatch(fetchStoriesAC())
     }, [dispatch])
 
     return (

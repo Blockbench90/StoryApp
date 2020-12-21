@@ -8,8 +8,8 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import {useDispatch, useSelector} from "react-redux";
-import { createNewStoryData} from "../store/reducers/stories/storiesReducer";
-import {clearStoryAC} from "../store/reducers/story/actionCreators";
+import {fetchAddStoryAC} from "../store/reducers/stories/actionCreators";
+import {selectStoryData} from "../store/reducers/story/selectors";
 
 
 
@@ -17,26 +17,26 @@ const MAX_LENGTH = 3000;
 
 export const AddStoryForm = ({classes, maxRows,}) => {
     const dispatch = useDispatch()
-    const story = useSelector(({story}) => story)
-    const [title, setTitle] = React.useState('')
+    const story = useSelector(selectStoryData)
+    // const [title, setTitle] = React.useState('')
     const [text, setText] = React.useState('')
     const textLimitPercent = Math.round((text.length / 3000) * 100);
     const textCount = MAX_LENGTH - text.length;
     //обновить компонент, если текст изменился
-    useEffect(() => {
-        console.log(story)
-        if (text !== story.text && title !== story.title) {
-            console.log(story.text, 'story text')
-            setTitle(story.title)
-            setText(story.text)
-        }
-    }, [story.text, story.title])
+    // useEffect(() => {
+    //     console.log(story)
+    //     if (text !== story.text) {
+    //         console.log(story.text, 'story text')
+    //         // setTitle(story.title)
+    //         setText(story.text)
+    //     }
+    // }, [])
 
-    const handleChangeTextareaTitle = (e) => {
-        if (e.currentTarget) {
-            setTitle(e.currentTarget.value);
-        }
-    };
+    // const handleChangeTextareaTitle = (e) => {
+    //     if (e.currentTarget) {
+    //         setTitle(e.currentTarget.value);
+    //     }
+    // };
     const handleChangeTextarea = (e) => {
         if (e.currentTarget) {
             setText(e.currentTarget.value);
@@ -44,10 +44,10 @@ export const AddStoryForm = ({classes, maxRows,}) => {
     };
 
     const handleClickAddStory = () => {
-        dispatch(createNewStoryData({title, text}))
-        setTitle('')
+        dispatch(fetchAddStoryAC(text))
+        // setTitle('')
         setText('')
-        dispatch(clearStoryAC())
+        // dispatch(clearStoryAC())
     };
 
     return (
@@ -61,13 +61,13 @@ export const AddStoryForm = ({classes, maxRows,}) => {
                 />
                 </div>
                 <div className={classes.addFormTextareaWrapper}>
-                <TextareaAutosize
-                    onChange={handleChangeTextareaTitle}
-                    className={classes.addFormTextareaTitle}
-                    placeholder="Введите имя произвидения..."
-                    value={title}
-                    rowsMax={maxRows}
-                />
+                {/*<TextareaAutosize*/}
+                {/*    onChange={handleChangeTextareaTitle}*/}
+                {/*    className={classes.addFormTextareaTitle}*/}
+                {/*    placeholder="Введите имя произвидения..."*/}
+                {/*    value={title}*/}
+                {/*    rowsMax={maxRows}*/}
+                {/*/>*/}
                 <TextareaAutosize
                     onChange={handleChangeTextarea}
                     className={classes.addFormTextarea}

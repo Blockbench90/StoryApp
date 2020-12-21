@@ -16,8 +16,8 @@ import ava from '../assets/som_logo.jpg'
 import format from 'date-fns/format'
 import ruLang from 'date-fns/locale/ru'
 import {Story} from "./Story";
-import {fetchStoryAC} from "../store/reducers/story/actionCreators";
-import {fetchStoryDataById} from "../store/reducers/story/thunk";
+import {fetchStoryByIdAC} from "../store/reducers/story/actionCreators";
+
 
 
 //компонент для отображения полной истории после нажатия на превью в странице Layout
@@ -31,10 +31,10 @@ export const FullStory = () => {
 
     useEffect(() => {
         if (id) {
-            dispatch(fetchStoryDataById(id))
+            dispatch(fetchStoryByIdAC(id))
         }
         return () => {
-            fetchStoryAC(undefined)
+            fetchStoryByIdAC(undefined)
         }
     }, [dispatch, id])
 

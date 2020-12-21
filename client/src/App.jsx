@@ -11,13 +11,16 @@ import {useStylesSignIn} from "./pages/SingIn/theme";
 import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutlined";
 import {CircularProgress} from "@material-ui/core";
 
+
+//TODO: выяснить, почему не сомпилится когда есть tsconfig, и какого черта он постоянно создается
 const App = () => {
     console.log('app render')
     const classes = useStylesSignIn()
     const history = useHistory()
     const dispatch = useDispatch()
     const data = useSelector(({user}) => user)
-    const isAuth = useSelector(({user}) => user.isAuth)
+    // const isAuth = useSelector(({user}) => user.isAuth)
+    const isAuth = true
     console.log(isAuth, data)
 
     //при первой загрузке, проверять пользователя по токену

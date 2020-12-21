@@ -12,8 +12,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {formatDate} from "../utils/formatDate";
 import Ava from '../assets/som_logo.jpg'
 import {useDispatch} from "react-redux";
-import {editStoryById} from "../store/reducers/story/thunk";
-import {deleteStoryById} from "../store/reducers/stories/storiesReducer";
+import {fetchEditStoryAC} from "../store/reducers/story/actionCreators";
+
+
 
 
 export const Story = ({_id, title, text, user, classes, createdAt}) => {
@@ -36,13 +37,13 @@ export const Story = ({_id, title, text, user, classes, createdAt}) => {
         setAnchorEl(null);
     };
     const editStoryOnClick = () => {
-        dispatch(editStoryById(_id))
+        dispatch(fetchEditStoryAC(_id))
         handleClose()
     }
 
     const handleClickRedaction = () => {
         console.log('нажата кнопка для удаления стирис')
-        dispatch(deleteStoryById(_id))
+        // dispatch(deleteStoryById(_id))
         handleClose()
     }
 

@@ -9,17 +9,19 @@ import {Route} from "react-router-dom";
 import {FullStory} from "../../componetns/FullStory";
 import {useHomeStyles} from "./theme";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchStories} from "../../store/reducers/stories/storiesReducer";
+
 import ScrollButton from "../../componetns/ScrollButton";
+import {selectIsStoriesLoaded, selectStoriesItems} from "../../store/reducers/stories/selectors";
+import {fetchStoriesAC} from "../../store/reducers/stories/actionCreators";
 
 
 export const Home = () => {
     const classes = useHomeStyles()
     const dispatch = useDispatch();
-    const stories = useSelector(({stories}) => stories.items);
-    const isLoaded = useSelector(({stories}) => stories.isLoaded);
+    const stories = useSelector(selectStoriesItems);
+    const isLoaded = useSelector(selectIsStoriesLoaded);
     useEffect(() => {
-        dispatch(fetchStories())
+        dispatch(fetchStoriesAC())
     }, [dispatch])
     return (
         <ScrollButton>
