@@ -8,6 +8,11 @@ export enum AddFormState {
     NEVER = 'NEVER'
 }
 
+export interface NewStory {
+    _id: string
+    title: string
+    text: string
+}
 export interface Story {
     _id: string
     title?: string

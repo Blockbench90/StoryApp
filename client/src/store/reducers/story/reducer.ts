@@ -1,6 +1,6 @@
 import produce, {Draft} from "immer";
 import {LoadingStatus} from "../../types";
-import {Story} from "../stories/storiesReducer";
+import {Story} from "../stories/reducer";
 import {StoryActions, StoryActionsTypes} from "./actionCreators";
 
 

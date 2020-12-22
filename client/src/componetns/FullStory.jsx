@@ -34,7 +34,7 @@ export const FullStory = () => {
             dispatch(fetchStoryByIdAC(id))
         }
         return () => {
-            fetchStoryByIdAC(undefined)
+            dispatch(fetchStoryByIdAC(undefined))
         }
     }, [dispatch, id])
 

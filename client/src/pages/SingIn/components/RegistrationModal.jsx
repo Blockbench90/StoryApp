@@ -10,7 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import {registerUserData} from "../../../store/reducers/userReducer";
+import {FetchRegistrationAC} from "../../../store/reducers/users/actionCreators";
 
 
 const RegisterFormSchema = yup.object().shape({
@@ -39,7 +39,7 @@ const RegistrationModal =({open, onClose})=> {
     });
 
     const onSubmit = async (data) => {
-        dispatch(registerUserData(data));
+        dispatch(FetchRegistrationAC(data));
         console.log(data)
     };
 

@@ -1,4 +1,4 @@
-import {AddFormState, StoriesState} from "./storiesReducer";
+import {AddFormState, StoriesState} from "./reducer";
 import {RootState} from "../../store";
 import {LoadingStatus} from "../../types";
 //достать из глобального стейта, ветку stories

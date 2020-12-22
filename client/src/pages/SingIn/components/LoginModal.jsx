@@ -3,15 +3,16 @@ import {ModalBlock} from "../../../componetns/ModalBlock";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import TextField from "@material-ui/core/TextField";
-import {NavLink} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import {useStylesSignIn} from "../theme";
-import {useForm, Controller} from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import {useDispatch, useSelector} from "react-redux";
 import {Notification} from "../../../componetns/Notification";
-import { loginUserData} from "../../../store/reducers/userReducer";
+import {selectUserStatus} from "../../../store/reducers/users/selectors";
+import {LoadingStatus} from "../../../store/types";
+import {FetchLoginAC} from "../../../store/reducers/users/actionCreators";
 
 //схема таблици логинизации, валидация ошибок при вводе
 const LoginFormSchema = yup.object().shape({
@@ -19,17 +20,14 @@ const LoginFormSchema = yup.object().shape({
     password: yup.string().min(6, '​Минимальная длина пароля 6 символов').required(),
 });
 
+//TODO: сделать поля tached"
 
 /*БЛОК "ВОЙТИ"*/
-/* сделать поля tached"*/
 const LoginModal = ({open, onClose}) => {
-    //два варинанта развития событий, или норм или беда
-    const SUCCESS = 'success'
-    const ERROR = 'error'
     const classes = useStylesSignIn();
     const dispatch = useDispatch();
     const openNotificationRef = useRef()
-    const loadingStatus = useSelector(({user}) => user.status)
+    const loadingStatus = useSelector(selectUserStatus)
 
     //react-hook-form любезно предоставляет все обработчики, спасибо
     const {control, handleSubmit, errors} = useForm({
@@ -37,15 +35,15 @@ const LoginModal = ({open, onClose}) => {
     });
     //при сабмите отправим в редакс данные, собранные из input
     const onSubmit = async (data) => {
-        dispatch(loginUserData(data))
+        dispatch(FetchLoginAC(data))
     };
     //проверим статус, и покажем пользователю сообщение в виде Alert
     React.useEffect(() => {
-      if(loadingStatus === SUCCESS) {
+      if(loadingStatus === LoadingStatus.SUCCESS) {
             openNotificationRef.current('Авторизация успешна!', 'success');
             onClose();
         }
-        else if (loadingStatus === ERROR) {
+        else if (loadingStatus === LoadingStatus.ERROR) {
             openNotificationRef.current('Неверный логин или пароль', 'error');
         }
     }, [loadingStatus]);
@@ -110,26 +108,3 @@ const LoginModal = ({open, onClose}) => {
     )
 }
 export default LoginModal
-
-
-// <ModalBlock visible={open} onClose={onClose}
-//             classes={classes} title="Создайте учетную запись">
-//     <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
-//         <FormGroup aria-label="position" row>
-//             <TextField className={classes.registerField} autoFocus
-//                        id="name" label="Имя" InputLabelProps={{shrink: true}}
-//                        variant="filled" type="name" fullWidth/>
-//             <TextField className={classes.registerField} autoFocus
-//                        id="email" label="E-Mail" InputLabelProps={{shrink: true}}
-//                        variant="filled" type="email" fullWidth/>
-//             <TextField className={classes.registerField} autoFocus
-//                        id="password" label="Пароль" InputLabelProps={{shrink: true}}
-//                        variant="filled" type="password" fullWidth/>
-//             <Button variant="contained" color="primary" fullWidth >
-//                 Далее
-//             </Button>
-//         </FormGroup>
-//     </FormControl>
-// </ModalBlock>
-//
-//

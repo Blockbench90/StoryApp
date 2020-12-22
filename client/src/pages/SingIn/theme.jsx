@@ -21,7 +21,7 @@ export const useStylesSignIn = makeStyles((theme) => ({
         width: 130,
         height: 130
     },
-    loadingCircul: {
+    loadingStatusBar: {
         fontSize: '40px'
     },
     leftSide: {

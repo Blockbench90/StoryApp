@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {Story} from "../store/reducers/stories/storiesReducer";
+import {NewStory, Story} from "../store/reducers/stories/reducer";
 
 
 interface Response<T> {
@@ -21,8 +21,9 @@ export const StoriesApi = {
         return data.data
     },
     //добавить историю
-    async addStory(postData: any): Promise<any> {
-        const data = await axios.post<Response<Story>>('/stories', {title: postData.title, text: postData.text})
+    async addStory(postData: NewStory){
+        const { data } = await axios.post('/stories', {title: postData.title, text: postData.text})
+        console.log(data)
         return data
     },
     //удалить историю

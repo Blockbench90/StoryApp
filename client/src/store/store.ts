@@ -2,9 +2,9 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from "./saga"
 
-import {storiesReducer, StoriesState} from "./reducers/stories/storiesReducer"
-import {storyReducer, StoryState} from "./reducers/story/storyReducer"
-import userReducer from "./reducers/userReducer";
+import {storiesReducer, StoriesState} from "./reducers/stories/reducer"
+import {storyReducer, StoryState} from "./reducers/story/reducer"
+import {userReducer, UserState} from "./reducers/users/reducer";
 import thunk from "redux-thunk";
 
 
@@ -21,6 +21,7 @@ const sagaMiddleware = createSagaMiddleware();
 export interface RootState {
     stories: StoriesState
     story: StoryState
+    user: UserState
 }
 
 const rootReducer = combineReducers({

@@ -1,60 +1,52 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route, Switch, useHistory} from 'react-router-dom'
 import {SignIn} from "./pages/SingIn";
 import Layout from "./pages/Layout";
-import {UserApi} from "./restApi/userApi";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAuthMe} from "./store/reducers/userReducer";
 import {Profile} from "./pages/Profile/Profile";
 import {Home} from "./pages/Home/Home";
 import {useStylesSignIn} from "./pages/SingIn/theme";
 import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutlined";
 import {CircularProgress} from "@material-ui/core";
+import {selectUserIsAuth, selectUserStatus} from "./store/reducers/users/selectors";
+import {LoadingStatus} from "./store/types";
+import {FetchAuthAC} from "./store/reducers/users/actionCreators";
 
 
-//TODO: выяснить, почему не сомпилится когда есть tsconfig, и какого черта он постоянно создается
+//TODO: выяснить, почему не компилится когда есть tsconfig, и какого черта он постоянно создается
 const App = () => {
     console.log('app render')
     const classes = useStylesSignIn()
     const history = useHistory()
     const dispatch = useDispatch()
-    const data = useSelector(({user}) => user)
-    // const isAuth = useSelector(({user}) => user.isAuth)
-    const isAuth = true
-    console.log(isAuth, data)
+    const isAuth = useSelector(selectUserIsAuth)
+    const loadingStatus = useSelector(selectUserStatus)
+    //говорит о полной готовности загрузки
+    const isReady = loadingStatus !== LoadingStatus.NEVER && loadingStatus !== LoadingStatus.LOADING
+    console.log(isAuth, loadingStatus)
 
-    //при первой загрузке, проверять пользователя по токену
-    const checkUserAuth = async () => {
-        try {
-            const data = await UserApi.getMe()
-            dispatch(fetchAuthMe(data.data))
-        } catch (error) {
-            console.log(error, "Ошибка логинизации")
-        }
-    }
+    useEffect(() => {
+        //запрос на логинизацию
+        dispatch(FetchAuthAC());
+    }, [dispatch]);
 
-    //если пользователь залогинен, редиректить на главную
-    React.useEffect(() => {
-        checkUserAuth()
-    }, [])
+    useEffect(() => {
+        //если и дата прилетела и статусы поменялись
+        (!isAuth && isReady) ? history.push('/signin') : history.push('/home')
+    }, [isAuth, isReady]);
 
-    //проверка логинизации, если есть, на главную,
-    //если нет токена, оставить на странице регистрации
-    React.useEffect(() => {
-        isAuth ? history.push('/home') : history.push('/signin')
-    }, [isAuth])
     //TODO: пофиксить багу с отображением страниц
-    if(!isAuth){
-        return <div className={classes.loadingApp}>
-            <ImportContactsOutlinedIcon className={classes.loadingIcon} aria-label=""
-                                        color="secondary"/>
-            <CircularProgress className={classes.loadingCircul}/>
-        </div>
+    if (!isReady) {
+        return (
+            <div className={classes.loadingApp}>
+                <ImportContactsOutlinedIcon className={classes.loadingIcon} aria-label="" color="secondary"/>
+                <CircularProgress className={classes.loadingStatusBar}/>
+            </div>)
     }
     return (
         <div className="App">
             <Switch>
-            <Route path="/signin" component={SignIn} exact/>
+                <Route path="/signin" component={SignIn} exact/>
                 <Layout>
                     <Route path="/home" component={Home}/>
                     <Route path="/profile" component={Profile}/>

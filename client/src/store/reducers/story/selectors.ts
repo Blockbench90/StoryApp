@@ -1,7 +1,7 @@
 import {RootState} from "../../store";
-import {StoryState} from "./storyReducer";
+import {StoryState} from "./reducer";
 import {LoadingStatus} from "../../types";
-import {Story} from "../stories/storiesReducer";
+import {Story} from "../stories/reducer";
 
 //достать из глобального стейта, ветку story
 export const selectStoryState = (state: RootState): StoryState => state.story

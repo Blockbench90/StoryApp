@@ -1,12 +1,12 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
-import {FetchEditStoryDataActionInterface, FetchStoryDataActionInterface, setStoryByIdAC, setStoryLoadingStatusAC,  StoryActionsTypes} from "./actionCreators"
-import {Story} from "../stories/storiesReducer";
+import {FetchEditStoryDataAI, FetchStoryDataAI, setStoryByIdAC, setStoryLoadingStatusAC,  StoryActionsTypes} from "./actionCreators"
+import {Story} from "../stories/reducer";
 import {StoriesApi} from "../../../restApi/storiesApi";
 import {LoadingStatus} from "../../types";
-import {fetchStoriesRequest} from "../stories/sagasStories";
+import {fetchStoriesRequest} from "../stories/sagas";
 
 //получить конкретную историю по id
-export function* fetchStoryDataRequest ({payload: _id}: FetchStoryDataActionInterface) {
+export function* fetchStoryDataRequest ({payload: _id}: FetchStoryDataAI) {
     try {
         const data: Story = yield call(StoriesApi.getStory, _id)
         yield put(setStoryByIdAC(data))
@@ -15,7 +15,7 @@ export function* fetchStoryDataRequest ({payload: _id}: FetchStoryDataActionInte
     }
 }
 
-export function* editStoryDataRequest ({payload: _id}: FetchEditStoryDataActionInterface){
+export function* editStoryDataRequest ({payload: _id}: FetchEditStoryDataAI){
     try {
         const data: Story = yield call(StoriesApi.getStory, _id)
         yield put(setStoryByIdAC(data))

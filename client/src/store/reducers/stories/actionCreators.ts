@@ -1,7 +1,7 @@
 import {Action} from "redux";
 import {LoadingStatus} from "../../types";
-import {StoryState} from "../story/storyReducer";
-import {AddFormState, StoriesState} from "./storiesReducer";
+import {StoryState} from "../story/reducer";
+import {AddFormState, NewStory, StoriesState} from "./reducer";
 
 export enum StoriesActionsTypes {
     FETCH_ALL_STORIES = 'stories/FETCH_ALL_STORIES',
@@ -14,56 +14,56 @@ export enum StoriesActionsTypes {
 
 //обнулить истории, установив пустой массив, и поставить статус "загружается"
 //запустить сагу для загрузки историй
-export interface FetchStoriesActionInterface extends Action<StoriesActionsTypes> {
+export interface FetchStoriesAI extends Action<StoriesActionsTypes> {
     type: StoriesActionsTypes.FETCH_ALL_STORIES;
 }
-export const fetchStoriesAC = (): FetchStoriesActionInterface => ({
+export const fetchStoriesAC = (): FetchStoriesAI => ({
     type: StoriesActionsTypes.FETCH_ALL_STORIES,
 })
 //засетать все прилитевшие истории из саги в стейт
-interface SetAllStoriesActionInterface extends Action<StoriesActionsTypes> {
+export interface SetAllStoriesAI extends Action<StoriesActionsTypes> {
     type: StoriesActionsTypes.SET_ALL_STORIES,
     payload: StoriesState['items']
 }
-export const setAllStoriesAC = (payload: StoriesState['items']): SetAllStoriesActionInterface => ({
+export const setAllStoriesAC = (payload: StoriesState['items']): SetAllStoriesAI => ({
     type: StoriesActionsTypes.SET_ALL_STORIES,
     payload
 })
 
 //чтобы установить статус загрузки при добавлении новой сторис
-export interface FetchAddStoryActionInterface extends Action<StoriesActionsTypes> {
+export interface FetchAddStoryAI extends Action<StoriesActionsTypes> {
     type: StoriesActionsTypes.FETCH_ADD_STORY;
-    payload: string;
+    payload: NewStory;
 }
-export const fetchAddStoryAC = (payload: string): FetchAddStoryActionInterface => ({
+export const fetchAddStoryAC = (payload: NewStory): FetchAddStoryAI => ({
     type: StoriesActionsTypes.FETCH_ADD_STORY,
     payload,
 });
 //Создать новую историю
-export interface CreateNewStoryActionInterface extends Action<StoriesActionsTypes> {
+export interface CreateNewStoryAI extends Action<StoriesActionsTypes> {
     type: StoriesActionsTypes.SET_ADD_NEW_STORY,
-    payload: StoryState['text']
+    payload: NewStory;
 }
-export const createNewStoryAC = (payload: string): CreateNewStoryActionInterface => ({
+export const createNewStoryAC = (payload: NewStory): CreateNewStoryAI => ({
     type: StoriesActionsTypes.SET_ADD_NEW_STORY,
     payload
 })
 
 //установить статус загрузки историй, к примеру ошибка в саге при загрузке
-export interface SetStoriesLoadingStatusActionInterface extends Action<StoriesActionsTypes> {
+export interface SetStoriesLoadingStatusAI extends Action<StoriesActionsTypes> {
     type: StoriesActionsTypes.SET_LOADING_STATE;
     payload: LoadingStatus;
 }
-export const setStoryLoadingStatusAC = (payload: LoadingStatus): SetStoriesLoadingStatusActionInterface => ({
+export const setStoryLoadingStatusAC = (payload: LoadingStatus): SetStoriesLoadingStatusAI => ({
     type: StoriesActionsTypes.SET_LOADING_STATE,
     payload,
 })
 //статус добавление истории через форму заполнения, к примеру ошибка в саге при загрузке
-export interface SetAddFormStateActionInterface extends Action<StoriesActionsTypes> {
+export interface SetAddFormStateAI extends Action<StoriesActionsTypes> {
     type: StoriesActionsTypes.SET_ADD_FORM_STATE;
     payload: AddFormState;
 }
-export const setAddFormStateAC = (payload: AddFormState): SetAddFormStateActionInterface => ({
+export const setAddFormStateAC = (payload: AddFormState): SetAddFormStateAI => ({
     type: StoriesActionsTypes.SET_ADD_FORM_STATE,
     payload,
 });
@@ -72,10 +72,10 @@ export const setAddFormStateAC = (payload: AddFormState): SetAddFormStateActionI
 
 
 export type StoriesActions =
-    | FetchStoriesActionInterface
-    | SetAllStoriesActionInterface
-    | CreateNewStoryActionInterface
-    | SetStoriesLoadingStatusActionInterface
-    | SetAddFormStateActionInterface
-    | FetchAddStoryActionInterface
+    | FetchStoriesAI
+    | SetAllStoriesAI
+    | CreateNewStoryAI
+    | SetStoriesLoadingStatusAI
+    | SetAddFormStateAI
+    | FetchAddStoryAI
 

@@ -1,4 +1,4 @@
-import {StoryState} from "./storyReducer";
+import {StoryState} from "./reducer";
 import {Action} from "redux";
 import {LoadingStatus} from "../../types";
 
@@ -13,50 +13,50 @@ export enum StoryActionsTypes {
 
 
 //сделать запрос за конкретной историю по ID и установить статус "загрузка"
-export interface FetchStoryDataActionInterface extends Action<StoryActionsTypes> {
+export interface FetchStoryDataAI extends Action<StoryActionsTypes> {
     type: StoryActionsTypes.FETCH_STORY_BY_ID
     payload: string
 }
-export const fetchStoryByIdAC = (payload: string): FetchStoryDataActionInterface => ({
+export const fetchStoryByIdAC = (payload: string): FetchStoryDataAI => ({
     type: StoryActionsTypes.FETCH_STORY_BY_ID,
     payload
 })
 
 //засетать в стейт полученную конкретную историю по ID
-interface SetStoryDataByIdActionInterface extends Action<StoryActionsTypes> {
+interface SetStoryDataByIdAI extends Action<StoryActionsTypes> {
     type: StoryActionsTypes.SET_STORY_BY_ID
     payload: StoryState['data']
 }
-export const setStoryByIdAC = (payload: StoryState['data']): SetStoryDataByIdActionInterface => ({
+export const setStoryByIdAC = (payload: StoryState['data']): SetStoryDataByIdAI => ({
     type: StoryActionsTypes.SET_STORY_BY_ID,
     payload
 })
 
 //редактировать историю
-export interface FetchEditStoryDataActionInterface extends Action<StoryActionsTypes> {
+export interface FetchEditStoryDataAI extends Action<StoryActionsTypes> {
     type: StoryActionsTypes.FETCH_EDIT_STORY_BY_ID
     payload: string
 }
-export const fetchEditStoryAC = (payload: string): FetchEditStoryDataActionInterface => ({
+export const fetchEditStoryAC = (payload: string): FetchEditStoryDataAI => ({
     type: StoryActionsTypes.FETCH_EDIT_STORY_BY_ID,
     payload
 })
 
 
 //установить скатус загрузки
-interface SetStoryLoadingStatusActionInterface extends Action<StoryActionsTypes> {
+export interface SetStoryLoadingStatusAI extends Action<StoryActionsTypes> {
     type: StoryActionsTypes.SET_LOADING_STATE;
     payload: LoadingStatus;
 }
-export const setStoryLoadingStatusAC = (payload: LoadingStatus): SetStoryLoadingStatusActionInterface => ({
+export const setStoryLoadingStatusAC = (payload: LoadingStatus): SetStoryLoadingStatusAI => ({
     type: StoryActionsTypes.SET_LOADING_STATE,
     payload,
 });
 
 export type StoryActions =
-    | FetchStoryDataActionInterface
-    | SetStoryDataByIdActionInterface
-    | SetStoryLoadingStatusActionInterface
-    | FetchEditStoryDataActionInterface
+    | FetchStoryDataAI
+    | SetStoryDataByIdAI
+    | SetStoryLoadingStatusAI
+    | FetchEditStoryDataAI
 
 
