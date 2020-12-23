@@ -47,8 +47,6 @@ export function* fetchIsAuthRequest () {
         yield put(SetUserLoadingStatusStateAC(LoadingStatus.LOADING))
         //в случае успеха получить данные пользователя, а иначе ошибка братья и сестры
         const { data } = yield call(UserApi.getMe)
-        //чисто для проверки при разработке, потом удалить
-        console.log(data)
         //засетать в стейт, прилетевшие данные
         yield put(SetUserDataAC(data))
         //TODO: Подумать, может и сюда прикрутить статус SUCCESS

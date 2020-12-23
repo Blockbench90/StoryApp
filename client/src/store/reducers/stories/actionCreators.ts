@@ -30,7 +30,7 @@ export const setAllStoriesAC = (payload: StoriesState['items']): SetAllStoriesAI
     payload
 })
 
-//чтобы установить статус загрузки при добавлении новой сторис
+//добавление новой сторис, запуск саги, и установка статуса "загрузка"
 export interface FetchAddStoryAI extends Action<StoriesActionsTypes> {
     type: StoriesActionsTypes.FETCH_ADD_STORY;
     payload: NewStory;

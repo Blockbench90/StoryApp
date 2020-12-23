@@ -15,7 +15,6 @@ import {FetchAuthAC} from "./store/reducers/users/actionCreators";
 
 //TODO: выяснить, почему не компилится когда есть tsconfig, и какого черта он постоянно создается
 const App = () => {
-    console.log('app render')
     const classes = useStylesSignIn()
     const history = useHistory()
     const dispatch = useDispatch()
@@ -23,7 +22,6 @@ const App = () => {
     const loadingStatus = useSelector(selectUserStatus)
     //говорит о полной готовности загрузки
     const isReady = loadingStatus !== LoadingStatus.NEVER && loadingStatus !== LoadingStatus.LOADING
-    console.log(isAuth, loadingStatus)
 
     useEffect(() => {
         //запрос на логинизацию

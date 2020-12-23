@@ -7,8 +7,8 @@ export enum StoryActionsTypes {
     FETCH_STORY_BY_ID = 'stories/FETCH_STORY_BY_ID',
     SET_STORY_BY_ID = 'stories/SET_STORY_BY_ID',
     FETCH_EDIT_STORY_BY_ID = 'stories/FETCH_EDIT_STORY_BY_ID',
-    MAKE_EDIT_STORY_BY_ID = 'stories/MAKE_EDIT_STORY_BY_ID',
-    SET_LOADING_STATE = 'stories/SET_LOADING_STATE'
+    DELETE_STORY_BY_ID = 'stories/DELETE_STORY_BY_ID',
+    SET_STORY_LOADING_STATE = 'stories/SET_STORY_LOADING_STATE'
 }
 
 
@@ -23,12 +23,22 @@ export const fetchStoryByIdAC = (payload: string): FetchStoryDataAI => ({
 })
 
 //засетать в стейт полученную конкретную историю по ID
-interface SetStoryDataByIdAI extends Action<StoryActionsTypes> {
+export interface SetStoryDataByIdAI extends Action<StoryActionsTypes> {
     type: StoryActionsTypes.SET_STORY_BY_ID
     payload: StoryState['data']
 }
 export const setStoryByIdAC = (payload: StoryState['data']): SetStoryDataByIdAI => ({
     type: StoryActionsTypes.SET_STORY_BY_ID,
+    payload
+})
+
+//удалить историю
+export interface DeleteStoryByIdAI extends Action<StoryActionsTypes> {
+    type: StoryActionsTypes.DELETE_STORY_BY_ID
+    payload: string
+}
+export const deleteStoryByIdAC = (payload: string): DeleteStoryByIdAI => ({
+    type: StoryActionsTypes.DELETE_STORY_BY_ID,
     payload
 })
 
@@ -45,11 +55,11 @@ export const fetchEditStoryAC = (payload: string): FetchEditStoryDataAI => ({
 
 //установить скатус загрузки
 export interface SetStoryLoadingStatusAI extends Action<StoryActionsTypes> {
-    type: StoryActionsTypes.SET_LOADING_STATE;
+    type: StoryActionsTypes.SET_STORY_LOADING_STATE;
     payload: LoadingStatus;
 }
 export const setStoryLoadingStatusAC = (payload: LoadingStatus): SetStoryLoadingStatusAI => ({
-    type: StoryActionsTypes.SET_LOADING_STATE,
+    type: StoryActionsTypes.SET_STORY_LOADING_STATE,
     payload,
 });
 
@@ -58,5 +68,6 @@ export type StoryActions =
     | SetStoryDataByIdAI
     | SetStoryLoadingStatusAI
     | FetchEditStoryDataAI
+    | DeleteStoryByIdAI
 
 

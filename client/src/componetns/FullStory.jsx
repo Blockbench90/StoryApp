@@ -16,7 +16,9 @@ import ava from '../assets/som_logo.jpg'
 import format from 'date-fns/format'
 import ruLang from 'date-fns/locale/ru'
 import {Story} from "./Story";
-import {fetchStoryByIdAC} from "../store/reducers/story/actionCreators";
+import {fetchStoryByIdAC, setStoryByIdAC, setStoryLoadingStatusAC} from "../store/reducers/story/actionCreators";
+import {selectStoryIsLoaded, selectStoryState} from "../store/reducers/story/selectors";
+import {LoadingStatus} from "../store/types";
 
 
 
@@ -24,8 +26,10 @@ import {fetchStoryByIdAC} from "../store/reducers/story/actionCreators";
 export const FullStory = () => {
     const classes = useHomeStyles();
     const dispatch = useDispatch()
-    const {data} = useSelector(({story}) => story)
-    const {isLoaded} = useSelector(({story}) => story)
+
+    const {data} = useSelector(selectStoryState)
+    const isLoaded = useSelector(selectStoryIsLoaded)
+
     const params = useParams()
     const id = params.id
 
@@ -34,18 +38,19 @@ export const FullStory = () => {
             dispatch(fetchStoryByIdAC(id))
         }
         return () => {
-            dispatch(fetchStoryByIdAC(undefined))
+            dispatch(setStoryByIdAC(undefined))
+            //TODO: дата то очищается, а вот статус нет, изза одинокових переменных бля, это труба, хаххахаха
         }
     }, [dispatch, id])
 
     //если идет загрузка, покажи прелоадер
-    if (isLoaded) {
+    if (!isLoaded) {
         return <div className={classes.storyCentred}>
             <CircularProgress/>
         </div>
     }
 
-    //если прилители данные, флаг isLoaded установится в false, и будем показывать компонент полной "истории"
+    //если прилители данные, флаг isLoaded установится в true, загрузка завершена, покажу компонент полной "истории"
     if (data) {
         return (
             <>

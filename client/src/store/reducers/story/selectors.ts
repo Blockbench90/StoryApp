@@ -11,11 +11,11 @@ export const selectStoryData = (state: RootState): Story | undefined => selectSt
 
 
 //достать актуальный статус из стейта
-export const selectLoadingStatus = (state: RootState): LoadingStatus => selectStoryState(state).LoadingStatus
+export const selectStoryLoadingStatus = (state: RootState): LoadingStatus => selectStoryState(state).LoadingStatus
 
 //вернуть true | false в зависимости от загрузки
-export const selectIsStoryLoading = (state: RootState): boolean => selectLoadingStatus(state) === LoadingStatus.LOADING;
+export const selectStoryIsLoading = (state: RootState): boolean => selectStoryLoadingStatus(state) === LoadingStatus.LOADING;
 
 //вернуть true | false в зависимости от загрузки
-export const selectIsStoryLoaded = (state: RootState): boolean => selectLoadingStatus(state) === LoadingStatus.LOADED;
+export const selectStoryIsLoaded = (state: RootState): boolean => selectStoryLoadingStatus(state) === LoadingStatus.LOADED;
 

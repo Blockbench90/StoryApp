@@ -51,14 +51,8 @@ export const storiesReducer = produce((draft: Draft<StoriesState>, action: Stori
             draft.LoadingStatus = LoadingStatus.LOADED
             break
 
-        //установить статус на добавление истории "загрузка"
-        case StoriesActionsTypes.FETCH_ADD_STORY:
-            draft.addFormState = AddFormState.LOADING
-            break
-
         //добавить в конец новую историю и вернуть статус
         case StoriesActionsTypes.SET_ADD_NEW_STORY:
-            // draft.items = draft.items.push(action.payload)
             // @ts-ignore
             draft.items.unshift(action.payload)
             draft.addFormState = AddFormState.NEVER

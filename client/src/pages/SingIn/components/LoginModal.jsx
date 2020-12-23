@@ -55,7 +55,7 @@ const LoginModal = ({open, onClose}) => {
                 callback => {
                     openNotificationRef.current = callback
                     return (
-                        <ModalBlock visible={open} classes={classes} title="Войти в аккаунт">
+                        <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
                                     <FormGroup aria-label="position" row>

@@ -19,7 +19,7 @@ export const Home = () => {
     const dispatch = useDispatch()
     const stories = useSelector(selectStoriesItems)
     const isLoading = useSelector(selectIsStoriesLoaded)
-    console.log(stories, isLoading)
+    // console.log(stories, isLoading)
     useEffect(() => {
         dispatch(fetchStoriesAC())
     }, [dispatch])

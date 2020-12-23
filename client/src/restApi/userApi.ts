@@ -16,7 +16,9 @@ interface ResponseApi {
 export const UserApi = {
     //залогиниться
     async signIn(postData: LoginFormProps): Promise<ResponseApi> {
-        const { data } = await axios.post<ResponseApi>('/auth/login', { username: postData.email, password: postData.password });
+        console.log(postData)
+        const { data } = await axios.post<ResponseApi>('/auth/login', { username: postData.email, password: postData.password })
+        console.log(data)
         return data;
     },
     //зарегистрироваться

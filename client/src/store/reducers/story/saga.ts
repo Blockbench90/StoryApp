@@ -1,5 +1,5 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
-import {FetchEditStoryDataAI, FetchStoryDataAI, setStoryByIdAC, setStoryLoadingStatusAC,  StoryActionsTypes} from "./actionCreators"
+import {DeleteStoryByIdAI, FetchEditStoryDataAI, FetchStoryDataAI, setStoryByIdAC, setStoryLoadingStatusAC, StoryActionsTypes } from "./actionCreators"
 import {Story} from "../stories/reducer";
 import {StoriesApi} from "../../../restApi/storiesApi";
 import {LoadingStatus} from "../../types";
@@ -15,6 +15,7 @@ export function* fetchStoryDataRequest ({payload: _id}: FetchStoryDataAI) {
     }
 }
 
+//редактировать историю
 export function* editStoryDataRequest ({payload: _id}: FetchEditStoryDataAI){
     try {
         const data: Story = yield call(StoriesApi.getStory, _id)
@@ -26,7 +27,8 @@ export function* editStoryDataRequest ({payload: _id}: FetchEditStoryDataAI){
     }
 }
 
-export function* deleteStoryDataRequest({payload: _id}: any) {
+//удалить историю
+export function* deleteStoryDataRequest({payload: _id}: DeleteStoryByIdAI) {
     try  {
         const data: any = yield call(StoriesApi.deleteStory, _id)
         if(data.status === 200) {
@@ -40,5 +42,6 @@ export function* deleteStoryDataRequest({payload: _id}: any) {
 export function* storySaga() {
     yield takeLatest(StoryActionsTypes.FETCH_STORY_BY_ID, fetchStoryDataRequest)
     yield takeLatest(StoryActionsTypes.FETCH_EDIT_STORY_BY_ID, editStoryDataRequest)
+    yield takeLatest(StoryActionsTypes.DELETE_STORY_BY_ID, deleteStoryDataRequest)
 }
 

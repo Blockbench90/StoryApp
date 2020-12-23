@@ -12,17 +12,18 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {formatDate} from "../utils/formatDate";
 import Ava from '../assets/som_logo.jpg'
 import {useDispatch} from "react-redux";
-import {fetchEditStoryAC} from "../store/reducers/story/actionCreators";
+import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actionCreators";
 
 
 
 
 export const Story = ({_id, title, text, user, classes, createdAt}) => {
     const dispatch = useDispatch()
+    const history = useHistory()
+
     //для доп-меню
     const [anchorEl, setAnchorEl] = useState(null);
     const open = (anchorEl);
-    const history = useHistory();
 
     const handleClickStory = (event) => {
         event.preventDefault();
@@ -36,14 +37,13 @@ export const Story = ({_id, title, text, user, classes, createdAt}) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const editStoryOnClick = () => {
+    const handleClickEdit = () => {
         dispatch(fetchEditStoryAC(_id))
         handleClose()
     }
 
-    const handleClickRedaction = () => {
-        console.log('нажата кнопка для удаления стирис')
-        // dispatch(deleteStoryById(_id))
+    const handleClickDelete = () => {
+        dispatch(deleteStoryByIdAC(_id))
         handleClose()
     }
 
@@ -72,11 +72,11 @@ export const Story = ({_id, title, text, user, classes, createdAt}) => {
                                     </IconButton>
                                     <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={open}
                                           onClose={handleClose}>
-                                        <MenuItem onClick={editStoryOnClick}>
+                                        <MenuItem onClick={handleClickEdit}>
                                             Редактировать
                                         </MenuItem>
-                                        <MenuItem onClick={handleClickRedaction}>
-                                            Удалить твит
+                                        <MenuItem onClick={handleClickDelete}>
+                                            Удалить
                                         </MenuItem>
                                     </Menu>
                                 </div>

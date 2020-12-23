@@ -15,11 +15,11 @@ export function* fetchStoriesRequest(){
 }
 //запрос на добавление новой истории
 export function* createNewStoryRequest ({payload: text}: CreateNewStoryAI) {
-    console.log(text)
     try {
-        const story = yield call(StoriesApi.addStory, text)
-        console.log(text, story)
-        yield put(createNewStoryAC(story))
+        yield put(setAddFormStateAC(AddFormState.LOADING))
+        const {data} = yield call(StoriesApi.addStory, text)
+        yield put(createNewStoryAC(data))
+        // yield call(fetchStoriesRequest)
     } catch (error) {
 
         yield put(setAddFormStateAC(AddFormState.ERROR))

@@ -14,7 +14,6 @@ export const SignIn = () => {
     const [visibleModal, setVisibleModal] = useState('signIn' | 'signUp');
     //для входа
     const handleClickOpenSignIn = () => {
-        dispatch(fetch)
         setVisibleModal('signIn');
     };
     //для регистрации

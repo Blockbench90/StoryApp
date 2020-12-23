@@ -34,7 +34,7 @@ export const userReducer = produce((draft: Draft<UserState>, action: UserActions
             draft.data = action.payload
             draft.status = LoadingStatus.SUCCESS
             break
-
+        //установка статуса
         case UserActionsType.SET_LOADING_STATUS_STATE:
             draft.status = action.payload
             break

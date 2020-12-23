@@ -10,6 +10,8 @@ import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAddStoryAC} from "../store/reducers/stories/actionCreators";
 import {selectStoryData} from "../store/reducers/story/selectors";
+import {selectAddFormState} from "../store/reducers/stories/selectors";
+import {Alert} from "@material-ui/lab";
 
 
 
@@ -17,12 +19,13 @@ const MAX_LENGTH = 3000;
 
 export const AddStoryForm = ({classes, maxRows,}) => {
     const dispatch = useDispatch()
+    const addFormState = useSelector(selectAddFormState)
     const story = useSelector(selectStoryData)
     const [title, setTitle] = React.useState('')
     const [text, setText] = React.useState('')
     const textLimitPercent = Math.round((text.length / 3000) * 100);
     const textCount = MAX_LENGTH - text.length;
-    console.log(story, text)
+    // console.log(story, text)
 
     const handleChangeTextareaTitle = (e) => {
         if (e.currentTarget) {
@@ -102,13 +105,18 @@ export const AddStoryForm = ({classes, maxRows,}) => {
                     )}
                     <Button
                         onClick={handleClickAddStory}
-                        disabled={!text || text.length >= MAX_LENGTH}
+                        disabled={addFormState === addFormState.LOADING || !text || text.length >= MAX_LENGTH}
                         color="primary"
                         variant="contained">
-                        Опубликовать
+                        {addFormState === addFormState.LOADING
+                            ? (<CircularProgress color="inherit" size={16} />)
+                            : ('Опубликовать')}
                     </Button>
                 </div>
             </div>
+            {addFormState === addFormState.ERROR && (
+                <Alert severity="error">Ошибка при добавлении{' '}<span aria-label="emoji-plak" role="img">!</span></Alert>
+            )}
         </div>
     );
 };
