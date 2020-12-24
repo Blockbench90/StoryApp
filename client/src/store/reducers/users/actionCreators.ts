@@ -1,12 +1,8 @@
 import {Action} from "redux";
 import {User, UserState} from "./reducer";
 import {LoadingStatus} from "../../types";
+import {LoginFormProps} from "../../../pages/SingIn/components/LoginModal";
 
-//TODO: при типизации логин формы, перенести тип туда
-export interface LoginFormProps {
-    email: string
-    password: string
-}
 
 //TODO: при типизации формы регистрации, перенести тип туда
 export interface RegisterFormProps {

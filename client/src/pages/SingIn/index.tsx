@@ -1,27 +1,27 @@
-import React, {useState} from 'react';
-import {Typography, Button} from '@material-ui/core';
-import ImportContactsOutlinedIcon from '@material-ui/icons/ImportContactsOutlined';
-import {useStylesSignIn} from "./theme";
-import LoginModal from "./components/LoginModal";
-import RegistrationModal from "./components/RegistrationModal";
-import {useDispatch} from "react-redux";
+import React, {useState} from 'react'
+import {Typography, Button} from '@material-ui/core'
+import ImportContactsOutlinedIcon from '@material-ui/icons/ImportContactsOutlined'
+import {useStylesSignIn} from "./theme"
+import LoginModal from "./components/LoginModal"
+import RegistrationModal from "./components/RegistrationModal"
 
 
-export const SignIn = () => {
+
+export const SignIn: React.FC = (): React.ReactElement => {
     const classes = useStylesSignIn();
-    const dispatch = useDispatch()
+
     //установка видимости модального окна
-    const [visibleModal, setVisibleModal] = useState('signIn' | 'signUp');
+    const [visibleModal, setVisibleModal] = useState<'signIn' | 'signUp'>();
     //для входа
-    const handleClickOpenSignIn = () => {
+    const handleClickOpenSignIn = (): void => {
         setVisibleModal('signIn');
     };
     //для регистрации
-    const handleClickOpenSignUp = () => {
+    const handleClickOpenSignUp = (): void => {
         setVisibleModal('signUp');
     };
     //для закрытия
-    const handleCloseModal = () => {
+    const handleCloseModal = (): void => {
         setVisibleModal(undefined);
     };
 

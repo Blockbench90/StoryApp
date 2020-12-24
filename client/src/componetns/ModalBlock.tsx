@@ -4,6 +4,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
+import {useStylesSignIn} from "../pages/SingIn/theme";
 
 
 interface ModalBlockProps {
@@ -11,6 +12,7 @@ interface ModalBlockProps {
     children: React.ReactNode
     visible?: boolean
     onClose: ()=>void
+    classes: ReturnType<typeof useStylesSignIn>
 }
 
 //модальное окно
