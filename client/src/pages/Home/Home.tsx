@@ -14,12 +14,12 @@ import {selectIsStoriesLoaded, selectStoriesItems} from "../../store/reducers/st
 import {fetchStoriesAC} from "../../store/reducers/stories/actionCreators"
 
 
-export const Home = () => {
+export const Home: React.FC = (): React.ReactElement => {
     const classes = useHomeStyles()
     const dispatch = useDispatch()
     const stories = useSelector(selectStoriesItems)
     const isLoading = useSelector(selectIsStoriesLoaded)
-    // console.log(stories, isLoading)
+
     useEffect(() => {
         dispatch(fetchStoriesAC())
     }, [dispatch])

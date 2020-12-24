@@ -1,18 +1,21 @@
 import React from 'react'
-import {SearchTextField} from "../../componetns/SearchTextField";
-import { InputAdornment, Paper, Typography} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/SearchOutlined";
-import List from "@material-ui/core/List/List";
-import ListItem from "@material-ui/core/ListItem/ListItem";
-import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import Divider from "@material-ui/core/Divider/Divider";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar/Avatar";
-import Button from "@material-ui/core/Button/Button";
-import PersonAddIcon from "@material-ui/icons/PersonAddOutlined";
+import {SearchTextField} from "../../componetns/SearchTextField"
+import { InputAdornment, Paper, Typography} from "@material-ui/core"
+import SearchIcon from "@material-ui/icons/SearchOutlined"
+import List from "@material-ui/core/List/List"
+import ListItem from "@material-ui/core/ListItem/ListItem"
+import ListItemText from "@material-ui/core/ListItemText/ListItemText"
+import Divider from "@material-ui/core/Divider/Divider"
+import ListItemAvatar from "@material-ui/core/ListItemAvatar/ListItemAvatar"
+import Avatar from "@material-ui/core/Avatar/Avatar"
+import Button from "@material-ui/core/Button/Button"
+import PersonAddIcon from "@material-ui/icons/PersonAddOutlined"
+import {useHomeStyles} from "./theme"
 
-const RightSide = ({classes}) => {
-
+interface RightSideProps {
+    classes: ReturnType<typeof useHomeStyles>
+}
+const RightSide: React.FC<RightSideProps> = ({classes}: RightSideProps): React.ReactElement => {
     return (
 
             <div className={classes.rightSide}>

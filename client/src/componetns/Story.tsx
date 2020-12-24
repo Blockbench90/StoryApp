@@ -1,20 +1,20 @@
-import React, {useState} from "react";
-import {useHistory} from 'react-router-dom';
-import classNames from "classnames";
-import Grid from "@material-ui/core/Grid";
-import {Avatar, IconButton, Menu, MenuItem, Typography} from "@material-ui/core";
-import CommentIcon from "@material-ui/icons/RateReview";
-import RepostIcon from "@material-ui/icons/Repeat";
-import LikeIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import ShareIcon from "@material-ui/icons/OpenInBrowserOutlined";
-import Paper from "@material-ui/core/Paper";
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import {formatDate} from "../utils/formatDate";
-import {useDispatch} from "react-redux";
-import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actionCreators";
+import React, {useState} from "react"
+import {useHistory} from 'react-router-dom'
+import classNames from "classnames"
+import Grid from "@material-ui/core/Grid"
+import {Avatar, IconButton, Menu, MenuItem, Typography} from "@material-ui/core"
+import CommentIcon from "@material-ui/icons/RateReview"
+import RepostIcon from "@material-ui/icons/Repeat"
+import LikeIcon from "@material-ui/icons/FavoriteBorderOutlined"
+import ShareIcon from "@material-ui/icons/OpenInBrowserOutlined"
+import Paper from "@material-ui/core/Paper"
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import {formatDate} from "../utils/formatDate"
+import {useDispatch} from "react-redux"
+import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actionCreators"
 // @ts-ignore
 import Ava from '../assets/som_logo.jpg'
-import {useHomeStyles} from "../pages/Home/theme";
+import {useHomeStyles} from "../pages/Home/theme"
 
 
 interface StoryProps {

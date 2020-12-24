@@ -1,31 +1,37 @@
-import React from 'react';
-import SearchIcon from '@material-ui/icons/Search';
-import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined';
-import MessageIcon from '@material-ui/icons/EmailOutlined';
-import BookmarkIcon from '@material-ui/icons/BookmarkBorderOutlined';
-import ListIcon from '@material-ui/icons/ListAltOutlined';
-import HomeIcon from '@material-ui/icons/HomeOutlined';
-import UserIcon from '@material-ui/icons/PermIdentityOutlined';
-import ImportContactsOutlinedIcon from '@material-ui/icons/ImportContactsOutlined';
-import CreateIcon from '@material-ui/icons/Create';
-import Hidden from '@material-ui/core/Hidden';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import {ModalBlock} from "./ModalBlock";
-import {AddStoryForm} from "./AddStoryForm";
-import {NavLink} from "react-router-dom";
-import {Tooltip} from "@material-ui/core";
+import React from 'react'
+import SearchIcon from '@material-ui/icons/Search'
+import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined'
+import MessageIcon from '@material-ui/icons/EmailOutlined'
+import BookmarkIcon from '@material-ui/icons/BookmarkBorderOutlined'
+import ListIcon from '@material-ui/icons/ListAltOutlined'
+import HomeIcon from '@material-ui/icons/HomeOutlined'
+import UserIcon from '@material-ui/icons/PermIdentityOutlined'
+import ImportContactsOutlinedIcon from '@material-ui/icons/ImportContactsOutlined'
+import CreateIcon from '@material-ui/icons/Create'
+import Hidden from '@material-ui/core/Hidden'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import {ModalBlock} from "./ModalBlock"
+import {AddStoryForm} from "./AddStoryForm"
+import {NavLink} from "react-router-dom"
+import {Tooltip} from "@material-ui/core"
+import {useHomeStyles} from "../pages/Home/theme"
 
-export const HeaderMenu = ({classes}) => {
-    // console.log('SIDEMENU RENDER')
-    const [visibleAddTweet, setSetVisibleAddTweet] = React.useState(false);
 
-    const handleClickOpenAddTweet = () => {
+interface HeaderMenuProps {
+    classes: ReturnType<typeof useHomeStyles>
+}
+
+export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps): React.ReactElement => {
+
+    const [visibleAddTweet, setSetVisibleAddTweet] = React.useState<boolean>(false);
+
+    const handleClickOpenAddTweet = (): void => {
         setSetVisibleAddTweet(true);
     };
 
-    const onCloseAddTweet = () => {
+    const onCloseAddTweet = (): void => {
         setSetVisibleAddTweet(false);
     };
 
@@ -152,7 +158,6 @@ export const HeaderMenu = ({classes}) => {
                     </ModalBlock>
                 </li>
             </ul>
-            {/*<UserSideProfile classes={classes}/>*/}
         </>
     );
 };

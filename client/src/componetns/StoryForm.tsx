@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
