@@ -12,25 +12,26 @@ import {Divider, IconButton} from '@material-ui/core';
 import {useHomeStyles} from "../pages/Home/theme";
 import {useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import ava from '../assets/som_logo.jpg'
 import format from 'date-fns/format'
 import ruLang from 'date-fns/locale/ru'
 import {Story} from "./Story";
 import {fetchStoryByIdAC, setStoryByIdAC, setStoryLoadingStatusAC} from "../store/reducers/story/actionCreators";
 import {selectStoryIsLoaded, selectStoryState} from "../store/reducers/story/selectors";
 import {LoadingStatus} from "../store/types";
+// @ts-ignore
+import ava from '../assets/som_logo.jpg'
 
 
 
 //компонент для отображения полной истории после нажатия на превью в странице Layout
-export const FullStory = () => {
+export const FullStory: React.FC = (): React.ReactElement | null => {
     const classes = useHomeStyles();
     const dispatch = useDispatch()
 
     const {data} = useSelector(selectStoryState)
     const isLoaded = useSelector(selectStoryIsLoaded)
 
-    const params = useParams()
+    const params: {id?: string} = useParams()
     const id = params.id
 
     useEffect(() => {
@@ -104,7 +105,7 @@ export const FullStory = () => {
                     createdAt={new Date().toString()}
                     user={{
                         fullname: 'Петр Петров',
-                        username: 'Petron_huhu',
+                        username: 'Petron_huhu'
                     }}
                     classes={classes}
                 />

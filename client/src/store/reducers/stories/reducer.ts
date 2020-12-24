@@ -9,8 +9,8 @@ export enum AddFormState {
 }
 
 export interface NewStory {
-    _id: string
-    title: string
+    _id?: string
+    title: string | undefined
     text: string
 }
 export interface Story {

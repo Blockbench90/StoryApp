@@ -1,27 +1,32 @@
-import React, {useEffect} from 'react';
-import classNames from 'classnames';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
-import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchAddStoryAC, fetchStoriesAC} from "../store/reducers/stories/actionCreators";
-import {selectStoryData, selectStoryLoadingStatus} from "../store/reducers/story/selectors";
-import {selectAddFormState} from "../store/reducers/stories/selectors";
-import {Alert} from "@material-ui/lab";
-import {clearStoryDataAfterEditAC} from "../store/reducers/story/actionCreators";
-import {LoadingStatus} from "../store/types";
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from "react-redux"
+import classNames from 'classnames'
+import TextareaAutosize from '@material-ui/core/TextareaAutosize'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
+import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined'
+import {fetchAddStoryAC, fetchStoriesAC} from "../store/reducers/stories/actionCreators"
+import {selectStoryData, selectStoryLoadingStatus} from "../store/reducers/story/selectors"
+import {selectAddFormState} from "../store/reducers/stories/selectors"
+import {Alert} from "@material-ui/lab"
+import {clearStoryDataAfterEditAC} from "../store/reducers/story/actionCreators"
+import {LoadingStatus} from "../store/types"
+import {useHomeStyles} from "../pages/Home/theme";
+import {AddFormState, NewStory} from "../store/reducers/stories/reducer";
 
-
+interface AddStoryFormProps {
+    classes: ReturnType<typeof useHomeStyles>
+    maxRows?: number
+}
 
 const MAX_LENGTH = 3000;
 
-export const AddStoryForm = ({classes, maxRows}) => {
-    const [title, setTitle] = React.useState('')
-    const [text, setText] = React.useState('')
+export const AddStoryForm: React.FC<AddStoryFormProps> = ({classes, maxRows}: AddStoryFormProps): React.ReactElement => {
+    const [title, setTitle] = React.useState<string | undefined>('')
+    const [text, setText] = React.useState<string>('')
 
     const textCount = MAX_LENGTH - text.length;
     const textLimitPercent = Math.round((text.length / 3000) * 100);
@@ -33,8 +38,8 @@ export const AddStoryForm = ({classes, maxRows}) => {
 
 
     useEffect(() => {
-        if( story ) {
-            if(story.title !== title && story.text !== text) {
+        if (story) {
+            if (story.title !== title && story.text !== text) {
                 console.log('in UseEffect')
                 setTitle(story.title)
                 setText(story.text)
@@ -43,21 +48,21 @@ export const AddStoryForm = ({classes, maxRows}) => {
     }, [story])
 
 
-    const handleChangeTextareaTitle = (e) => {
+    const handleChangeTextareaTitle = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget) {
             setTitle(e.currentTarget.value);
         }
     };
-    const handleChangeTextarea = (e) => {
+    const handleChangeTextarea = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget) {
             setText(e.currentTarget.value);
         }
     };
 
     //добавление истории
-    const handleClickAddStory = () => {
+    const handleClickAddStory = (): void => {
         //собрать данные из локального стора и отправить в базу
-        const data = {title, text}
+        const data: NewStory = {title, text}
         dispatch(fetchAddStoryAC(data))
         //обнулить локально
         setTitle('')
@@ -67,7 +72,7 @@ export const AddStoryForm = ({classes, maxRows}) => {
     };
 
     //редактировать
-    const handleClickDoneEdit = () => {
+    const handleClickDoneEdit = (): void => {
         handleClickAddStory()
         //обновить список историй, чтобы избежать дублирования
         dispatch(fetchStoriesAC())
@@ -134,28 +139,29 @@ export const AddStoryForm = ({classes, maxRows}) => {
                     {loadingStatus === LoadingStatus.REDACTION
                         ? (<Button
                             onClick={handleClickDoneEdit}
-                            disabled={addFormState === addFormState.LOADING || !text || text.length >= MAX_LENGTH}
+                            disabled={addFormState === AddFormState.LOADING || !text || text.length >= MAX_LENGTH}
                             color="primary"
                             variant="contained">
-                            {addFormState === addFormState.LOADING
-                                ? (<CircularProgress color="inherit" size={16} />)
+                            {addFormState === AddFormState.LOADING
+                                ? (<CircularProgress color="inherit" size={16}/>)
                                 : ('Готово')
                             }
                         </Button>)
                         : (<Button
                                 onClick={handleClickAddStory}
-                                disabled={addFormState === addFormState.LOADING || !text || text.length >= MAX_LENGTH}
+                                disabled={addFormState === AddFormState.LOADING || !text || text.length >= MAX_LENGTH}
                                 color="primary"
                                 variant="contained">
-                                {addFormState === addFormState.LOADING
-                                    ? (<CircularProgress color="inherit" size={16} />)
+                                {addFormState === AddFormState.LOADING
+                                    ? (<CircularProgress color="inherit" size={16}/>)
                                     : ('Опубликовать')}
                             </Button>
                         )}
                 </div>
             </div>
-            {addFormState === addFormState.ERROR && (
-                <Alert severity="error">Ошибка при добавлении{' '}<span aria-label="emoji-plak" role="img">!</span></Alert>
+            {addFormState === AddFormState.ERROR && (
+                <Alert severity="error">Ошибка при добавлении{' '}<span aria-label="emoji-plak"
+                                                                        role="img">!</span></Alert>
             )}
         </div>
     );

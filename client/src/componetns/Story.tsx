@@ -10,27 +10,40 @@ import ShareIcon from "@material-ui/icons/OpenInBrowserOutlined";
 import Paper from "@material-ui/core/Paper";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {formatDate} from "../utils/formatDate";
-import Ava from '../assets/som_logo.jpg'
 import {useDispatch} from "react-redux";
 import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actionCreators";
+// @ts-ignore
+import Ava from '../assets/som_logo.jpg'
+import {useHomeStyles} from "../pages/Home/theme";
 
 
+interface StoryProps {
+    _id: string
+    title?: string | undefined
+    text: string
+    classes: ReturnType<typeof useHomeStyles>
+    createdAt: string
+    user: {
+        fullname: string
+        username: string
+        avatarUrl?: string
+    }
+}
 
-
-export const Story = ({_id, title, text, user, classes, createdAt}) => {
+export const Story: React.FC<StoryProps> = ({_id, title, text, user, classes, createdAt}: StoryProps): React.ReactElement => {
     const dispatch = useDispatch()
     const history = useHistory()
 
     //для доп-меню
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = (anchorEl);
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
 
-    const handleClickStory = (event) => {
+    const handleClickStory = (event: React.MouseEvent<HTMLAnchorElement>): void => {
         event.preventDefault();
         history.push(`/home/stories/${_id}`);
     }
 
-    const handleClick = (event) => {
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
 
