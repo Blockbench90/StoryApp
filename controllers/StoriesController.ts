@@ -72,7 +72,7 @@ class StoriesController {
         };
 
         const story = await StoryModel.create(data);
-        console.log(story)
+
         res.json({
           status: 'success',
           data: await story.populate('user').execPopulate(),
@@ -136,8 +136,10 @@ class StoriesController {
 
         if (story) {
           if (String(story.user._id) === String(user._id)) {
+            const title = req.body.title
             const text = req.body.text;
             story.text = text;
+            story.title = title
             story.save();
             res.send();
           } else {

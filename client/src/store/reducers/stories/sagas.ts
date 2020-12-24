@@ -1,6 +1,6 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import {StoriesApi} from "../../../restApi/storiesApi";
-import {createNewStoryAC, CreateNewStoryAI, setAddFormStateAC, setAllStoriesAC, setStoryLoadingStatusAC, StoriesActionsTypes } from "./actionCreators";
+import {createNewStoryAC, CreateNewStoryAI, setAddFormStateAC, setAllStoriesAC, setStoriesLoadingStatusAC, StoriesActionsTypes } from "./actionCreators";
 import {LoadingStatus} from "../../types";
 import {AddFormState} from "./reducer";
 
@@ -10,7 +10,7 @@ export function* fetchStoriesRequest(){
         const stories = yield call(StoriesApi.getStories)
         yield put(setAllStoriesAC(stories))
     } catch (error) {
-        yield put(setStoryLoadingStatusAC(LoadingStatus.ERROR))
+        yield put(setStoriesLoadingStatusAC(LoadingStatus.ERROR))
     }
 }
 //запрос на добавление новой истории

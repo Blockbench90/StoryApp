@@ -1,5 +1,12 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
-import {DeleteStoryByIdAI, FetchEditStoryDataAI, FetchStoryDataAI, setStoryByIdAC, setStoryLoadingStatusAC, StoryActionsTypes } from "./actionCreators"
+import {
+    DeleteStoryByIdAI,
+    FetchEditStoryDataAI,
+    FetchStoryDataAI,
+    setStoryByIdAC,
+    setStoryLoadingStatusAC,
+    StoryActionsTypes
+} from "./actionCreators"
 import {Story} from "../stories/reducer";
 import {StoriesApi} from "../../../restApi/storiesApi";
 import {LoadingStatus} from "../../types";
@@ -20,8 +27,10 @@ export function* editStoryDataRequest ({payload: _id}: FetchEditStoryDataAI){
     try {
         const data: Story = yield call(StoriesApi.getStory, _id)
         yield put(setStoryByIdAC(data))
-        yield call(StoriesApi.deleteStory, _id)
-        yield call(fetchStoriesRequest)
+        const res = yield call(StoriesApi.deleteStory, _id)
+        if(res.status === 200) {
+            yield put(setStoryLoadingStatusAC(LoadingStatus.REDACTION))
+        }
     } catch (error) {
         yield put(setStoryLoadingStatusAC(LoadingStatus.ERROR))
     }

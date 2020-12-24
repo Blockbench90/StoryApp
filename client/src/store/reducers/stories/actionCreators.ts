@@ -8,7 +8,7 @@ export enum StoriesActionsTypes {
     SET_ALL_STORIES = 'stories/SET_ALL_STORIES',
     FETCH_ADD_STORY = 'stories/FETCH_ADD_STORY',
     SET_ADD_NEW_STORY = 'stories/SET_ADD_NEW_STORY',
-    SET_LOADING_STATE = 'stories/SET_LOADING_STATE',
+    SET_STORIES_LOADING_STATE = 'stories/SET_STORIES_LOADING_STATE',
     SET_ADD_FORM_STATE = 'stories/SET_ADD_FORM_STATE',
 }
 
@@ -51,11 +51,11 @@ export const createNewStoryAC = (payload: NewStory): CreateNewStoryAI => ({
 
 //установить статус загрузки историй, к примеру ошибка в саге при загрузке
 export interface SetStoriesLoadingStatusAI extends Action<StoriesActionsTypes> {
-    type: StoriesActionsTypes.SET_LOADING_STATE;
+    type: StoriesActionsTypes.SET_STORIES_LOADING_STATE;
     payload: LoadingStatus;
 }
-export const setStoryLoadingStatusAC = (payload: LoadingStatus): SetStoriesLoadingStatusAI => ({
-    type: StoriesActionsTypes.SET_LOADING_STATE,
+export const setStoriesLoadingStatusAC = (payload: LoadingStatus): SetStoriesLoadingStatusAI => ({
+    type: StoriesActionsTypes.SET_STORIES_LOADING_STATE,
     payload,
 })
 //статус добавление истории через форму заполнения, к примеру ошибка в саге при загрузке

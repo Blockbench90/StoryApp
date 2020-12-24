@@ -32,6 +32,16 @@ export const storyReducer = produce((draft: Draft<StoryState>, action: StoryActi
             draft.data = undefined
             draft.LoadingStatus = LoadingStatus.LOADING
             break
+        //очистить после редактированием
+        case StoryActionsTypes.CLEAR_STORY_AFTER_EDIT:
+            draft.data = undefined
+            draft.LoadingStatus = LoadingStatus.NEVER
+            break
+
+        //установить статус загрузки
+        case StoryActionsTypes.SET_STORY_LOADING_STATE:
+            draft.LoadingStatus = action.payload
+            break
 
         default:
             break

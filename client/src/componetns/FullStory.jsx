@@ -39,7 +39,7 @@ export const FullStory = () => {
         }
         return () => {
             dispatch(setStoryByIdAC(undefined))
-            //TODO: дата то очищается, а вот статус нет, изза одинокових переменных бля, это труба, хаххахаха
+            dispatch(setStoryLoadingStatusAC(LoadingStatus.NEVER))
         }
     }, [dispatch, id])
 

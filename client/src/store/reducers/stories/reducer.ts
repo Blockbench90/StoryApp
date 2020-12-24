@@ -59,7 +59,7 @@ export const storiesReducer = produce((draft: Draft<StoriesState>, action: Stori
             break
 
         //установить статус для стейта, LoadingStatus
-        case StoriesActionsTypes.SET_LOADING_STATE:
+        case StoriesActionsTypes.SET_STORIES_LOADING_STATE:
             draft.LoadingStatus = action.payload
             break;
 

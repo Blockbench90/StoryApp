@@ -12,7 +12,6 @@ export const StoriesApi = {
     //получить все истории
     async getStories(): Promise<Story[]> {
         const {data} = await axios.get<Response<Story[]>>('/stories')
-        // console.log(data)
         return data.data
     },
     //получить конктетную историю
@@ -23,13 +22,11 @@ export const StoriesApi = {
     //добавить историю
     async addStory(postData: NewStory){
         const { data } = await axios.post('/stories', {title: postData.title, text: postData.text})
-        console.log(data)
         return data
     },
     //удалить историю
     async deleteStory(id: string): Promise<any> {
         const data = await axios.delete<Response<Story>>(`/stories/${id}`)
-        console.log('Возвращаемое значение, после удаления', data)
         return data
     }
 }

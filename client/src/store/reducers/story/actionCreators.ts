@@ -4,11 +4,12 @@ import {LoadingStatus} from "../../types";
 
 //экшены для отдельно взятой истории
 export enum StoryActionsTypes {
-    FETCH_STORY_BY_ID = 'stories/FETCH_STORY_BY_ID',
-    SET_STORY_BY_ID = 'stories/SET_STORY_BY_ID',
-    FETCH_EDIT_STORY_BY_ID = 'stories/FETCH_EDIT_STORY_BY_ID',
-    DELETE_STORY_BY_ID = 'stories/DELETE_STORY_BY_ID',
-    SET_STORY_LOADING_STATE = 'stories/SET_STORY_LOADING_STATE'
+    FETCH_STORY_BY_ID = 'story/FETCH_STORY_BY_ID',
+    SET_STORY_BY_ID = 'story/SET_STORY_BY_ID',
+    FETCH_EDIT_STORY_BY_ID = 'story/FETCH_EDIT_STORY_BY_ID',
+    DELETE_STORY_BY_ID = 'story/DELETE_STORY_BY_ID',
+    SET_STORY_LOADING_STATE = 'story/SET_STORY_LOADING_STATE',
+    CLEAR_STORY_AFTER_EDIT = 'story/CLEAR_STORY_AFTER_EDIT'
 }
 
 
@@ -51,7 +52,12 @@ export const fetchEditStoryAC = (payload: string): FetchEditStoryDataAI => ({
     type: StoryActionsTypes.FETCH_EDIT_STORY_BY_ID,
     payload
 })
-
+export interface clearStoryDataAfterEditAI extends Action<StoryActionsTypes> {
+    type: StoryActionsTypes.CLEAR_STORY_AFTER_EDIT
+}
+export const clearStoryDataAfterEditAC = (): clearStoryDataAfterEditAI => ({
+    type: StoryActionsTypes.CLEAR_STORY_AFTER_EDIT
+})
 
 //установить скатус загрузки
 export interface SetStoryLoadingStatusAI extends Action<StoryActionsTypes> {
@@ -69,5 +75,6 @@ export type StoryActions =
     | SetStoryLoadingStatusAI
     | FetchEditStoryDataAI
     | DeleteStoryByIdAI
+    | clearStoryDataAfterEditAI
 
 
