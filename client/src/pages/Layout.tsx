@@ -5,9 +5,11 @@ import {useHomeStyles} from "./Home/theme";
 import RightSide from "./Home/RightSide";
 import {useDispatch} from "react-redux";
 import {fetchStoriesAC} from "../store/reducers/stories/actionCreators";
+interface Layout {
+    children: React.ReactNode
+}
 
-
-const Layout = ({children}) => {
+const Layout: React.FC<Layout> = ({children}): React.ReactElement => {
     const dispatch = useDispatch()
     const classes = useHomeStyles()
 
@@ -19,7 +21,7 @@ const Layout = ({children}) => {
         <Container maxWidth="lg" className={classes.wrapper}>
             {/*spacing - расстояние между блоками гридов*/}
             <Grid container spacing={2}>
-                <Grid xs={18} item>
+                <Grid xs={12} item>
                     <HeaderMenu classes={classes}/>
                 </Grid>
 

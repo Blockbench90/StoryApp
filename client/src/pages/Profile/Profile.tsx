@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import ProfileAvatar from "../../componetns/ProfileAvatar";
 import ScrollButton from "../../componetns/ScrollButton";
+// @ts-ignore
 import ShowMoreText from "react-show-more-text";
 
 
@@ -22,7 +23,7 @@ export const Profile = () => {
         content:
             "puter systxpertise required to fully understand how they work."
     };
-    const executeOnClick = (isExpanded) => {
+    const executeOnClick = (isExpanded: any): void => {
         console.log(isExpanded);
     }
 
