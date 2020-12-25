@@ -25,13 +25,13 @@ interface HeaderMenuProps {
 
 export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps): React.ReactElement => {
 
-    const [visibleAddTweet, setSetVisibleAddTweet] = React.useState<boolean>(false);
+    const [visibleAddStory, setSetVisibleAddTweet] = React.useState<boolean>(false);
 
-    const handleClickOpenAddTweet = (): void => {
+    const handleClickOpenAddStory = () => {
         setSetVisibleAddTweet(true);
     };
 
-    const onCloseAddTweet = (): void => {
+    const onCloseAddStory = () => {
         setSetVisibleAddTweet(false);
     };
 
@@ -141,7 +141,7 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                 </li>
                 <li className={classes.sideMenuListItem}>
                     <Button
-                        onClick={handleClickOpenAddTweet}
+                        onClick={handleClickOpenAddStory}
                         className={classes.sideMenuTweetButton}
                         variant="contained"
                         color="primary"
@@ -151,7 +151,7 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                             <CreateIcon/>
                         </Hidden>
                     </Button>
-                    <ModalBlock onClose={onCloseAddTweet} visible={visibleAddTweet}>
+                    <ModalBlock onClose={onCloseAddStory} visible={visibleAddStory}>
                         <div style={{width: 550}}>
                             <AddStoryForm maxRows={15} classes={classes}/>
                         </div>
