@@ -55,7 +55,7 @@ const LoginModal: React.FC<LoginModalProps> = ({open, onClose}): React.ReactElem
         } else if (loadingStatus === LoadingStatus.ERROR) {
             openNotificationRef.current('Неверный логин или пароль', 'error');
         }
-    }, [loadingStatus]);
+    }, [loadingStatus, onClose]);
     return (
         <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
             <form onSubmit={handleSubmit(onSubmit)}>
