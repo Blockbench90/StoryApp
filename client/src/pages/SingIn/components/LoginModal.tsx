@@ -33,11 +33,10 @@ const LoginFormSchema = yup.object().shape({
 //TODO: сделать поля tached"
 
 /*БЛОК "ВОЙТИ"*/
-const LoginModal: React.FC<LoginModalProps> = ({open, onClose}: LoginModalProps): React.ReactElement => {
+const LoginModal: React.FC<LoginModalProps> = ({open, onClose}): React.ReactElement => {
     const classes = useStylesSignIn();
     const dispatch = useDispatch();
-    const openNotificationRef = useRef<(text: string, type: Color) => void>(() => {
-    })
+    const openNotificationRef = useRef<(text: string, type: Color) => void>(() => {})
     const loadingStatus = useSelector(selectUserStatus)
 
     //react-hook-form любезно предоставляет все обработчики, спасибо

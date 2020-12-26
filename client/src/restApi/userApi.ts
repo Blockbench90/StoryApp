@@ -1,5 +1,7 @@
 import {axios} from "./axios";
-import {LoginFormProps, RegisterFormProps} from "../store/reducers/users/actionCreators";
+import {LoginFormProps} from "../pages/SingIn/components/LoginModal";
+import { RegisterFormProps } from "../pages/SingIn/components/RegistrationModal";
+
 
 //небольшая поднастройка, для токена
 // export const withConfig = axios.interceptors.request.use((config) => {

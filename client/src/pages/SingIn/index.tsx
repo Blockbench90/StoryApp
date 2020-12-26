@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {Typography, Button} from '@material-ui/core'
 import ImportContactsOutlinedIcon from '@material-ui/icons/ImportContactsOutlined'
-import {useStylesSignIn} from "./theme"
 import LoginModal from "./components/LoginModal"
 import RegistrationModal from "./components/RegistrationModal"
+import {useStylesSignIn} from "./theme";
 
 
 

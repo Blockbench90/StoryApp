@@ -14,6 +14,7 @@ import {FetchAuthAC} from "./store/reducers/users/actionCreators";
 
 
 //TODO: выяснить, почему не компилится когда есть tsconfig, и какого черта он постоянно создается
+//подтянуть информацию о пользователе, в общем страница пользователя и подкоректировать бэк
 const App = () => {
     const classes = useStylesSignIn()
     const history = useHistory()
@@ -33,7 +34,6 @@ const App = () => {
         (!isAuth && isReady) ? history.push('/signin') : history.push('/home')
     }, [isAuth, isReady]);
 
-    //TODO: пофиксить багу с отображением страниц
     if (!isReady) {
         return (
             <div className={classes.loadingApp}>
