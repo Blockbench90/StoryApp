@@ -1,5 +1,12 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
-import { FetchLoginAI, FetchRegistrationAI, SetUserDataAC, SetUserLoadingStatusStateAC, UserActionsType} from './actionCreators'
+import {
+    FetchLoginAI,
+    FetchRegistrationAI,
+    FetchUserStoriesAI,
+    SetUserDataAC,
+    SetUserLoadingStatusStateAC, SetUserStoriesAC,
+    UserActionsType
+} from './actionCreators'
 import {LoadingStatus} from "../../types"
 import {UserApi} from '../../../restApi/userApi'
 
@@ -55,8 +62,19 @@ export function* fetchIsAuthRequest () {
     }
 }
 
+//получение всех историй пользователя
+export function* fetchUserStoriesRequest ({payload}: FetchUserStoriesAI) {
+    try {
+        const { data } = yield call(UserApi.getUserStories, payload)
+        //засетать в стейт, прилетевшие данные
+        yield put(SetUserStoriesAC(data))
+    } catch (error) {
+        yield put(SetUserLoadingStatusStateAC(LoadingStatus.ERROR))
+    }
+}
 export function* userSaga() {
     yield takeLatest(UserActionsType.FETCH_LOGIN, fetchLoginRequest);
     yield takeLatest(UserActionsType.FETCH_REGISTRATION, fetchRegistrationRequest);
     yield takeLatest(UserActionsType.FETCH_AUTH_USER_DATA, fetchIsAuthRequest);
+    yield takeLatest(UserActionsType.FETCH_ALL_USER_STORIES, fetchUserStoriesRequest);
 }

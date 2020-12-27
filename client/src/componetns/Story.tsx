@@ -15,6 +15,7 @@ import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actio
 // @ts-ignore
 import Ava from '../assets/som_logo.jpg'
 import {useHomeStyles} from "../pages/Home/theme"
+import {useProfileStyles} from "../pages/Profile/ProfileStyle";
 
 
 interface StoryProps {

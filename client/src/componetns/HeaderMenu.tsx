@@ -151,11 +151,11 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                             <CreateIcon/>
                         </Hidden>
                     </Button>
-                    <ModalBlock onClose={onCloseAddStory} visible={visibleAddStory}>
-                        <div style={{width: 550}}>
-                            <AddStoryForm maxRows={15} classes={classes}/>
-                        </div>
-                    </ModalBlock>
+                    {/*<ModalBlock onClose={onCloseAddStory} visible={visibleAddStory}>*/}
+                    {/*    <div style={{width: 550}}>*/}
+                    {/*        <AddStoryForm maxRows={15} classes={classes}/>*/}
+                    {/*    </div>*/}
+                    {/*</ModalBlock>*/}
                 </li>
             </ul>
         </>

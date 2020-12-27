@@ -14,11 +14,12 @@ import {selectAddFormState} from "../store/reducers/stories/selectors"
 import {Alert} from "@material-ui/lab"
 import {clearStoryDataAfterEditAC} from "../store/reducers/story/actionCreators"
 import {LoadingStatus} from "../store/types"
-import {useHomeStyles} from "../pages/Home/theme";
 import {AddFormState, NewStory} from "../store/reducers/stories/reducer";
+import {useProfileStyles} from "../pages/Profile/ProfileStyle";
+
 
 interface AddStoryFormProps {
-    classes: ReturnType<typeof useHomeStyles>
+    classes: ReturnType<typeof useProfileStyles>
     maxRows?: number
 }
 

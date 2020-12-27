@@ -51,7 +51,30 @@ class StoriesController {
       });
     }
   }
+  async getUserStories(req: any, res: express.Response): Promise<void> {
+    const user = req.user as UserModelInterface;
 
+    try {
+      if(user) {
+        const userId = req.params.id
+        const stories = await StoryModel.find({user: userId})
+        if(!stories){
+          res.status(404).send()
+          return
+        }
+        res.json({
+          status: 'success',
+          data: stories
+        })
+      }
+
+    } catch (error) {
+      res.status(500).json({
+        status: 'error',
+        message: error,
+      });
+    }
+  }
   async create(req: express.Request, res: express.Response): Promise<void> {
    //создать сторис
     try {
@@ -86,7 +109,7 @@ class StoriesController {
     }
   }
 
-  async   delete(req: express.Request, res: express.Response): Promise<void> {
+  async delete(req: express.Request, res: express.Response): Promise<void> {
     //операция патовая, поэтому сначала проверка, является ли пользователь владельцем истории
     const user = req.user as UserModelInterface;
 
@@ -157,5 +180,10 @@ class StoriesController {
     }
   }
 }
+
+
+
+
+
 
 export const StoriesCtrl = new StoriesController();

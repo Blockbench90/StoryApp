@@ -33,6 +33,10 @@ export const UserApi = {
         const { data } = await axios.get<ResponseApi>('/users/me');
         return data;
     },
+    async getUserStories(userId: string): Promise<ResponseApi>{
+        const {data} = await axios.get(`/stories/user/${userId}`)
+        return data
+    }
 }
 //для проверки с консоли, потом убрать
 

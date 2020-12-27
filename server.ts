@@ -18,16 +18,21 @@ app.use(passport.initialize());
 //взять всех юзеров
 app.get('/users', UserCtrl.index);
 //создать юзера
-app.post('/users', registerValidations, UserCtrl.create)
+app.post('/users', registerValidations, UserCtrl.create);
 //верифицировать пользователя
 app.get('/users/me', passport.authenticate('jwt', {session: false}), UserCtrl.getUserInfo);
 //найти конкретного юзера
 app.get('/users/:id', UserCtrl.show);
 
+
 //взять все истории
 app.get('/stories', StoriesCtrl.index);
 //найти конкретную историю
 app.get('/stories/:id', StoriesCtrl.show);
+
+//собрать истории залогиненного юзера
+app.get('/stories/user/:id', passport.authenticate('jwt'), StoriesCtrl.getUserStories)
+
 //пропускаю stories через мидлваре passport.authenticate('jwt'), создавая доп.интерфейс, чтобы взять ее из поля запроса(req)
 //удалить историю
 app.delete('/stories/:id', passport.authenticate('jwt'), StoriesCtrl.delete);

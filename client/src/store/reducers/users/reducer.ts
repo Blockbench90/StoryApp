@@ -1,9 +1,10 @@
 import produce, {Draft} from "immer";
 import {LoadingStatus} from "../../types";
 import {UserActions, UserActionsType} from "./actionCreators";
+import {Story} from "../stories/reducer";
 
 export interface User {
-    _id?: string
+    _id: string
     email: string
     fullname: string
     username: string
@@ -18,12 +19,14 @@ export interface User {
 export interface UserState {
     data: User | undefined;
     status: LoadingStatus;
+    stories: Story[]
 }
 
 
 const initialState: UserState = {
+    stories: [],
     data: undefined,
-    status: LoadingStatus.NEVER
+    status: LoadingStatus.NEVER,
 }
 
 //редьюсер пользователя
@@ -33,6 +36,10 @@ export const userReducer = produce((draft: Draft<UserState>, action: UserActions
         case UserActionsType.SET_USER_DATA:
             draft.data = action.payload
             draft.status = LoadingStatus.SUCCESS
+            break
+        //засетать все истории юзера
+        case UserActionsType.SET_ALL_USER_STORIES:
+            draft.stories = action.payload
             break
         //установка статуса
         case UserActionsType.SET_LOADING_STATUS_STATE:

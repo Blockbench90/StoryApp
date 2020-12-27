@@ -2,6 +2,7 @@ import {Action} from "redux";
 import {User, UserState} from "./reducer";
 import {LoadingStatus} from "../../types";
 import {LoginFormProps} from "../../../pages/SingIn/components/LoginModal";
+import {Story} from "../stories/reducer";
 
 
 //TODO: при типизации формы регистрации, перенести тип туда
@@ -19,6 +20,8 @@ export enum UserActionsType {
     FETCH_AUTH_USER_DATA = 'users/FETCH_AUTH_USER_DATA',
     SET_USER_DATA = 'users/SET_USER_DATA',
     SET_LOADING_STATUS_STATE = 'users/SET_LOADING_STATUS_STATE',
+    FETCH_ALL_USER_STORIES = 'users/FETCH_ALL_USER_STORIES',
+    SET_ALL_USER_STORIES = 'users/SET_ALL_USER_STORIES',
 }
 
 //начать отправку запроса на логинизацию, установка статуса, запуск саги, сохранение токена в LocalStorage
@@ -63,6 +66,26 @@ export const SetUserDataAC = (payload: UserState['data']): SetUserDataAI => ({
     payload
 })
 
+//начать запрос на получение всех историй пользователя
+export interface FetchUserStoriesAI extends Action<UserActionsType>{
+    type: UserActionsType.FETCH_ALL_USER_STORIES
+    payload: string
+}
+export const FetchUserStoriesAC = (payload: string): FetchUserStoriesAI => ({
+    type: UserActionsType.FETCH_ALL_USER_STORIES,
+    payload
+})
+
+//засетать прилетевшие истории в стейт
+export interface SetUserStoriesAI extends Action<UserActionsType>{
+    type: UserActionsType.SET_ALL_USER_STORIES
+    payload: UserState['stories']
+}
+export const SetUserStoriesAC = (payload: UserState['stories']): SetUserStoriesAI => ({
+    type: UserActionsType.SET_ALL_USER_STORIES,
+    payload
+})
+
 //установить статус загрузки
 export interface SetUserLoadingStatusStateAI extends Action<UserActionsType> {
     type: UserActionsType.SET_LOADING_STATUS_STATE
@@ -80,5 +103,7 @@ export type UserActions =
     | FetchRegistrationAI
     | SetUserDataAI
     | SetUserLoadingStatusStateAI
+    | FetchUserStoriesAI
+    | SetUserStoriesAI
 
 

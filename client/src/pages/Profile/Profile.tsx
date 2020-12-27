@@ -1,31 +1,44 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Avatar from "@material-ui/core/Avatar";
-import {useProfileStyles} from "./ProfileStyle";
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import ProfileAvatar from "../../componetns/ProfileAvatar";
-import ScrollButton from "../../componetns/ScrollButton";
+import React, {useEffect} from "react"
+import Typography from "@material-ui/core/Typography"
+import Avatar from "@material-ui/core/Avatar"
+import {useProfileStyles} from "./ProfileStyle"
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
+import ProfileAvatar from "../../componetns/ProfileAvatar"
+import ScrollButton from "../../componetns/ScrollButton"
 // @ts-ignore
-import ShowMoreText from "react-show-more-text";
+import {useDispatch, useSelector} from "react-redux";
+import {selectUserData, selectUserIsAuth, selectUserStories} from "../../store/reducers/users/selectors";
+import {FetchUserStoriesAC} from "../../store/reducers/users/actionCreators";
+import {ProfileStory} from "../../componetns/ProfileStory";
+import {AddStoryForm} from "../../componetns/AddStoryForm";
+import {Route} from "react-router-dom";
 
 
 export const Profile = () => {
     const classes = useProfileStyles();
+    const dispatch = useDispatch()
+    const userData = useSelector(selectUserData)
+    const userIsAuth = useSelector(selectUserIsAuth)
+    //наличие всех историй
+    const stories = useSelector(selectUserStories)
+
+
+    useEffect(()=>{
+        if(userIsAuth) {
+            // @ts-ignore
+            dispatch(FetchUserStoriesAC(userData._id))
+            console.log('was render')
+        }
+    }, [dispatch])
+
+
     const data = {
         avatar: "https://images.unsplash.com/photo-1578505574290-68739d054931?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-        username: "Chadi Loualaou",
-        lastname: "ChadiLoualaou13",
         status: 'Умная фраза',
-        stories: 5,
         followers: 10,
-        follow: 10,
-        content:
-            "puter systxpertise required to fully understand how they work."
+        follow: 10
     };
-    const executeOnClick = (isExpanded: any): void => {
-        console.log(isExpanded);
-    }
 
     return (
         <ScrollButton>
@@ -37,21 +50,21 @@ export const Profile = () => {
                             <Avatar variant="rounded" className={classes.profileImage}>
                                 <ProfileAvatar/>
                             </Avatar>
+
                             <div className={classes.profileInfoContainer}>
-                                <Typography align={"center"} variant="subtitle2" gutterBottom
-                                            className={classes.userTag}>
-                                    @{data.lastname}
+                                <Typography align={"center"} variant="subtitle2" gutterBottom className={classes.userTag}>
+                                    @{userData?.fullname}
                                 </Typography>
+
                                 <Typography className={classes.userName} variant="h6" gutterBottom>
                                     {data.status}
                                 </Typography>
                                 <div className={classes.infoWrap}>
                                     <Typography className={classes.userName} variant="h4" gutterBottom>
-                                        <Typography align={"center"} variant="subtitle2" gutterBottom
-                                                    className={classes.userTag}>
-                                            Истории:
+                                        <Typography align={"center"} variant="subtitle2" gutterBottom className={classes.userTag}>
+                                            Историй:
                                         </Typography>
-                                        {data.stories}
+                                        {stories.length}
                                     </Typography>
                                     <Typography className={classes.userName} variant="h4" gutterBottom>
                                         <Typography align={"center"} variant="subtitle2" gutterBottom
@@ -74,109 +87,19 @@ export const Profile = () => {
                     </Grid>
                     <Grid item xs={8}>
                         <Paper className={classes.paperRight}>
-                            <ShowMoreText
-                                /* Default options */
-                                lines={5}
-                                more='...еще'
-                                less='спрятать'
-                                className='content-css'
-                                anchorClass='my-anchor-css-class'
-                                onClick={executeOnClick}
-                                expanded={false}
-                                width={650}>
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            {data.content} {data.content} {data.content} {data.content} {data.content}
-                            </ShowMoreText>
-                        </Paper>
-                        <Paper className={classes.paperRight}>
-                            <ShowMoreText
-                                /* Default options */
-                                lines={5}
-                                more='...еще'
-                                less='спрятать'
-                                className='content-css'
-                                anchorClass='my-anchor-css-class'
-                                onClick={executeOnClick}
-                                expanded={false}
-                                width={650}>
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                            </ShowMoreText>
-                        </Paper>
-                        <Paper className={classes.paperRight}>
-                            <ShowMoreText
-                                /* Default options */
-                                lines={5}
-                                more='...еще'
-                                less='спрятать'
-                                className='content-css'
-                                anchorClass='my-anchor-css-class'
-                                onClick={executeOnClick}
-                                expanded={false}
-                                width={650}>
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                                {data.content} {data.content} {data.content} {data.content} {data.content}
-                            </ShowMoreText>
+                            <Route path={'/profile'} exact>
+                                <Paper>
+                                    <div className={classes.addForm}>
+                                        <AddStoryForm classes={classes}/>
+                                    </div>
+                                    <div className={classes.addFormBottomLine}/>
+                                </Paper>
+                            </Route>
+                            {
+                                userIsAuth && ([...stories].reverse().map((story)=>
+                                            <ProfileStory key={story._id} classes={classes} _id={story._id} title={story.title} text={story.text} createdAt={story.createdAt} />
+                                    ))
+                            }
                         </Paper>
                     </Grid>
 
