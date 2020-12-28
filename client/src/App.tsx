@@ -3,7 +3,7 @@ import {Route, Switch, useHistory} from 'react-router-dom'
 import {SignIn} from "./pages/SingIn";
 import Layout from "./pages/Layout";
 import {useDispatch, useSelector} from "react-redux";
-import {Profile} from "./pages/Profile/Profile";
+import {Index} from "./pages/Profile";
 import {Home} from "./pages/Home/Home";
 import {useStylesSignIn} from "./pages/SingIn/theme";
 import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutlined";
@@ -47,7 +47,7 @@ const App = () => {
                 <Route path="/signin" component={SignIn} exact/>
                 <Layout>
                     <Route path="/home" component={Home}/>
-                    <Route path="/profile" component={Profile}/>
+                    <Route path="/profile" component={Index}/>
                 </Layout>
             </Switch>
         </div>

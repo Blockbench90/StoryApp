@@ -2,17 +2,7 @@ import {Action} from "redux";
 import {User, UserState} from "./reducer";
 import {LoadingStatus} from "../../types";
 import {LoginFormProps} from "../../../pages/SingIn/components/LoginModal";
-import {Story} from "../stories/reducer";
-
-
-//TODO: при типизации формы регистрации, перенести тип туда
-export interface RegisterFormProps {
-    fullname: string
-    username: string
-    email: string
-    password: string
-    password2: string
-}
+import {RegisterFormProps} from "../../../pages/SingIn/components/RegistrationModal";
 
 export enum UserActionsType {
     FETCH_LOGIN = 'users/FETCH_LOGIN',
@@ -58,10 +48,10 @@ export const FetchAuthAC = (): FetchAuthAI => ({
 //засетать прилетевшую дату в стор, с помощью волшебной саги))ууууфффф
 export interface SetUserDataAI extends Action<UserActionsType> {
     type: UserActionsType.SET_USER_DATA
-    payload: User | undefined
+    payload: User
 }
 
-export const SetUserDataAC = (payload: UserState['data']): SetUserDataAI => ({
+export const SetUserDataAC = (payload: User): SetUserDataAI => ({
     type: UserActionsType.SET_USER_DATA,
     payload
 })

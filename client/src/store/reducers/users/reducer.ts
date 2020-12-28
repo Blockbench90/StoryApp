@@ -17,15 +17,26 @@ export interface User {
 }
 
 export interface UserState {
-    data: User | undefined;
+    data?: User | undefined;
+    stories: Story[];
     status: LoadingStatus;
-    stories: Story[]
+}
+const data = {
+    _id: '',
+    email: '',
+    fullname: '',
+    username: '',
+    password: '',
+    confirmHash: '',
+    confirmed: false,
+    location: '',
+    about: '',
+    website: ''
 }
 
-
 const initialState: UserState = {
-    stories: [],
     data: undefined,
+    stories: [],
     status: LoadingStatus.NEVER,
 }
 

@@ -1,4 +1,4 @@
-// @ts-nocheck
+ // @ts-nocheck
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import grey from "@material-ui/core/colors/grey";
 
@@ -106,7 +106,7 @@ export const useProfileStyles = makeStyles((theme) => ({
     },
     paperRight: {
         position: 'relative',
-        padding: theme.spacing(5),
+        padding: theme.spacing(2.5),
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },

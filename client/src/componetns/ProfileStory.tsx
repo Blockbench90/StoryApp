@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import classNames from "classnames"
 import Grid from "@material-ui/core/Grid"
 import {IconButton, Menu, MenuItem, Typography} from "@material-ui/core"
@@ -9,11 +9,13 @@ import ShareIcon from "@material-ui/icons/OpenInBrowserOutlined"
 import Paper from "@material-ui/core/Paper"
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import {formatDate} from "../utils/formatDate"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actionCreators"
-// @ts-ignore
-import Ava from '../assets/som_logo.jpg'
 import {useProfileStyles} from "../pages/Profile/ProfileStyle"
+import {selectUserDataID} from "../store/reducers/users/selectors";
+import {FetchUserStoriesAC} from "../store/reducers/users/actionCreators";
+import {selectLoadingStatus} from "../store/reducers/stories/selectors";
+import {LoadingStatus} from "../store/types";
 
 
 interface ProfileStoryProps {
@@ -26,6 +28,8 @@ interface ProfileStoryProps {
 
 export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, classes, createdAt }: ProfileStoryProps): React.ReactElement => {
     const dispatch = useDispatch()
+    const userId = useSelector(selectUserDataID)
+    const loadingStoriesStatus = useSelector(selectLoadingStatus)
     const [show, setShow] = useState<boolean>(true)
     //для доп-меню
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -52,7 +56,12 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
         dispatch(deleteStoryByIdAC(_id))
         handleClose()
     }
-
+    //TODO: решить проблему с обновлением компонента при удалении или редактировании
+    useEffect(()=> {
+        if(loadingStoriesStatus === LoadingStatus.LOADED){
+            dispatch(FetchUserStoriesAC(userId))
+        }
+    }, [dispatch])
     return (
         <div className={show ? classes.storyWrapperHide : classes.storyWrapper} >
             <Paper variant="outlined" className={classNames(classes.story, classes.storyHeader)}>

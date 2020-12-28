@@ -1,5 +1,5 @@
 import {RootState} from "../../store";
-import {UserState} from "./reducer";
+import {User, UserState} from "./reducer";
 import {LoadingStatus} from "../../types";
 
 //state user полностью
@@ -7,6 +7,9 @@ export const selectUserState = (state: RootState): UserState => state.user
 
 //только дата
 export const selectUserData = (state: RootState): UserState['data'] => selectUserState(state).data
+
+//достать id пользователя
+export const selectUserDataID = (state: RootState): string => selectUserState(state).data._id
 
 //только истории
 export const selectUserStories = (state: RootState): UserState['stories'] => selectUserState(state).stories

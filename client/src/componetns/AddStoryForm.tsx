@@ -16,6 +16,8 @@ import {clearStoryDataAfterEditAC} from "../store/reducers/story/actionCreators"
 import {LoadingStatus} from "../store/types"
 import {AddFormState, NewStory} from "../store/reducers/stories/reducer";
 import {useProfileStyles} from "../pages/Profile/ProfileStyle";
+import {selectUserData, selectUserDataID} from "../store/reducers/users/selectors";
+import {FetchUserStoriesAC} from "../store/reducers/users/actionCreators";
 
 
 interface AddStoryFormProps {
@@ -36,6 +38,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({classes, maxRows}: Ad
     const addFormState = useSelector(selectAddFormState)
     const story = useSelector(selectStoryData)
     const loadingStatus = useSelector(selectStoryLoadingStatus)
+    const userId = useSelector(selectUserDataID)
 
 
     useEffect(() => {
@@ -70,6 +73,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({classes, maxRows}: Ad
         setText('')
         //обнулить в глобальном сторе
         dispatch(clearStoryDataAfterEditAC())
+        dispatch(FetchUserStoriesAC(userId))
     };
 
     //редактировать
@@ -77,6 +81,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({classes, maxRows}: Ad
         handleClickAddStory()
         //обновить список историй, чтобы избежать дублирования
         dispatch(fetchStoriesAC())
+        dispatch(FetchUserStoriesAC(userId))
     }
 
     return (

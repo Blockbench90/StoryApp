@@ -19,9 +19,8 @@ export function* createNewStoryRequest ({payload: text}: CreateNewStoryAI) {
         yield put(setAddFormStateAC(AddFormState.LOADING))
         const {data} = yield call(StoriesApi.addStory, text)
         yield put(createNewStoryAC(data))
-        // yield call(fetchStoriesRequest)
+        yield call(fetchStoriesRequest)
     } catch (error) {
-
         yield put(setAddFormStateAC(AddFormState.ERROR))
     }
 }
