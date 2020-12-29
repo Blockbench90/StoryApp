@@ -4,7 +4,8 @@ import {
     FetchRegistrationAI,
     FetchUserStoriesAI,
     SetUserDataAC,
-    SetUserLoadingStatusStateAC, SetUserStoriesAC,
+    SetUserLoadingStatusStateAC, SetUserLoadingStatusStoriesAC,
+    SetUserStoriesAC,
     UserActionsType
 } from './actionCreators'
 import {LoadingStatus} from "../../types"
@@ -65,6 +66,7 @@ export function* fetchIsAuthRequest () {
 //получение всех историй пользователя
 export function* fetchUserStoriesRequest ({payload}: FetchUserStoriesAI) {
     try {
+        yield put(SetUserLoadingStatusStoriesAC(LoadingStatus.LOADING))
         const { data } = yield call(UserApi.getUserStories, payload)
         //засетать в стейт, прилетевшие данные
         yield put(SetUserStoriesAC(data))

@@ -18,16 +18,14 @@ export const Index = () => {
     const classes = useProfileStyles();
     const dispatch = useDispatch()
     const userData = useSelector(selectUserData)
-    const userId = useSelector(selectUserDataID)
     const userIsAuth = useSelector(selectUserIsAuth)
     const stories = useSelector(selectUserStories)
     useEffect(()=>{
-        console.log('RENDER')
+        console.log('RENDER dispathc in useEffect')
         if(userIsAuth) {
-            dispatch(FetchUserStoriesAC(userId))
-            console.log('FetchUserStoriesAC was render')
+            dispatch(FetchUserStoriesAC(userData._id))
         }
-    }, [dispatch, stories.length])
+    }, [dispatch])
 
     return (
         <ScrollButton>

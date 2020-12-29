@@ -17,9 +17,10 @@ export interface User {
 }
 
 export interface UserState {
-    data?: User | undefined;
-    stories: Story[];
-    status: LoadingStatus;
+    data?: User | undefined
+    stories: Story[]
+    storiesLoading: LoadingStatus
+    status: LoadingStatus
 }
 const data = {
     _id: '',
@@ -37,6 +38,7 @@ const data = {
 const initialState: UserState = {
     data: undefined,
     stories: [],
+    storiesLoading: LoadingStatus.NEVER,
     status: LoadingStatus.NEVER,
 }
 
@@ -48,9 +50,14 @@ export const userReducer = produce((draft: Draft<UserState>, action: UserActions
             draft.data = action.payload
             draft.status = LoadingStatus.SUCCESS
             break
+        //начать запрос на все истории юзера
+        case UserActionsType.FETCH_ALL_USER_STORIES:
+            draft.stories = []
+            break
         //засетать все истории юзера
         case UserActionsType.SET_ALL_USER_STORIES:
             draft.stories = action.payload
+            draft.storiesLoading = LoadingStatus.LOADED
             break
         //установка статуса
         case UserActionsType.SET_LOADING_STATUS_STATE:

@@ -10,6 +10,7 @@ export enum UserActionsType {
     FETCH_AUTH_USER_DATA = 'users/FETCH_AUTH_USER_DATA',
     SET_USER_DATA = 'users/SET_USER_DATA',
     SET_LOADING_STATUS_STATE = 'users/SET_LOADING_STATUS_STATE',
+    SET_LOADING_STATUS_STORIES = 'users/SET_LOADING_STATUS_STORIES',
     FETCH_ALL_USER_STORIES = 'users/FETCH_ALL_USER_STORIES',
     SET_ALL_USER_STORIES = 'users/SET_ALL_USER_STORIES',
 }
@@ -86,6 +87,16 @@ export const SetUserLoadingStatusStateAC = (payload: UserState['status']): SetUs
     type: UserActionsType.SET_LOADING_STATUS_STATE,
     payload
 })
+//установить статус загрузки для историй
+export interface SetUserLoadingStatusStoriesAI extends Action<UserActionsType> {
+    type: UserActionsType.SET_LOADING_STATUS_STORIES
+    payload: LoadingStatus
+}
+
+export const SetUserLoadingStatusStoriesAC = (payload: UserState['storiesLoading']): SetUserLoadingStatusStoriesAI => ({
+    type: UserActionsType.SET_LOADING_STATUS_STORIES,
+    payload
+})
 
 export type UserActions =
     | FetchAuthAI
@@ -95,5 +106,6 @@ export type UserActions =
     | SetUserLoadingStatusStateAI
     | FetchUserStoriesAI
     | SetUserStoriesAI
+    | SetUserLoadingStatusStoriesAI
 
 
