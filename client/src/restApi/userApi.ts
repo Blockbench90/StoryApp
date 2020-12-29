@@ -34,7 +34,7 @@ export const UserApi = {
         return data;
     },
     async getUserStories(userId: string): Promise<ResponseApi>{
-        const {data} = await axios.get(`/stories/user/${userId}`)
+        const {data} = await axios.get<ResponseApi>(`/profile/${userId}`)
         return data
     }
 }

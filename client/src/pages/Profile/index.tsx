@@ -21,11 +21,10 @@ export const Index = () => {
     const userIsAuth = useSelector(selectUserIsAuth)
     const stories = useSelector(selectUserStories)
     useEffect(()=>{
-        console.log('RENDER dispathc in useEffect')
         if(userIsAuth) {
             dispatch(FetchUserStoriesAC(userData._id))
         }
-    }, [dispatch])
+    }, [])
 
     return (
         <ScrollButton>

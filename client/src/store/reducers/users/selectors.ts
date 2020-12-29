@@ -17,6 +17,9 @@ export const selectUserStories = (state: RootState): UserState['stories'] => sel
 //только статус
 export const selectUserStatus = (state: RootState): UserState['status'] => selectUserState(state).status
 
+//только статус загрузки историй
+export const selectUserLoadingStories = (state: RootState): UserState['storiesLoading'] => selectUserState(state).storiesLoading
+
 //булево значинеи, наличия данных в дате
 export const selectUserIsAuth = (state: RootState): boolean => !!selectUserState(state).data
 

@@ -31,7 +31,7 @@ app.get('/stories', StoriesCtrl.index);
 app.get('/stories/:id', StoriesCtrl.show);
 
 //собрать истории залогиненного юзера
-app.get('/stories/user/:id', passport.authenticate('jwt'), StoriesCtrl.getUserStories)
+app.get('/profile/:id', passport.authenticate('jwt'), StoriesCtrl.getUserStories)
 
 //пропускаю stories через мидлваре passport.authenticate('jwt'), создавая доп.интерфейс, чтобы взять ее из поля запроса(req)
 //удалить историю

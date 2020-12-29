@@ -63,6 +63,10 @@ export const userReducer = produce((draft: Draft<UserState>, action: UserActions
         case UserActionsType.SET_LOADING_STATUS_STATE:
             draft.status = action.payload
             break
+        //установка статуса загрузки историй
+        case UserActionsType.SET_LOADING_STATUS_STORIES:
+            draft.storiesLoading = action.payload
+            break
 
         default:
             break
