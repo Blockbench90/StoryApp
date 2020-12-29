@@ -54,6 +54,7 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
 
     const handleClickDelete = () => {
         dispatch(deleteStoryByIdAC(_id))
+        dispatch(FetchUserStoriesAC(userId))
         handleClose()
     }
 

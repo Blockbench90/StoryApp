@@ -12,6 +12,7 @@ import {StoriesApi} from "../../../restApi/storiesApi";
 import {LoadingStatus} from "../../types";
 import {fetchStoriesRequest} from "../stories/sagas";
 
+
 //получить конкретную историю по id
 export function* fetchStoryDataRequest ({payload: _id}: FetchStoryDataAI) {
     try {

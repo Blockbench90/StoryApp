@@ -5,7 +5,7 @@ import ScrollButton from "../../componetns/ScrollButton"
 import {useDispatch, useSelector} from "react-redux";
 import {
     selectUserData,
-    selectUserDataID,
+    selectUserDataID, selectUserDataStories,
     selectUserIsAuth,
     selectUserStories
 } from "../../store/reducers/users/selectors";
@@ -20,6 +20,7 @@ export const Index = () => {
     const userData = useSelector(selectUserData)
     const userIsAuth = useSelector(selectUserIsAuth)
     const stories = useSelector(selectUserStories)
+    const isStories = useSelector(selectUserDataStories)
     useEffect(()=>{
         if(userIsAuth) {
             dispatch(FetchUserStoriesAC(userData._id))
@@ -31,7 +32,7 @@ export const Index = () => {
             <div className={classes.wrapper}>
                 <Grid container spacing={1}>
                    <ProfileInfo stories={stories} userData={userData}/>
-                   <ProfileStories userIsAuth={userIsAuth} stories={stories} />
+                   <ProfileStories stories={stories} isStories={isStories}/>
                 </Grid>
             </div>
         </ScrollButton>

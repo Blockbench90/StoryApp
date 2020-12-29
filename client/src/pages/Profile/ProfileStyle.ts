@@ -153,8 +153,10 @@ export const useProfileStyles = makeStyles((theme) => ({
         borderBottom: '0',
     },
     storyCentred: {
-        marginTop: 50,
+        marginTop: '150px',
         textAlign: 'center',
+        marginLeft: '25vw'
+
     },
     storyHeader: {
         borderTop: '0',

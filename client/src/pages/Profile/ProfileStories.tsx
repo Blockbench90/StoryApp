@@ -6,32 +6,40 @@ import Grid from "@material-ui/core/Grid";
 import React from "react";
 import {useProfileStyles} from "./ProfileStyle";
 import {Story} from "../../store/reducers/stories/reducer";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 interface ProfileStoriesProps {
     // classes: ReturnType<typeof useProfileStyles>
-    userIsAuth: boolean
+    isStories: boolean
     stories: Array<Story>
 }
 
-export const ProfileStories: React.FC<ProfileStoriesProps> = ({ userIsAuth, stories}: ProfileStoriesProps): React.ReactElement => {
+export const ProfileStories: React.FC<ProfileStoriesProps> = ({isStories, stories }: ProfileStoriesProps): React.ReactElement => {
     const classes = useProfileStyles()
-    return (
-        <Grid item xs={8}>
-            <Paper className={classes.paperRight}>
-                <Route path={'/profile'} exact>
-                    <Paper>
-                        <div className={classes.addForm}>
-                            <AddStoryForm classes={classes}/>
-                        </div>
-                        <div className={classes.addFormBottomLine}/>
+    console.log(isStories)
+    //TODO: поправить, всеравно циркуль не появляется
+    return (isStories
+            ? (
+                <Grid item xs={8}>
+                    <Paper className={classes.paperRight}>
+                        <Route path={'/profile'} exact>
+                            <Paper>
+                                <div className={classes.addForm}>
+                                    <AddStoryForm classes={classes}/>
+                                </div>
+                                <div className={classes.addFormBottomLine}/>
+                            </Paper>
+                        </Route>
+                        {([...stories].reverse().map((story) =>
+                            <ProfileStory key={story._id} classes={classes} _id={story._id} title={story.title}
+                                          text={story.text} createdAt={story.createdAt}/>))
+                        }
                     </Paper>
-                </Route>
-                {
-                    userIsAuth && ([...stories].reverse().map((story)=>
-                        <ProfileStory key={story._id} classes={classes} _id={story._id} title={story.title} text={story.text} createdAt={story.createdAt} />
-                    ))
-                }
-            </Paper>
-        </Grid>
+                </Grid>
+            )
+            : (<div className={classes.storyCentred}>
+                <CircularProgress/>
+            </div>)
+
     )
 }
