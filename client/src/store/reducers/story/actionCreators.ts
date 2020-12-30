@@ -32,13 +32,16 @@ export const setStoryByIdAC = (payload: StoryState['data']): SetStoryDataByIdAI 
     type: StoryActionsTypes.SET_STORY_BY_ID,
     payload
 })
-
+export type deletePayload = {
+    _id: string
+    userId: string
+}
 //удалить историю
 export interface DeleteStoryByIdAI extends Action<StoryActionsTypes> {
     type: StoryActionsTypes.DELETE_STORY_BY_ID
-    payload: string
+    payload: deletePayload
 }
-export const deleteStoryByIdAC = (payload: string): DeleteStoryByIdAI => ({
+export const deleteStoryByIdAC = (payload: deletePayload): DeleteStoryByIdAI => ({
     type: StoryActionsTypes.DELETE_STORY_BY_ID,
     payload
 })

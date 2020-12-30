@@ -209,5 +209,5 @@ export const useProfileStyles = makeStyles((theme) => ({
     },
     storyHed: {
         flex: 1
-    },
+    }
 }));

@@ -4,6 +4,11 @@ import grey from "@material-ui/core/colors/grey";
 import {colors} from "@material-ui/core";
 
 export const useHomeStyles = makeStyles((theme) => ({
+    headerWrapper: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
     wrapper: {
         height: '100vh',
     },
@@ -36,38 +41,35 @@ export const useHomeStyles = makeStyles((theme) => ({
         position: 'sticky',
         top: '10px',
         bottom: '30px',
+        textAlign: 'center',
         listStyle: 'none',
         padding: 0,
         margin: 0,
-        maxWidth: '100vw',
+        maxWidth: '60vw',
         '@media (max-width:600px)': {
             display: 'none',
         }
     },
     sideMenuListItem: {
+        padding: '0 0 0 0',
         '& a': {
             color: 'inherit',
             textDecoration: 'none',
         },
         cursor: 'pointer',
         '&:hover': {
-            '& div': {
-                paddingTop: 0,
-                backgroundColor: 'rgba(29, 161, 242, 0.1)',
-                '& h6': {
-                    color: theme.palette.primary.main,
-                },
-                '& svg path': {
-                    fill: theme.palette.primary.main,
-                },
+            '& h6': {
+                color: theme.palette.primary.main,
+            },
+            '& svg path': {
+                fill: theme.palette.primary.main,
             },
         },
-
         '& div': {
             display: 'inline-flex',
             alignItems: 'center',
             position: 'relative',
-            padding: '5px 25px 0px 26px',
+            margin: '0px 20px 0px 20px',
             borderRadius: 30,
             height: 50,
             marginBottom: 5,
@@ -86,13 +88,15 @@ export const useHomeStyles = makeStyles((theme) => ({
     },
     sideMenuListItemIcon: {
         fontSize: 35,
-        marginLeft: -10,
     },
-    sideMenuTweetButton: {
-        paddingLeft: theme.spacing(5.5),
-        paddingRight: theme.spacing(5.5),
+    sideMenuButton: {
+        paddingLeft: theme.spacing(5),
+        paddingRight: theme.spacing(5),
         padding: theme.spacing(3.2),
         marginTop: theme.spacing(1.7),
+        '@media (max-width:630px)': {
+            display: 'none',
+        },
     },
     storyWrapper: {
         color: 'inherit',
@@ -128,6 +132,7 @@ export const useHomeStyles = makeStyles((theme) => ({
         cursor: 'pointer',
         paddingTop: 15,
         paddingLeft: 10,
+        wordBreak: 'break-all',
         '&:hover': {
             backgroundColor: 'rgb(245, 248, 250)',
         },
@@ -152,9 +157,10 @@ export const useHomeStyles = makeStyles((theme) => ({
     },
     storyFooter: {
         display: 'flex',
+        justifyContent: 'space-between',
+        margin: '0 auto',
         position: 'relative',
         left: -13,
-        justifyContent: 'space-between',
         maxWidth: 450,
     },
     storyUserName: {
@@ -170,6 +176,7 @@ export const useHomeStyles = makeStyles((theme) => ({
     },
     fullStory: {
         padding: 22,
+        wordBreak: 'break-all',
         paddingBottom: 0,
     },
     fullStoryText: {
@@ -190,7 +197,6 @@ export const useHomeStyles = makeStyles((theme) => ({
     },
     rightSide: {
         width: 210,
-        paddingTop: 20,
         position: 'sticky',
         top: 0,
         '@media(max-width: 640px)': {

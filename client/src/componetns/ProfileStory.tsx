@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import classNames from "classnames"
 import Grid from "@material-ui/core/Grid"
 import {IconButton, Menu, MenuItem, Typography} from "@material-ui/core"
@@ -13,9 +13,6 @@ import {useDispatch, useSelector} from "react-redux"
 import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actionCreators"
 import {useProfileStyles} from "../pages/Profile/ProfileStyle"
 import {selectUserDataID, selectUserLoadingStories} from "../store/reducers/users/selectors";
-import {FetchUserStoriesAC} from "../store/reducers/users/actionCreators";
-import {selectLoadingStatus} from "../store/reducers/stories/selectors";
-import {LoadingStatus} from "../store/types";
 
 
 interface ProfileStoryProps {
@@ -53,9 +50,9 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
     }
 
     const handleClickDelete = () => {
-        dispatch(deleteStoryByIdAC(_id))
-        dispatch(FetchUserStoriesAC(userId))
+        dispatch(deleteStoryByIdAC({_id, userId}))
         handleClose()
+        // dispatch(FetchUserStoriesAC(userId))
     }
 
     return (
@@ -76,7 +73,7 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
                                             onClick={handleClick}>
                                     <MoreVertIcon/>
                                 </IconButton>
-                                <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={open}
+                                <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={open} variant='selectedMenu'
                                       onClose={handleClose}>
                                     <MenuItem onClick={handleClickEdit}>
                                         Редактировать
@@ -87,7 +84,7 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
                                 </Menu>
                             </div>
                         </div>
-                        <Typography variant="subtitle1" align='center' gutterBottom>
+                        <Typography variant="subtitle1" align='center' gutterBottom onClick={showHiddenText}>
                             {title}
                         </Typography>
                         <Typography variant="body1" gutterBottom onClick={showHiddenText}>

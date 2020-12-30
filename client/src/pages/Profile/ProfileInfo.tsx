@@ -13,18 +13,23 @@ interface ProfileInfoProps {
     userData: User
 }
 
+
 export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: ProfileInfoProps): React.ReactElement => {
     const classes = useProfileStyles()
+    let countStories: number = 0
     const data = {
         avatar: "https://images.unsplash.com/photo-1578505574290-68739d054931?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
         status: 'Умная фраза',
         followers: 10,
         follow: 10
-    };
+    }
+    if(stories !== undefined){
+        countStories = stories.length
+    }
+
     return (
         <Grid item xs={4}>
             <Paper className={classes.paperLeft}>
-                {console.log('render memo')}
                 <Avatar variant="rounded" className={classes.profileImage}>
                     <ProfileAvatar/>
                 </Avatar>
@@ -42,7 +47,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
                             <Typography align={"center"} variant="subtitle2" gutterBottom className={classes.userTag}>
                                 Историй:
                             </Typography>
-                            {stories.length}
+                            {countStories}
                         </Typography>
                         <Typography className={classes.userName} variant="h4" gutterBottom>
                             <Typography align={"center"} variant="subtitle2" gutterBottom

@@ -11,6 +11,8 @@ import {Story} from "../stories/reducer";
 import {StoriesApi} from "../../../restApi/storiesApi";
 import {LoadingStatus} from "../../types";
 import {fetchStoriesRequest} from "../stories/sagas";
+import {FetchUserStoriesAC} from "../users/actionCreators";
+import {fetchUserStoriesRequest} from "../users/saga";
 
 
 //получить конкретную историю по id
@@ -38,11 +40,12 @@ export function* editStoryDataRequest ({payload: _id}: FetchEditStoryDataAI){
 }
 
 //удалить историю
-export function* deleteStoryDataRequest({payload: _id}: DeleteStoryByIdAI) {
+export function* deleteStoryDataRequest({payload}: DeleteStoryByIdAI) {
     try  {
-        const data: any = yield call(StoriesApi.deleteStory, _id)
+        const data: any = yield call(StoriesApi.deleteStory, payload._id)
         if(data.status === 200) {
             yield call(fetchStoriesRequest)
+            yield put(FetchUserStoriesAC(payload.userId))
         }
     } catch (error) {
         yield put(setStoryLoadingStatusAC(LoadingStatus.ERROR))

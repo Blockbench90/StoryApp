@@ -18,7 +18,7 @@ export interface User {
 
 export interface UserState {
     data?: User | undefined
-    stories: Story[]
+    stories: Story[] | undefined
     storiesLoading: LoadingStatus
     status: LoadingStatus
 }
@@ -37,7 +37,7 @@ const data = {
 
 const initialState: UserState = {
     data: undefined,
-    stories: [],
+    stories: undefined,
     storiesLoading: LoadingStatus.NEVER,
     status: LoadingStatus.NEVER,
 }
@@ -52,7 +52,7 @@ export const userReducer = produce((draft: Draft<UserState>, action: UserActions
             break
         //начать запрос на все истории юзера
         case UserActionsType.FETCH_ALL_USER_STORIES:
-            draft.stories = []
+            draft.stories = undefined
             break
         //засетать все истории юзера
         case UserActionsType.SET_ALL_USER_STORIES:

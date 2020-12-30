@@ -25,11 +25,11 @@ const Layout: React.FC<Layout> = ({children}): React.ReactElement => {
                     <HeaderMenu classes={classes}/>
                 </Grid>
 
-                <Grid xs={11} item>
+                <Grid xs={10} item>
                     {children}
                 </Grid>
 
-                <Grid xs={1} item>
+                <Grid xs={2} item>
                     <RightSide classes={classes}/>
                 </Grid>
             </Grid>

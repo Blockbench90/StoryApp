@@ -15,19 +15,20 @@ import {Alert} from "@material-ui/lab"
 import {clearStoryDataAfterEditAC} from "../store/reducers/story/actionCreators"
 import {LoadingStatus} from "../store/types"
 import {AddFormState, NewStory} from "../store/reducers/stories/reducer";
-import {useProfileStyles} from "../pages/Profile/ProfileStyle";
-import {selectUserData, selectUserDataID} from "../store/reducers/users/selectors";
+import {selectUserDataID} from "../store/reducers/users/selectors";
 import {FetchUserStoriesAC} from "../store/reducers/users/actionCreators";
+import {useAddFormStyles} from "./addStoryStyles";
 
 
 interface AddStoryFormProps {
-    classes: ReturnType<typeof useProfileStyles>
+    onClose?: () => void
     maxRows?: number
 }
 
 const MAX_LENGTH = 3000;
 
-export const AddStoryForm: React.FC<AddStoryFormProps> = ({classes, maxRows}: AddStoryFormProps): React.ReactElement => {
+export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: AddStoryFormProps): React.ReactElement => {
+    const classes = useAddFormStyles()
     const [title, setTitle] = React.useState<string | undefined>('')
     const [text, setText] = React.useState<string>('')
 
@@ -39,7 +40,6 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({classes, maxRows}: Ad
     const story = useSelector(selectStoryData)
     const loadingStatus = useSelector(selectStoryLoadingStatus)
     const userId = useSelector(selectUserDataID)
-
 
     useEffect(() => {
         if (story) {
@@ -74,6 +74,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({classes, maxRows}: Ad
         //обнулить в глобальном сторе
         dispatch(clearStoryDataAfterEditAC())
         dispatch(FetchUserStoriesAC(userId))
+        onClose()
     };
 
     //редактировать
@@ -112,7 +113,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({classes, maxRows}: Ad
                 </div>
             </div>
             <div className={classes.addFormBottom}>
-                <div className={classNames(classes.storyFooter, classes.addFormBottomActions)}>
+                <div className={classNames(classes.storyFooterLine, classes.addFormBottomActions)}>
                     <IconButton color="primary">
                         <ImageOutlinedIcon style={{fontSize: 26}}/>
                     </IconButton>
