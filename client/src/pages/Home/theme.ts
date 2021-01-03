@@ -196,9 +196,9 @@ export const useHomeStyles = makeStyles((theme) => ({
         marginTop: 20,
     },
     rightSide: {
-        width: 210,
+        width: 195,
         position: 'sticky',
-        top: 0,
+        top: '20px',
         '@media(max-width: 640px)': {
             display: 'none'
         }

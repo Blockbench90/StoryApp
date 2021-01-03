@@ -11,19 +11,28 @@ export const useProfileStyles = makeStyles((theme) => ({
     paperLeft: {
         position: 'absolute',
         zIndex: 1,
+        top: '20px',
+        position: 'sticky',
         backgroundColor: 'rgba(29, 100, 100, 0.6)',
-        width: '20vw',
-        height: '70vh',
+        width: '14vw',
+        height: '45vh',
         margin: theme.spacing(1),
         textAlign: 'center',
         color: theme.palette.text.secondary,
         borderRadius: '2%',
-        boxShadow: '0 0 10px rgba(0,0,0,0.5)'
+        boxShadow: '0 0 10px rgba(0,0,0,0.5)',
+        '@media(max-width: 1700px)': {
+            width: '14vw',
+            height: '51vh',
+        }
     },
     infoWrap: {
         display: 'flex',
         justifyContent: 'space-between',
-        padding: '5px 10px'
+        padding: '5px 10px',
+        '@media(max-width: 1700px)': {
+            display: 'inline'
+        }
     },
     addForm: {
         padding: 20,
@@ -64,7 +73,7 @@ export const useProfileStyles = makeStyles((theme) => ({
     },
     addFormTextareaTitle: {
         width: '100%',
-        border: '1px solid rgba(169, 187, 184, 0.19)',
+        border: '1px solid rgba(169, 187, 184, 0.09)',
         fontSize: 20,
         outline: 'none',
         fontFamily: 'inherit',
@@ -99,6 +108,7 @@ export const useProfileStyles = makeStyles((theme) => ({
     addFormBottomRight: {
         display: 'flex',
         alignItems: 'center',
+
     },
     addFormBottomLine: {
         height: 12,
@@ -120,10 +130,15 @@ export const useProfileStyles = makeStyles((theme) => ({
         position: "relative",
         top: "-10px",
         justifyContent: "center",
-        width: theme.spacing(40),
-        height: theme.spacing(50),
+        width: '220px',
+        height: '300px',
         border: "1px solid white",
-        margin: "auto"
+        margin: "auto",
+        '@media(max-width: 1700px)': {
+            width: '110px',
+            height: '150px',
+        }
+
     },
     profileInfoContainer: {
         position: "relative",
@@ -131,8 +146,12 @@ export const useProfileStyles = makeStyles((theme) => ({
         margin: "auto"
     },
     userName: {
+        fontSize: '15px',
         fontWeight: "bold",
-        marginBottom: 0
+        marginBottom: 0,
+        '@media(max-width: 1700px)': {
+            fontSize: '10px'
+        }
     },
     userTag: {
         marginTop: 0
@@ -194,9 +213,10 @@ export const useProfileStyles = makeStyles((theme) => ({
     },
     storyFooter: {
         display: 'flex',
-        position: 'relative',
-        left: -13,
         justifyContent: 'space-between',
+        position: 'relative',
+        margin: '0 auto',
+        left: -13,
         maxWidth: 450,
     },
     storyUserName: {

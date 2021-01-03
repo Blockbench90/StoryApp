@@ -45,8 +45,13 @@ const useProfileAvatarStyles = makeStyles((theme) => ({
         zIndex: 1,
         position: 'absolute',
         left: 0,
-        top: '88%',
-        width: '100%'
+        top: '84%',
+        width: '100%',
+        '@media(max-width: 1700px)': {
+            top: '84%',
+            width: '100%',
+            fontSize: '7px'
+        }
     },
     img: {
         overflow: 'hidden',

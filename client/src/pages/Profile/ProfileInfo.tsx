@@ -28,7 +28,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
     }
 
     return (
-        <Grid item xs={4}>
+        <Grid item xs={3}>
             <Paper className={classes.paperLeft}>
                 <Avatar variant="rounded" className={classes.profileImage}>
                     <ProfileAvatar/>
@@ -52,14 +52,14 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
                         <Typography className={classes.userName} variant="h4" gutterBottom>
                             <Typography align={"center"} variant="subtitle2" gutterBottom
                                         className={classes.userTag}>
-                                Подписчики:
+                                Подписаны:
                             </Typography>
                             {data.followers}
                         </Typography>
                         <Typography className={classes.userName} variant="h4" gutterBottom>
                             <Typography align={"center"} variant="subtitle2" gutterBottom
                                         className={classes.userTag}>
-                                Подвисано на:
+                                Отслеживаю:
                             </Typography>
                             {data.follow}
                         </Typography>

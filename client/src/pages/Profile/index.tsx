@@ -30,7 +30,7 @@ export const Index = () => {
     return (
         <ScrollButton>
             <div className={classes.wrapper}>
-                <Grid container spacing={1}>
+                <Grid container spacing={2}>
                    <ProfileInfo stories={stories} userData={userData}/>
                    <ProfileStories stories={stories} isStories={isStories}/>
                 </Grid>

@@ -99,7 +99,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
                     <TextareaAutosize
                         onChange={handleChangeTextareaTitle}
                         className={classes.addFormTextareaTitle}
-                        placeholder="Введите имя произвидения..."
+                        placeholder="Заголовок..."
                         value={title}
                         rowsMax={maxRows}
                     />

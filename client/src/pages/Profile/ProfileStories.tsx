@@ -15,14 +15,15 @@ interface ProfileStoriesProps {
 
 export const ProfileStories: React.FC<ProfileStoriesProps> = ({isStories, stories }: ProfileStoriesProps): React.ReactElement => {
     const classes = useProfileStyles()
+    const onClose = () => {}
     return (isStories
             ? (
-                <Grid item xs={8}>
+                <Grid item xs={9}>
                     <Paper className={classes.paperRight}>
                         <Route path={'/profile'} exact>
                             <Paper>
                                 <div className={classes.addForm}>
-                                    <AddStoryForm />
+                                    <AddStoryForm onClose={onClose}/>
                                 </div>
                                 <div className={classes.addFormBottomLine}/>
                             </Paper>
