@@ -309,5 +309,34 @@ export const useHomeStyles = makeStyles((theme) => ({
             fontSize: 16,
         },
     },
+    imagesList: {
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: 20,
+        flexWrap: 'wrap',
+    },
+    imagesListItem: {
+        width: 50,
+        height: 50,
+        marginRight: 10,
+        marginBottom: 10,
+        position: 'relative',
+        '& img': {
+            width: '100%',
+            height: '100%',
+            'object-fit': 'cover',
+            borderRadius: 6,
+        },
+        '& svg path': {
+            fill: 'white',
+        },
+    },
+    imagesListItemRemove: {
+        position: 'absolute',
+        top: -8,
+        right: -6,
+        padding: '0 !important',
+        backgroundColor: '#ff4d4d !important',
+    },
 }))
 

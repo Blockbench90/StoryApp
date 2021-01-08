@@ -10,8 +10,15 @@ import {registerValidations} from './validations/register';
 import {passport} from './core/passport';
 import {StoriesCtrl} from './controllers/StoriesController';
 import {createStoryValidations} from './validations/createStory';
+import {UploadFileCtrl} from "./controllers/UploadFileController";
 
 const app = express();
+
+//подключаю мультер как мидлваре для обработки загрузки файлов на cloudinary
+const multer = require('multer')
+const storage = multer.memoryStorage()
+const upload = multer({storage})
+
 
 app.use(express.json());
 app.use(passport.initialize());
@@ -48,6 +55,9 @@ app.get('/auth/verify', registerValidations, UserCtrl.verify);
 //залогиниться
 app.post('/auth/login', passport.authenticate('local'), UserCtrl.afterLogin);
 
+
+//загрузка файлов
+app.post('/upload', upload.single('image'), UploadFileCtrl.upload);
 
 //слушьть порт 8888, ну или тот, который указан в конфигурации
 app.listen(process.env.PORT, (): void => {

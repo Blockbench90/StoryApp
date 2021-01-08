@@ -18,11 +18,17 @@ import {AddFormState, NewStory} from "../store/reducers/stories/reducer";
 import {selectUserDataID} from "../store/reducers/users/selectors";
 import {FetchUserStoriesAC} from "../store/reducers/users/actionCreators";
 import {useAddFormStyles} from "./addStoryStyles";
+import {UploadImages} from "./UploadImages";
+import { uploadFile } from '../utils/uploadFile'
 
 
 interface AddStoryFormProps {
     onClose?: () => void
     maxRows?: number
+}
+export interface ImageObj {
+    blobUrl: string
+    file: File
 }
 
 const MAX_LENGTH = 3000;
@@ -31,6 +37,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
     const classes = useAddFormStyles()
     const [title, setTitle] = React.useState<string | undefined>('')
     const [text, setText] = React.useState<string>('')
+    const [images, setImages] = React.useState<ImageObj[]>([])
 
     const textCount = MAX_LENGTH - text.length;
     const textLimitPercent = Math.round((text.length / 3000) * 100);
@@ -63,14 +70,24 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
         }
     };
 
+    //TODO: доработать добавление истории с фото
+
     //добавление истории
-    const handleClickAddStory = (): void => {
+    const handleClickAddStory = async (): Promise<void> => {
+        let result = [];
+        // dispatch(setAddFormState(AddFormState.LOADING));
+        for (let i = 0; i < images.length; i++) {
+            const file = images[i].file;
+            const { url } = await uploadFile(file);
+            result.push(url);
+        }
         //собрать данные из локального стора и отправить в базу
-        const data: NewStory = {title, text}
+        const data: NewStory = {title, text, images: result}
         dispatch(fetchAddStoryAC(data))
         //обнулить локально
         setTitle('')
         setText('')
+        setImages([])
         //обнулить в глобальном сторе
         dispatch(clearStoryDataAfterEditAC())
         dispatch(FetchUserStoriesAC(userId))
@@ -114,9 +131,9 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
             </div>
             <div className={classes.addFormBottom}>
                 <div className={classNames(classes.storyFooterLine, classes.addFormBottomActions)}>
-                    <IconButton color="primary">
-                        <ImageOutlinedIcon style={{fontSize: 26}}/>
-                    </IconButton>
+
+                        <UploadImages images={images} onChangeImages={setImages} />
+
                     <IconButton color="primary">
                         <EmojiIcon style={{fontSize: 26}}/>
                     </IconButton>
