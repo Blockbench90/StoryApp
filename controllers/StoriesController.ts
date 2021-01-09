@@ -91,6 +91,7 @@ class StoriesController {
         const data: any = {
           title: req.body.title,
           text: req.body.text,
+          images: req.body.images,
           user: user._id,
         };
 

@@ -1,7 +1,7 @@
 import {Action} from "redux";
 import {LoadingStatus} from "../../types";
 import {StoryState} from "../story/reducer";
-import {AddFormState, NewStory, StoriesState} from "./reducer";
+import {AddFormState, NewStory, StoriesState, Story} from "./reducer";
 
 export enum StoriesActionsTypes {
     FETCH_ALL_STORIES = 'stories/FETCH_ALL_STORIES',
@@ -42,9 +42,9 @@ export const fetchAddStoryAC = (payload: NewStory): FetchAddStoryAI => ({
 //Создать новую историю
 export interface CreateNewStoryAI extends Action<StoriesActionsTypes> {
     type: StoriesActionsTypes.SET_ADD_NEW_STORY,
-    payload: NewStory;
+    payload: Story;
 }
-export const createNewStoryAC = (payload: NewStory): CreateNewStoryAI => ({
+export const createNewStoryAC = (payload: Story): CreateNewStoryAI => ({
     type: StoriesActionsTypes.SET_ADD_NEW_STORY,
     payload
 })

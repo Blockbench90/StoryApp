@@ -20,9 +20,10 @@ export const StoriesApi = {
         return data.data
     },
     //добавить историю
-    async addStory(postData: NewStory){
-        const { data } = await axios.post('/stories', {title: postData.title, text: postData.text})
-        return data
+    async addStory(payload: {title?: string, text: string, images?: string[]}): Promise<any>{
+        const { data } = await axios.post<Response<Story>>('/stories', payload)
+        console.log('data.data в апишке, после запроса на бек =', data.data)
+        return data.data
     },
     //удалить историю
     async deleteStory(id: string): Promise<any> {

@@ -5,6 +5,7 @@ export interface StoryModelInterface {
   _id?: string;
   title?: string;
   text: string;
+  images?: string[]
   user: UserModelDocumentInterface;
 }
 
@@ -26,6 +27,7 @@ const StorySchema = new Schema<StoryModelInterface>({
     ref: 'User',
     type: Schema.Types.ObjectId,
   },
+  images: [{type: String}]
 }, {
   timestamps: true
 });

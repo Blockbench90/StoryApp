@@ -29,7 +29,7 @@ export const ProfileStories: React.FC<ProfileStoriesProps> = ({isStories, storie
                             </Paper>
                         </Route>
                         {([...stories].reverse().map((story) =>
-                            <ProfileStory key={story._id} classes={classes} _id={story._id} title={story.title}
+                            <ProfileStory key={story._id} classes={classes} _id={story._id} title={story.title} images={story.images}
                                           text={story.text} createdAt={story.createdAt}/>
                                           ))
                         }

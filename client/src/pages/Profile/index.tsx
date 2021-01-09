@@ -20,6 +20,7 @@ export const Index = () => {
     const userData = useSelector(selectUserData)
     const userIsAuth = useSelector(selectUserIsAuth)
     const stories = useSelector(selectUserStories)
+    console.log('Stories =', stories)
     const isStories = useSelector(selectUserDataStories)
     useEffect(()=>{
         if(userIsAuth) {

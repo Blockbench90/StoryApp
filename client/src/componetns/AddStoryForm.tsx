@@ -70,7 +70,6 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
         }
     };
 
-    //TODO: доработать добавление истории с фото
 
     //добавление истории
     const handleClickAddStory = async (): Promise<void> => {
@@ -79,10 +78,11 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
         for (let i = 0; i < images.length; i++) {
             const file = images[i].file;
             const { url } = await uploadFile(file);
-            result.push(url);
+            result.push( url);
         }
         //собрать данные из локального стора и отправить в базу
         const data: NewStory = {title, text, images: result}
+        console.log('Data сразу после запроса в форме добавления =', data)
         dispatch(fetchAddStoryAC(data))
         //обнулить локально
         setTitle('')

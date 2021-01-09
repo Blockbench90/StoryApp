@@ -19,11 +19,12 @@ interface ProfileStoryProps {
     _id: string
     title?: string | undefined
     text: string
+    images?: string[]
     classes: ReturnType<typeof useProfileStyles>
     createdAt: string
 }
 
-export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, classes, createdAt }: ProfileStoryProps): React.ReactElement => {
+export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, classes, images, createdAt }: ProfileStoryProps): React.ReactElement => {
     const dispatch = useDispatch()
     const userId = useSelector(selectUserDataID)
     const loadingStoriesStatus = useSelector(selectUserLoadingStories)
@@ -90,6 +91,9 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
                         <Typography variant="body1" gutterBottom onClick={showHiddenText}>
                             {text}
                         </Typography>
+                        <div>
+                            {images && images.map((url) => <img src={url} key={url}/>  )}
+                        </div>
                         <div className={classes.storyFooter}>
                             <div>
                                 <IconButton color='primary'>

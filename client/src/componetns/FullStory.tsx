@@ -20,6 +20,7 @@ import {selectStoryIsLoaded, selectStoryState} from "../store/reducers/story/sel
 import {LoadingStatus} from "../store/types"
 // @ts-ignore
 import ava from '../assets/som_logo.jpg'
+import { ImageList } from './ImageList'
 
 
 
@@ -53,6 +54,8 @@ export const FullStory: React.FC = (): React.ReactElement | null => {
 
     //если прилители данные, флаг isLoaded установится в true, загрузка завершена, покажу компонент полной "истории"
     if (data) {
+        // @ts-ignore
+        // @ts-ignore
         return (
             <>
                 <Paper className={classes.fullStory}>
@@ -76,6 +79,9 @@ export const FullStory: React.FC = (): React.ReactElement | null => {
                     <Typography className={classes.fullStoryText} gutterBottom>
                         {data.text}
                     </Typography>
+                    <div>
+                        {data.images && data.images.map((url) => <img src={url} key={url}/>  )}
+                    </div>
                     <Typography>
                         {/*Вывожу дату создания в выбранном формате и языке*/}
                         <span

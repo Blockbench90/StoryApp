@@ -16,5 +16,6 @@ export const uploadFile = async (image: File): Promise<UploadFileReturnProps> =>
             'Content-Type': 'multipart/form-data'
         }
     })
+    console.log('Data из запроса =',data)
     return data
 }

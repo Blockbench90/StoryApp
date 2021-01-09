@@ -10,7 +10,7 @@ export enum AddFormState {
 
 export interface NewStory {
     _id?: string
-    title: string | undefined
+    title?: string | undefined
     text: string
     images?: string[]
 }
@@ -18,6 +18,7 @@ export interface Story {
     _id: string
     title?: string
     text: string
+    images?: string[]
     createdAt: string
     user: {
         fullname: string

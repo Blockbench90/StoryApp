@@ -20,6 +20,7 @@ interface StoryProps {
     text: string
     classes: ReturnType<typeof useHomeStyles>
     createdAt: string
+    images?: string[]
     user: {
         fullname: string
         username: string
@@ -27,7 +28,7 @@ interface StoryProps {
     }
 }
 
-export const Story: React.FC<StoryProps> = ({_id, title, text, user, classes, createdAt}: StoryProps): React.ReactElement => {
+export const Story: React.FC<StoryProps> = ({_id, title, text, user, images, classes, createdAt}: StoryProps): React.ReactElement => {
     const history = useHistory()
 
     const handleClickStory = (event: React.MouseEvent<HTMLAnchorElement>): void => {
@@ -61,6 +62,7 @@ export const Story: React.FC<StoryProps> = ({_id, title, text, user, classes, cr
                                     {text}
                                 </Typography>
                             </a>
+                            {images && images.map((url) => <img src={url} key={url}/>  )}
                             <div className={classes.storyFooter}>
                                 <div>
                                     <IconButton color='primary'>

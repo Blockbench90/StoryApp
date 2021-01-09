@@ -5,7 +5,7 @@ import {useHomeStyles} from "../pages/Home/theme";
 
 interface ImageListProps {
     images: string[];
-    classes: ReturnType<typeof useHomeStyles>;
+    classes?: ReturnType<typeof useHomeStyles>;
     removeImage?: (url: string) => void;
 }
 

@@ -11,6 +11,7 @@ export interface UserModelInterface {
   location?: string;
   about?: string;
   website?: string;
+  stories?: string[]
 }
 
 export type UserModelDocumentInterface = UserModelInterface & Document;
@@ -45,7 +46,9 @@ const UserSchema = new Schema<UserModelInterface>({
   location: String,
   about: String,
   website: String,
-}, {
+  stories: [{type: Schema.Types.ObjectId, ref: 'Story'}]
+},
+    {
   timestamps: true
 });
 //после регистрации или логинизации, удалить поля, которые пользователю
