@@ -222,6 +222,13 @@ export const useProfileStyles = makeStyles((theme) => ({
     storyUserName: {
         color: grey[500],
     },
+    imgWrapper: {
+        textAlign:"center",
+        '& img': {
+            height: '250px',
+            borderRadius: '30px'
+        },
+    },
     storyCon: {
         display: 'flex',
         alignItems: 'center',

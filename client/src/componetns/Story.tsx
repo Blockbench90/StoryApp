@@ -61,8 +61,11 @@ export const Story: React.FC<StoryProps> = ({_id, title, text, user, images, cla
                                 <Typography variant="body1" gutterBottom>
                                     {text}
                                 </Typography>
+                                <div className={classes.imgWrapper}>
+                                {images && images.map((url) => <img src={url} key={url}/>  )}
+                                </div>
                             </a>
-                            {images && images.map((url) => <img src={url} key={url}/>  )}
+
                             <div className={classes.storyFooter}>
                                 <div>
                                     <IconButton color='primary'>

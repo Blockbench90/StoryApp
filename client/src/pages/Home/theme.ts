@@ -104,7 +104,14 @@ export const useHomeStyles = makeStyles((theme) => ({
         borderRadius: 0,
         height: '100%',
         borderTop: '0',
-        borderBottom: '0',
+        borderBottom: '0'
+    },
+    imgWrapper: {
+        textAlign:"center",
+        '& img': {
+        height: '250px',
+        borderRadius: '30px'
+        },
     },
     storyCentred: {
         marginTop: 50,

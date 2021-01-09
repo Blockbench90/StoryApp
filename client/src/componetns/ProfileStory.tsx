@@ -85,14 +85,16 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
                                 </Menu>
                             </div>
                         </div>
-                        <Typography variant="subtitle1" align='center' gutterBottom onClick={showHiddenText}>
+                        <div onClick={showHiddenText}>
+                        <Typography variant="subtitle1" align='center' gutterBottom >
                             {title}
                         </Typography>
-                        <Typography variant="body1" gutterBottom onClick={showHiddenText}>
+                        <Typography variant="body1" gutterBottom >
                             {text}
                         </Typography>
-                        <div>
+                        <div className={classes.imgWrapper}>
                             {images && images.map((url) => <img src={url} key={url}/>  )}
+                        </div>
                         </div>
                         <div className={classes.storyFooter}>
                             <div>
