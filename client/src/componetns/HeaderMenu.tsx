@@ -14,7 +14,7 @@ import {NavLink} from "react-router-dom"
 import {Tooltip} from "@material-ui/core"
 import {useHomeStyles} from "../pages/Home/theme"
 import {ModalBlock} from "./ModalBlock";
-import {AddStoryForm} from "./AddStoryForm";
+import {AddStoryForm} from "./AddStoryForm/AddStoryForm";
 
 
 interface HeaderMenuProps {

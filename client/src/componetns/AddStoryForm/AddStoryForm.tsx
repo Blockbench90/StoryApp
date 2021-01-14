@@ -8,18 +8,18 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined'
-import {fetchAddStoryAC, fetchStoriesAC} from "../store/reducers/stories/actionCreators"
-import {selectStoryData, selectStoryLoadingStatus} from "../store/reducers/story/selectors"
-import {selectAddFormState} from "../store/reducers/stories/selectors"
+import {fetchAddStoryAC, fetchStoriesAC} from "../../store/reducers/stories/actionCreators"
+import {selectStoryData, selectStoryLoadingStatus} from "../../store/reducers/story/selectors"
+import {selectAddFormState} from "../../store/reducers/stories/selectors"
 import {Alert} from "@material-ui/lab"
-import {clearStoryDataAfterEditAC} from "../store/reducers/story/actionCreators"
-import {LoadingStatus} from "../store/types"
-import {AddFormState, NewStory} from "../store/reducers/stories/reducer";
-import {selectUserDataID} from "../store/reducers/users/selectors";
-import {FetchUserStoriesAC} from "../store/reducers/users/actionCreators";
+import {clearStoryDataAfterEditAC} from "../../store/reducers/story/actionCreators"
+import {LoadingStatus} from "../../store/types"
+import {AddFormState, NewStory} from "../../store/reducers/stories/reducer";
+import {selectUserDataID} from "../../store/reducers/users/selectors";
+import {FetchUserStoriesAC} from "../../store/reducers/users/actionCreators";
 import {useAddFormStyles} from "./addStoryStyles";
-import {UploadImages} from "./UploadImages";
-import { uploadFile } from '../utils/uploadFile'
+import {UploadImages} from "../UploadImages";
+import { uploadFile } from '../../utils/uploadFile'
 
 
 interface AddStoryFormProps {

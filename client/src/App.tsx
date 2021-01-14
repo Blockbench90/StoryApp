@@ -23,7 +23,8 @@ const App = () => {
     const loadingStatus = useSelector(selectUserStatus)
     //говорит о полной готовности загрузки
     const isReady = loadingStatus !== LoadingStatus.NEVER && loadingStatus !== LoadingStatus.LOADING
-
+    const token = !!window.localStorage.getItem('token')
+    console.log('Token in App = ', token)
     useEffect(() => {
         //запрос на логинизацию
         dispatch(FetchAuthAC());
@@ -31,10 +32,10 @@ const App = () => {
 
     useEffect(() => {
         //если и дата прилетела и статусы поменялись
-        (!isAuth && isReady) ? history.push('/signin') : history.push('/home')
-    }, [isAuth, isReady]);
+        token ? history.push('/home') : history.push('/signin')
+    }, [token]);
 
-    if (!isReady) {
+    if (!token && !isReady) {
         return (
             <div className={classes.loadingApp}>
                 <ImportContactsOutlinedIcon className={classes.loadingIcon} aria-label="" color="secondary"/>

@@ -20,7 +20,8 @@ import {selectStoryIsLoaded, selectStoryState} from "../store/reducers/story/sel
 import {LoadingStatus} from "../store/types"
 // @ts-ignore
 import ava from '../assets/som_logo.jpg'
-import { ImageList } from './ImageList'
+// @ts-ignore
+import mediumZoom from "medium-zoom"
 
 
 
@@ -45,6 +46,8 @@ export const FullStory: React.FC = (): React.ReactElement | null => {
         }
     }, [dispatch, id])
 
+    mediumZoom('.imgWrapper img')
+
     //если идет загрузка, покажи прелоадер
     if (!isLoaded) {
         return <div className={classes.storyCentred}>
@@ -54,7 +57,6 @@ export const FullStory: React.FC = (): React.ReactElement | null => {
 
     //если прилители данные, флаг isLoaded установится в true, загрузка завершена, покажу компонент полной "истории"
     if (data) {
-        // @ts-ignore
         // @ts-ignore
         return (
             <>
@@ -79,8 +81,8 @@ export const FullStory: React.FC = (): React.ReactElement | null => {
                     <Typography className={classes.fullStoryText} gutterBottom>
                         {data.text}
                     </Typography>
-                    <div>
-                        {data.images && data.images.map((url) => <img src={url} key={url}/>  )}
+                    <div className={classes.imgWrapper}>
+                        {data.images && data.images.map((url) => <img src={url} key={url} className='dataZoomable'/>  )}
                     </div>
                     <Typography>
                         {/*Вывожу дату создания в выбранном формате и языке*/}

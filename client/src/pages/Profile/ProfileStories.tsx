@@ -1,6 +1,6 @@
 import Paper from "@material-ui/core/Paper";
 import {Route} from "react-router-dom";
-import {AddStoryForm} from "../../componetns/AddStoryForm";
+import {AddStoryForm} from "../../componetns/AddStoryForm/AddStoryForm";
 import {ProfileStory} from "../../componetns/ProfileStory";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
