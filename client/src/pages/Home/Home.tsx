@@ -55,16 +55,6 @@ export const Home: React.FC = (): React.ReactElement => {
 
                     </div>
                 </Paper>
-
-                {/*<Route path={['/home', '/home/search']} exact>*/}
-                {/*    <Paper>*/}
-                {/*        <div className={classes.addForm}>*/}
-                {/*            <AddStoryForm classes={classes}/>*/}
-                {/*        </div>*/}
-                {/*        <div className={classes.addFormBottomLine}/>*/}
-                {/*    </Paper>*/}
-                {/*</Route>*/}
-
                 <Route path="/home" exact>
                     {isLoading
                         ? (stories.map((obj) => (

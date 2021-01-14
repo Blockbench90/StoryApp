@@ -108,7 +108,7 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                     onClick={handleClickOpenAddStory}
                     className={classes.sideMenuButton}
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     fullWidth
                     size='large'>
                     <Hidden smDown>Опубликовать</Hidden>

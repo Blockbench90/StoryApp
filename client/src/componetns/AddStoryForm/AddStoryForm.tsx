@@ -6,7 +6,6 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
-import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined'
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined'
 import {fetchAddStoryAC, fetchStoriesAC} from "../../store/reducers/stories/actionCreators"
 import {selectStoryData, selectStoryLoadingStatus} from "../../store/reducers/story/selectors"
@@ -19,7 +18,7 @@ import {selectUserDataID} from "../../store/reducers/users/selectors";
 import {FetchUserStoriesAC} from "../../store/reducers/users/actionCreators";
 import {useAddFormStyles} from "./addStoryStyles";
 import {UploadImages} from "../UploadImages";
-import { uploadFile } from '../../utils/uploadFile'
+import {uploadFile} from '../../utils/uploadFile'
 
 
 interface AddStoryFormProps {
@@ -57,7 +56,6 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
             }
         }
     }, [story])
-
 
     const handleChangeTextareaTitle = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget) {
@@ -132,7 +130,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
             <div className={classes.addFormBottom}>
                 <div className={classNames(classes.storyFooterLine, classes.addFormBottomActions)}>
 
-                        <UploadImages images={images} onChangeImages={setImages} />
+                    <UploadImages images={images} onChangeImages={setImages}/>
 
                     <IconButton color="primary">
                         <EmojiIcon style={{fontSize: 26}}/>

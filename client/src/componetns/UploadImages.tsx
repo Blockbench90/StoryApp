@@ -61,9 +61,11 @@ export const UploadImages: React.FC<UploadImageProps> = ({ images, onChangeImage
                 classes={classes}
                 removeImage={removeImage}
             />
-            <IconButton onClick={handleClickImage} color="primary">
+            {(images.length > 0)
+                ? null
+                : <IconButton onClick={handleClickImage} color="primary">
                 <ImageOutlinedIcon style={{ fontSize: 26 }} />
-            </IconButton>
+            </IconButton>}
             <input ref={inputRef} type="file" id="upload-input" hidden />
         </div>
     );
