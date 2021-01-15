@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import {Route, Switch, useHistory} from 'react-router-dom'
 import {SignIn} from "./pages/SingIn";
+import {Notification} from './pages/Notification/Notification'
 import Layout from "./pages/Layout";
 import {useDispatch, useSelector} from "react-redux";
-import {Index} from "./pages/Profile";
+import {ProfilePage} from "./pages/Profile";
 import {Home} from "./pages/Home/Home";
 import {useStylesSignIn} from "./pages/SingIn/theme";
 import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutlined";
@@ -11,10 +12,10 @@ import {CircularProgress} from "@material-ui/core";
 import {selectUserIsAuth, selectUserStatus} from "./store/reducers/users/selectors";
 import {LoadingStatus} from "./store/types";
 import {FetchAuthAC} from "./store/reducers/users/actionCreators";
+import { Messages } from './pages/Messages/Messages';
+import {Bookmarks, Drafts} from "@material-ui/icons";
 
 
-//TODO: выяснить, почему не компилится когда есть tsconfig, и какого черта он постоянно создается
-//подтянуть информацию о пользователе, в общем страница пользователя и подкоректировать бэк
 const App = () => {
     const classes = useStylesSignIn()
     const history = useHistory()
@@ -48,7 +49,11 @@ const App = () => {
                 <Route path="/signin" component={SignIn} exact/>
                 <Layout>
                     <Route path="/home" component={Home}/>
-                    <Route path="/profile" component={Index}/>
+                    <Route path="/profile" component={ProfilePage}/>
+                    <Route path="/notification" component={Notification}/>
+                    <Route path="/messages" component={Messages}/>
+                    <Route path="/bookmarks" component={Bookmarks}/>
+                    <Route path="/drafts" component={Drafts}/>
                 </Layout>
             </Switch>
         </div>

@@ -48,17 +48,8 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                         </Tooltip>
                     </li>
                     <li className={classes.sideMenuListItem}>
-                        <Tooltip title='Поиск' interactive arrow>
-                            <NavLink to='home'>
-                                <div>
-                                    <SearchIcon className={classes.sideMenuListItemIcon}/>
-                                </div>
-                            </NavLink>
-                        </Tooltip>
-                    </li>
-                    <li className={classes.sideMenuListItem}>
                         <Tooltip title='Уведомления' interactive arrow>
-                            <NavLink to='home'>
+                            <NavLink to='notification'>
                                 <div>
                                     <NotificationIcon className={classes.sideMenuListItemIcon}/>
                                 </div>
@@ -67,7 +58,7 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                     </li>
                     <li className={classes.sideMenuListItem}>
                         <Tooltip title='Сообщения' interactive arrow >
-                            <NavLink to='home'>
+                            <NavLink to='messages'>
                                 <div>
                                     <MessageIcon className={classes.sideMenuListItemIcon}/>
                                 </div>
@@ -76,7 +67,7 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                     </li>
                     <li className={classes.sideMenuListItem}>
                         <Tooltip title='Закладки' interactive arrow>
-                            <NavLink to='home'>
+                            <NavLink to='bookmarks'>
                                 <div>
                                     <BookmarkIcon className={classes.sideMenuListItemIcon}/>
                                 </div>
@@ -85,7 +76,7 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                     </li>
                     <li className={classes.sideMenuListItem}>
                         <Tooltip title='Черновики' interactive arrow>
-                            <NavLink to='home'>
+                            <NavLink to='drafts'>
                                 <div>
                                     <ListIcon className={classes.sideMenuListItemIcon}/>
                                 </div>

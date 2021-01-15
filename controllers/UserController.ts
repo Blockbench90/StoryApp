@@ -69,7 +69,7 @@ class UserController {
         //хеш пароля можно найти в слитых базах, поэтому добавляем сгенерированный ключ в конец
         //и амба, не огонь, но маленькая хитрость
         password: generateMD5(req.body.password + process.env.SECRET_KEY),
-        //генерируется одинаковый хеш, поскольку переменная env.SECRET_KEY всегда одинакова
+        //генерируется хеш, добавляя рандомную строку
         confirmHash: generateMD5(process.env.SECRET_KEY + Math.random().toString()),
       };
 

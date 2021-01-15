@@ -5,7 +5,7 @@ import ScrollButton from "../../componetns/ScrollButton"
 import {useDispatch, useSelector} from "react-redux";
 import {
     selectUserData,
-    selectUserDataID, selectUserDataStories,
+    selectUserDataStories,
     selectUserIsAuth,
     selectUserStories
 } from "../../store/reducers/users/selectors";
@@ -14,7 +14,7 @@ import {ProfileInfo} from "./ProfileInfo";
 import {ProfileStories} from "./ProfileStories";
 
 
-export const Index = () => {
+export const ProfilePage = () => {
     const classes = useProfileStyles();
     const dispatch = useDispatch()
     const userData = useSelector(selectUserData)

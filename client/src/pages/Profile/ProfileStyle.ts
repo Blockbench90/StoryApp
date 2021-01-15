@@ -236,5 +236,8 @@ export const useProfileStyles = makeStyles((theme) => ({
     },
     storyHed: {
         flex: 1
+    },
+    logoutButton: {
+        margin: '25px 0 0 0'
     }
 }));

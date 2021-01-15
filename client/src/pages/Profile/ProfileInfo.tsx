@@ -7,6 +7,9 @@ import React from "react";
 import {useProfileStyles} from "./ProfileStyle";
 import {Story} from "../../store/reducers/stories/reducer";
 import {User} from "../../store/reducers/users/reducer";
+import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
+import CreateIcon from "@material-ui/icons/Create";
 
 interface ProfileInfoProps {
     stories: Array<Story>
@@ -26,7 +29,12 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
     if(stories !== undefined){
         countStories = stories.length
     }
-
+    const logout = () => {
+        window.localStorage.removeItem('token')
+    }
+    if(!window.localStorage.getItem('token')){
+        return null
+    }
     return (
         <Grid item xs={3}>
             <Paper className={classes.paperLeft}>
@@ -64,7 +72,18 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
                             {data.follow}
                         </Typography>
                     </div>
-
+                    <Button
+                        onClick={logout}
+                        className={classes.logoutButton}
+                        variant="contained"
+                        color="secondary"
+                        fullWidth
+                        size='large'>
+                        <Hidden smDown>Выйти</Hidden>
+                        <Hidden mdUp>
+                            <CreateIcon/>
+                        </Hidden>
+                    </Button>
                 </div>
             </Paper>
         </Grid>)
