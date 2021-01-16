@@ -12,8 +12,8 @@ import {CircularProgress} from "@material-ui/core";
 import {selectUserIsAuth, selectUserStatus} from "./store/reducers/users/selectors";
 import {LoadingStatus} from "./store/types";
 import {FetchAuthAC} from "./store/reducers/users/actionCreators";
-import { Messages } from './pages/Messages/Messages';
-import {Bookmarks, Drafts} from "@material-ui/icons";
+import {Messages} from './pages/Messages/Messages';
+import {Bookmarks} from "./pages/Bookmarks/Bookmarks";
 
 
 const App = () => {
@@ -53,7 +53,6 @@ const App = () => {
                     <Route path="/notification" component={Notification}/>
                     <Route path="/messages" component={Messages}/>
                     <Route path="/bookmarks" component={Bookmarks}/>
-                    <Route path="/drafts" component={Drafts}/>
                 </Layout>
             </Switch>
         </div>

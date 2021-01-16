@@ -73,7 +73,7 @@ class UserController {
         confirmHash: generateMD5(process.env.SECRET_KEY + Math.random().toString()),
       };
 
-      const user = await UserModel.create(data);
+      const user = await UserModel.create(data)
 
       sendEmail(
         {

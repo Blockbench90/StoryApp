@@ -345,5 +345,8 @@ export const useHomeStyles = makeStyles((theme) => ({
         padding: '0 !important',
         backgroundColor: '#ff4d4d !important',
     },
+    notificationWrapper: {
+        display: 'flex',
+    }
 }))
 

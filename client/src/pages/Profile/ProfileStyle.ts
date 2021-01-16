@@ -238,6 +238,6 @@ export const useProfileStyles = makeStyles((theme) => ({
         flex: 1
     },
     logoutButton: {
-        margin: '25px 0 0 0'
+        margin: '50px 0 0 0'
     }
 }));
