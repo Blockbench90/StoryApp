@@ -9,7 +9,8 @@ import {Story} from "../../store/reducers/stories/reducer";
 import {User} from "../../store/reducers/users/reducer";
 import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
-import CreateIcon from "@material-ui/icons/Create";
+import CancelIcon from '@material-ui/icons/Cancel';
+import {useHistory} from "react-router-dom";
 
 interface ProfileInfoProps {
     stories: Array<Story>
@@ -19,7 +20,9 @@ interface ProfileInfoProps {
 
 export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: ProfileInfoProps): React.ReactElement => {
     const classes = useProfileStyles()
+    const history = useHistory()
     let countStories: number = 0
+
     const data = {
         avatar: "https://images.unsplash.com/photo-1578505574290-68739d054931?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
         status: 'Умная фраза',
@@ -29,12 +32,12 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
     if(stories !== undefined){
         countStories = stories.length
     }
+
     const logout = () => {
         window.localStorage.removeItem('token')
+        history.push('/signin')
     }
-    if(!window.localStorage.getItem('token')){
-        return null
-    }
+
     return (
         <Grid item xs={3}>
             <Paper className={classes.paperLeft}>
@@ -81,7 +84,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
                         size='large'>
                         <Hidden smDown>Выйти</Hidden>
                         <Hidden mdUp>
-                            <CreateIcon/>
+                            <CancelIcon/>
                         </Hidden>
                     </Button>
                 </div>

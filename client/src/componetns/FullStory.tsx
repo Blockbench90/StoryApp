@@ -93,16 +93,16 @@ export const FullStory: React.FC = (): React.ReactElement | null => {
                     </Typography>
                     <div className={classNames(classes.storyFooter, classes.fullStoryFooter)}>
                         <IconButton>
-                            <CommentIcon style={{fontSize: 25}}/>
+                            <CommentIcon className={classes.fullStoryIcon}/>
                         </IconButton>
                         <IconButton>
-                            <RepostIcon style={{fontSize: 25}}/>
+                            <RepostIcon className={classes.fullStoryIcon}/>
                         </IconButton>
                         <IconButton>
-                            <LikeIcon style={{fontSize: 25}}/>
+                            <LikeIcon className={classes.fullStoryIcon}/>
                         </IconButton>
                         <IconButton>
-                            <ShareIcon style={{fontSize: 25}}/>
+                            <ShareIcon className={classes.fullStoryIcon}/>
                         </IconButton>
                     </div>
                 </Paper>

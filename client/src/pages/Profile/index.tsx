@@ -17,23 +17,25 @@ import {ProfileStories} from "./ProfileStories";
 export const ProfilePage = () => {
     const classes = useProfileStyles();
     const dispatch = useDispatch()
+
     const userData = useSelector(selectUserData)
     const userIsAuth = useSelector(selectUserIsAuth)
     const stories = useSelector(selectUserStories)
-    console.log('Stories =', stories)
     const isStories = useSelector(selectUserDataStories)
-    useEffect(()=>{
-        if(userIsAuth) {
+
+    useEffect(() => {
+        if (userIsAuth) {
             dispatch(FetchUserStoriesAC(userData._id))
         }
     }, [])
+
 
     return (
         <ScrollButton>
             <div className={classes.wrapper}>
                 <Grid container spacing={2}>
-                   <ProfileInfo stories={stories} userData={userData}/>
-                   <ProfileStories stories={stories} isStories={isStories}/>
+                    <ProfileInfo stories={stories} userData={userData}/>
+                    <ProfileStories stories={stories} isStories={isStories}/>
                 </Grid>
             </div>
         </ScrollButton>

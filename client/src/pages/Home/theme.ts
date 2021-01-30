@@ -202,6 +202,10 @@ export const useHomeStyles = makeStyles((theme) => ({
         padding: '2px 0',
         marginTop: 20,
     },
+    fullStoryIcon: {
+        fontSize: 25,
+        color: theme.palette.primary.main
+    },
     rightSide: {
         width: 195,
         position: 'sticky',

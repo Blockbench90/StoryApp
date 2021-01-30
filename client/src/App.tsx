@@ -20,16 +20,19 @@ const App = () => {
     const classes = useStylesSignIn()
     const history = useHistory()
     const dispatch = useDispatch()
-    const isAuth = useSelector(selectUserIsAuth)
     const loadingStatus = useSelector(selectUserStatus)
+
     //говорит о полной готовности загрузки
     const isReady = loadingStatus !== LoadingStatus.NEVER && loadingStatus !== LoadingStatus.LOADING
     const token = !!window.localStorage.getItem('token')
-    console.log('Token in App = ', token)
+
+    // console.log('Token in App = ', token)
+    const pathName = history.location.pathname
+    console.log('history =', pathName)
     useEffect(() => {
         //запрос на логинизацию
         dispatch(FetchAuthAC());
-    }, [dispatch]);
+    }, [dispatch, pathName]);
 
     useEffect(() => {
         //если и дата прилетела и статусы поменялись
