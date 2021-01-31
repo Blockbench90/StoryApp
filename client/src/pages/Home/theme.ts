@@ -169,6 +169,7 @@ export const useHomeStyles = makeStyles((theme) => ({
         position: 'relative',
         left: -13,
         maxWidth: 450,
+        color: theme.palette.primary.main
     },
     storyUserName: {
         color: grey[500],

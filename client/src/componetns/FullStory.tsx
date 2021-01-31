@@ -109,41 +109,11 @@ export const FullStory: React.FC = (): React.ReactElement | null => {
                 <Divider/>
                 <Story
                     _id="1"
-                    text="Чисто для пофимания того, как все будет выгляедть"
+                    text="А что, мне понравилась,  1f923😁 забавно"
                     createdAt={new Date().toString()}
                     user={{
                         fullname: 'Петр Петров',
                         username: 'Petron_huhu'
-                    }}
-                    classes={classes}
-                />
-                <Story
-                    _id="1"
-                    text="Чисто для пофимания того, как все будет выгляедть"
-                    createdAt={new Date().toString()}
-                    user={{
-                        fullname: 'Петр Петров',
-                        username: 'Petron_huhu',
-                    }}
-                    classes={classes}
-                />
-                <Story
-                    _id="1"
-                    text="Чисто для пофимания того, как все будет выгляедть"
-                    createdAt={new Date().toString()}
-                    user={{
-                        fullname: 'Петр Петров',
-                        username: 'Petron_huhu',
-                    }}
-                    classes={classes}
-                />
-                <Story
-                    _id="1"
-                    text="Чисто для пофимания того, как все будет выгляедть"
-                    createdAt={new Date().toString()}
-                    user={{
-                        fullname: 'Петр Петров',
-                        username: 'Petron_huhu',
                     }}
                     classes={classes}
                 />

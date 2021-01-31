@@ -1,14 +1,7 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import {StoriesApi} from "../../../restApi/storiesApi";
-import {
-    createNewStoryAC,
-    CreateNewStoryAI,
-    FetchAddStoryAI,
-    setAddFormStateAC,
-    setAllStoriesAC,
-    setStoriesLoadingStatusAC,
-    StoriesActionsTypes
-} from "./actionCreators";
+import { createNewStoryAC, FetchAddStoryAI, setAddFormStateAC, setAllStoriesAC,
+        setStoriesLoadingStatusAC, StoriesActionsTypes } from "./actionCreators";
 import {LoadingStatus} from "../../types";
 import {AddFormState} from "./reducer";
 

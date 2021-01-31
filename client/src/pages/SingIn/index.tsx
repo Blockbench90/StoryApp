@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
+
 import {Typography, Button} from '@material-ui/core'
 import ImportContactsOutlinedIcon from '@material-ui/icons/ImportContactsOutlined'
+
 import LoginModal from "./components/LoginModal"
 import RegistrationModal from "./components/RegistrationModal"
+
 import {useStylesSignIn} from "./theme";
 
 
@@ -12,6 +15,7 @@ export const SignIn: React.FC = (): React.ReactElement => {
 
     //установка видимости модального окна
     const [visibleModal, setVisibleModal] = useState<'signIn' | 'signUp'>();
+    console.log('visibleModal =', visibleModal)
     //для входа
     const handleClickOpenSignIn = (): void => {
         setVisibleModal('signIn');
@@ -36,7 +40,7 @@ export const SignIn: React.FC = (): React.ReactElement => {
             <section className={classes.loginSide}>
                 <div className={classes.loginSideWrapper}>
 
-                    <ImportContactsOutlinedIcon color="primary" className={classes.loginSideTwitterIcon}/>
+                    <ImportContactsOutlinedIcon color="primary" className={classes.loginSideStoryIcon}/>
                     <Typography className={classes.loginSideTitle} gutterBottom variant="h4">
                         Услышал от деда, мамы, дяди, тети...</Typography>
                     <Typography className={classes.loginSubTitle}>

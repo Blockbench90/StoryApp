@@ -44,7 +44,7 @@ export const useStylesSignIn = makeStyles((theme) => ({
         justifyContent: 'center',
         flex: '0 0 50%',
     },
-    loginSideTwitterIcon: {
+    loginSideStoryIcon: {
         fontSize: 45,
     },
     loginSideWrapper: {

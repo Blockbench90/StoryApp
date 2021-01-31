@@ -14,6 +14,9 @@ export const useAddFormStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
+    Picker: {
+
+    },
     storyAvatar: {
         display: 'flex-start',
         width: theme.spacing(6.5),

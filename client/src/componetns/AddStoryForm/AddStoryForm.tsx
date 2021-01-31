@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import classNames from 'classnames'
+
 import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import EmojiIcon from '@material-ui/icons/SentimentSatisfiedOutlined'
-import {fetchAddStoryAC, fetchStoriesAC} from "../../store/reducers/stories/actionCreators"
+import {Alert} from "@material-ui/lab"
+
+import {fetchAddStoryAC, fetchStoriesAC, setAddFormStateAC} from "../../store/reducers/stories/actionCreators"
 import {selectStoryData, selectStoryLoadingStatus} from "../../store/reducers/story/selectors"
 import {selectAddFormState} from "../../store/reducers/stories/selectors"
-import {Alert} from "@material-ui/lab"
 import {clearStoryDataAfterEditAC} from "../../store/reducers/story/actionCreators"
 import {LoadingStatus} from "../../store/types"
 import {AddFormState, NewStory} from "../../store/reducers/stories/reducer";
@@ -19,6 +21,11 @@ import {FetchUserStoriesAC} from "../../store/reducers/users/actionCreators";
 import {useAddFormStyles} from "./addStoryStyles";
 import {UploadImages} from "../UploadImages";
 import {uploadFile} from '../../utils/uploadFile'
+
+
+
+import girl from "../../assets/gerl.jpg"
+
 
 
 interface AddStoryFormProps {
@@ -34,23 +41,29 @@ const MAX_LENGTH = 3000;
 
 export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: AddStoryFormProps): React.ReactElement => {
     const classes = useAddFormStyles()
-    const [title, setTitle] = React.useState<string | undefined>('')
-    const [text, setText] = React.useState<string>('')
-    const [images, setImages] = React.useState<ImageObj[]>([])
-
-    const textCount = MAX_LENGTH - text.length;
-    const textLimitPercent = Math.round((text.length / 3000) * 100);
-
     const dispatch = useDispatch()
+
     const addFormState = useSelector(selectAddFormState)
     const story = useSelector(selectStoryData)
     const loadingStatus = useSelector(selectStoryLoadingStatus)
     const userId = useSelector(selectUserDataID)
 
+    const [title, setTitle] = React.useState<string | undefined>('')
+    const [text, setText] = React.useState<string>('')
+    const [images, setImages] = React.useState<ImageObj[]>([])
+    const [showPicker, setShowPicker] = React.useState<boolean>(false)
+
+
+    const textCount = MAX_LENGTH - text.length;
+    const textLimitPercent = Math.round((text.length / 3000) * 100);
+
+    const toggleShowPicker = ():void => {
+        setShowPicker(!showPicker)
+    }
+
     useEffect(() => {
         if (story) {
             if (story.title !== title && story.text !== text) {
-                console.log('in UseEffect')
                 setTitle(story.title)
                 setText(story.text)
             }
@@ -68,11 +81,10 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
         }
     };
 
-
     //добавление истории
     const handleClickAddStory = async (): Promise<void> => {
         let result = [];
-        // dispatch(setAddFormState(AddFormState.LOADING));
+        dispatch(setAddFormStateAC(AddFormState.LOADING));
         for (let i = 0; i < images.length; i++) {
             const file = images[i].file;
             const { url } = await uploadFile(file);
@@ -107,7 +119,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
                     <Avatar
                         className={classes.storyAvatar}
                         alt={`Аватарка пользователя UserAvatar`}
-                        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                        src={girl}
                     />
                 </div>
                 <div className={classes.addFormTextareaWrapper}>
@@ -132,9 +144,17 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
 
                     <UploadImages images={images} onChangeImages={setImages}/>
 
-                    <IconButton color="primary">
+                    <IconButton color="primary" onClick={toggleShowPicker}>
                         <EmojiIcon style={{fontSize: 26}}/>
                     </IconButton>
+                    {showPicker &&
+                    <div className={classes.Picker}>
+                        <Picker onEmojiClick={onEmojiClick} pickerStyle={{ top: "20px" }}
+                                groupNames={{
+                                    smileys_people: 'Люди', animals_nature: 'Животные', food_drink: 'Еда',
+                                    travel_places: 'Тренеровка', activities: 'Игра', objects: 'Обслуживание', symbols: 'Больше',
+                                    flags: 'Флаги', recently_used: 'Любимые'}}/>
+                    </div>}
                 </div>
                 <div className={classes.addFormBottomRight}>
                     {text && (

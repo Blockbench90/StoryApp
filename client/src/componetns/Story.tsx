@@ -1,6 +1,7 @@
 import React from "react"
 import {useHistory} from 'react-router-dom'
 import classNames from "classnames"
+
 import Grid from "@material-ui/core/Grid"
 import {Avatar, IconButton, Typography} from "@material-ui/core"
 import CommentIcon from "@material-ui/icons/RateReview"
@@ -8,10 +9,11 @@ import RepostIcon from "@material-ui/icons/Repeat"
 import LikeIcon from "@material-ui/icons/FavoriteBorderOutlined"
 import ShareIcon from "@material-ui/icons/OpenInBrowserOutlined"
 import Paper from "@material-ui/core/Paper"
+
 import {formatDate} from "../utils/formatDate"
 import {useHomeStyles} from "../pages/Home/theme"
 // @ts-ignore
-import Ava from '../assets/som_logo.jpg'
+import Ava from '../assets/user.png'
 
 
 interface StoryProps {

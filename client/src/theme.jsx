@@ -16,12 +16,12 @@ export const theme = createMuiTheme({
     },
     palette: {
         primary: {
-            main: 'rgb(29, 161, 242)',
+            main: 'rgb(29, 129, 123)',
             dark: 'rgb(26, 145, 218)',
             contrastText: '#fff',
         },
         secondary: {
-            main: 'rgb(26, 145, 218)',
+            main: 'rgb(29, 129, 123)',
         },
         error: {
             main: red.A400,
