@@ -51,13 +51,11 @@
 
 ## Такс, вот что успелось сделать на данный момент:
 
+## Если в общих чертах
+![about](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/about.gif)
 
 ## Страничка регистрации и логинизации с валидацией и токеном
 ![Login](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/login.gif)
-
-
-## Если в общих чертах
-![about](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/about.gif)
 
 ## Главная страничка, с просмотром отдельной истории, комментариями, лайками, репостами
 ![homePage](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/homePage.gif)
@@ -68,20 +66,14 @@
 ## Добавление истории
 ![addNewStory](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/addNewStory.gif)
 
-
 ## Добавление истории из хедера
 ![AddNewStoryFromHeader](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/AddNewStoryFromHeader.gif)
-
 
 ## Удаление
 ![delete](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/delete.gif)
 
-
-
 ## Редактирование
 ![edit](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/edit.gif)
-
-
 
 ## Выход
 ![exitPrewei](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/exitPrewei.gif)
