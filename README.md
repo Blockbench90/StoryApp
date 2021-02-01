@@ -1,7 +1,7 @@
 # StoryApp
 ![Product Presentation Image](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/about.gif)
 
-##Story - Проект задуман как альтернатива старому и скучному Проза.ру.
+## Story - Проект задуман как альтернатива старому и скучному Проза.ру.
 Поддержка и развитие является чистой инициативой автора и зависит
 только от наличия свободного времени. Если кому то, тоже надоел старый
 образ мышления и политики развития молодых авторов, присоединяйтесь.
@@ -23,4 +23,32 @@
 ![NodeJS](https://img.shields.io/badge/-NodeJS-006400?style=for-the-badge&logo=node.js&logoColor=E0FFFF)
 ![Express](https://img.shields.io/badge/-Express-006400?style=for-the-badge&logo=express&logoColor=E0FFFF)
 ![Mongodb](https://img.shields.io/badge/-Mongodb-006400?style=for-the-badge&logo=mongodb&logoColor=E0FFFF)
+
+# Более детальный инструментарий можно посмотреть в package.json.
+В основном, все эксперименты делаются на локальной базе, но есть подключение и к удаленной,
+можно поменять конфигурацию в файле core/db.ts корня проекта.
+
+Для хранения изображений и дальнейшего доступа к ним
+выбрано [Cloudinary](https://cloudinary.com) 
+
+![Cloudinary](https://img.shields.io/badge/-Cloudinary-00BFFF?style=for-the-badge&logo=Cloudinary&logoColor=E0FFFF)
+
+# Для быстрого старта
+- `git clone https://github.com/Blockbench90/StoryApp.git`
+
+
+- `cd StoryApp`
+  
+
+- `yarn`
+## Установите зависимости в части бекэнда, сразу в корне проекта и не забудьте про фронт, он находится в папке client.
+
+- `cd client`
+- `yarn`
+- `cd ..` вернуться в корень
+- `yarn start` из корня проекта запускает и бек и фронт
+
+## Такс, вот что успелось сделать на данный момент
+
+
 
