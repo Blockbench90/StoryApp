@@ -147,14 +147,6 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
                     <IconButton color="primary" onClick={toggleShowPicker}>
                         <EmojiIcon style={{fontSize: 26}}/>
                     </IconButton>
-                    {showPicker &&
-                    <div className={classes.Picker}>
-                        <Picker onEmojiClick={onEmojiClick} pickerStyle={{ top: "20px" }}
-                                groupNames={{
-                                    smileys_people: 'Люди', animals_nature: 'Животные', food_drink: 'Еда',
-                                    travel_places: 'Тренеровка', activities: 'Игра', objects: 'Обслуживание', symbols: 'Больше',
-                                    flags: 'Флаги', recently_used: 'Любимые'}}/>
-                    </div>}
                 </div>
                 <div className={classes.addFormBottomRight}>
                     {text && (

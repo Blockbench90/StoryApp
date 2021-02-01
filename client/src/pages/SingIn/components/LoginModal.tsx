@@ -96,7 +96,7 @@ const LoginModal: React.FC<LoginModalProps> = ({open, onClose}): React.ReactElem
                             error={!!errors.password}
                             fullWidth
                         />
-                        <Button type="submit" variant="contained" color="primary" fullWidth>
+                        <Button type="submit" variant="contained" fullWidth>
                             Войти
                         </Button>
                     </FormGroup>
