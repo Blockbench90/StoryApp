@@ -3,8 +3,9 @@
 
 ## Story - Проект задуман как альтернатива старому и скучному Проза.ру.
 Поддержка и развитие является чистой инициативой автора и зависит
-только от наличия свободного времени. Если кому то, тоже надоел старый
+только от наличия свободного времени. Если кому-то, тоже надоел старый
 образ мышления и политики развития молодых авторов, присоединяйтесь.
+Связь сюда [prog.hak.ak@gmail.com](prog.hak.ak@gmail.com).
 Толкайте идеи, предлагайте путь развития. Пока, все находится в стадии
 «А что если тут будет вот так…» и т.д. Автор не является гением дизайна
 и отрисовки, скорее хитрым копи-пастером. Там увидел, тут спионерил,
@@ -55,8 +56,38 @@
 ![Login](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/login.gif)
 
 
+## Если в общих чертах
+![about](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/about.gif)
+
 ## Главная страничка, с просмотром отдельной истории, комментариями, лайками, репостами
 ![homePage](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/homePage.gif)
+
+## Страничка пользователя
+![profilePage](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/profileAbout.gif)
+
+## Добавление истории
+![addNewStory](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/addNewStory.gif)
+
+
+## Добавление истории из хедера
+![AddNewStoryFromHeader](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/AddNewStoryFromHeader.gif)
+
+
+## Удаление
+![delete](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/delete.gif)
+
+
+
+## Редактирование
+![edit](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/edit.gif)
+
+
+
+## Выход
+![exitPrewei](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/exitPrewei.gif)
+
+
+
 
 
 
