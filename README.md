@@ -69,10 +69,10 @@
 ## Добавление истории из хедера
 ![AddNewStoryFromHeader](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/AddNewStoryFromHeader.gif)
 
-## Удаление
+## Удаление своей истории, только для авторизованного пользователя
 ![delete](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/delete.gif)
 
-## Редактирование
+## Редактирование своей истории, только для авторизованного пользователя
 ![edit](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/edit.gif)
 
 ## Выход
