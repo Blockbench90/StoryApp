@@ -22,6 +22,8 @@ import {useAddFormStyles} from "./addStoryStyles";
 import {UploadImages} from "../UploadImages";
 import {uploadFile} from '../../utils/uploadFile'
 
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
 
 
 import girl from "../../assets/gerl.jpg"
@@ -147,6 +149,15 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
                     <IconButton color="primary" onClick={toggleShowPicker}>
                         <EmojiIcon style={{fontSize: 26}}/>
                     </IconButton>
+                    {
+                        showPicker &&
+                    <Picker set='apple' style={{ position: 'absolute', top: '120px', left: '140px' }} title="Story"
+                            onSelect={(emoji => console.log(emoji))}
+                            i18n={{ search: 'Поиск', notfound:'Эмоций не найдено...',
+                                categories: { search: 'А такого нет...', recent: 'Любимые', people: 'Люди', nature: 'Животные', foods: 'Еда', activity: 'Активность',
+                                    places: 'Места', objects: 'Обьекты', symbols: 'Символы', flags: 'Флаги', custom: 'Custom'} }}/>
+                    }
+
                 </div>
                 <div className={classes.addFormBottomRight}>
                     {text && (
