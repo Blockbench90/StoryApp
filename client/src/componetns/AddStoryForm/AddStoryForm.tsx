@@ -24,7 +24,8 @@ import {uploadFile} from '../../utils/uploadFile'
 
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
-
+import { Emoji } from 'emoji-mart'
+import reactStringReplace from 'react-string-replace';
 
 import girl from "../../assets/gerl.jpg"
 
@@ -52,7 +53,10 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
 
     const [title, setTitle] = React.useState<string | undefined>('')
     const [text, setText] = React.useState<string>('')
+    console.log('text =', text)
     const [images, setImages] = React.useState<ImageObj[]>([])
+    const [emoji, setEmoji] = React.useState<string>('')
+    console.log('emoji =', emoji)
     const [showPicker, setShowPicker] = React.useState<boolean>(false)
 
 
@@ -72,6 +76,17 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
         }
     }, [story])
 
+    const addNewEmoji = (e: any): void => {
+            setEmoji(emoji + '' + e.colons)
+            setText((text + '' + e.colons).trim())
+    }
+    const imgEmoji = (): any => {
+        const tot = reactStringReplace(emoji, /:(.+?):/g, (match, i) => (
+            <Emoji key={i} emoji={match} set="apple" size={16} />
+        ))
+        return tot
+    }
+    console.log("imgEmoji =", imgEmoji)
     const handleChangeTextareaTitle = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget) {
             setTitle(e.currentTarget.value);
@@ -136,7 +151,8 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
                         onChange={handleChangeTextarea}
                         className={classes.addFormTextarea}
                         placeholder="Рассказываете..."
-                        value={text}
+                        //@ts-ignore
+                        value={imgEmoji}
                         rowsMax={maxRows}
                     />
                 </div>
@@ -151,8 +167,8 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
                     </IconButton>
                     {
                         showPicker &&
-                    <Picker set='apple' style={{ position: 'absolute', top: '120px', left: '140px' }} title="Story"
-                            onSelect={(emoji => console.log(emoji))}
+                    <Picker set='apple' style={{ position: 'absolute', top: '145px', left: '140px' }} title="Story"
+                            onSelect={ emoji => addNewEmoji(emoji)}
                             i18n={{ search: 'Поиск', notfound:'Эмоций не найдено...',
                                 categories: { search: 'А такого нет...', recent: 'Любимые', people: 'Люди', nature: 'Животные', foods: 'Еда', activity: 'Активность',
                                     places: 'Места', objects: 'Обьекты', symbols: 'Символы', flags: 'Флаги', custom: 'Custom'} }}/>
