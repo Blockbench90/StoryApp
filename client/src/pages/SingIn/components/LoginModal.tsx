@@ -1,4 +1,4 @@
-import React, {useRef} from "react"
+import React from "react"
 import {ModalBlock} from "../../../componetns/ModalBlock"
 import FormControl from "@material-ui/core/FormControl"
 import FormGroup from "@material-ui/core/FormGroup"
@@ -10,9 +10,7 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import {useDispatch, useSelector} from "react-redux"
 import {selectUserStatus} from "../../../store/reducers/users/selectors"
-import {LoadingStatus} from "../../../store/types"
 import {FetchLoginAC} from "../../../store/reducers/users/actionCreators"
-import {Color} from "@material-ui/lab/Alert";
 
 export interface LoginFormProps {
     email: string
@@ -36,7 +34,7 @@ const LoginFormSchema = yup.object().shape({
 const LoginModal: React.FC<LoginModalProps> = ({open, onClose}): React.ReactElement => {
     const classes = useStylesSignIn();
     const dispatch = useDispatch();
-    const openNotificationRef = useRef<(text: string, type: Color) => void>(() => {})
+    // const openNotificationRef = useRef<(text: string, type: Color) => void>(() => {})
     const loadingStatus = useSelector(selectUserStatus)
 
     //react-hook-form любезно предоставляет все обработчики, спасибо
@@ -48,14 +46,14 @@ const LoginModal: React.FC<LoginModalProps> = ({open, onClose}): React.ReactElem
         dispatch(FetchLoginAC(data))
     };
     //проверим статус, и покажем пользователю сообщение в виде Alert
-    React.useEffect(() => {
-        if (loadingStatus === LoadingStatus.SUCCESS) {
-            openNotificationRef.current('Авторизация успешна!', 'success');
-            onClose();
-        } else if (loadingStatus === LoadingStatus.ERROR) {
-            openNotificationRef.current('Неверный логин или пароль', 'error');
-        }
-    }, [loadingStatus, onClose]);
+    // React.useEffect(() => {
+    //     if (loadingStatus === LoadingStatus.SUCCESS) {
+    //         <Notification text={'Авторизация успешна!'} type={'success'}/>
+    //         onClose();
+    //     } else if (loadingStatus === LoadingStatus.ERROR) {
+    //         <Notification text='Неверный логин или пароль' type='error'/>
+    //     }
+    // }, [loadingStatus, onClose]);
     return (
         <ModalBlock visible={open} onClose={onClose} classes={classes} title="Войти в аккаунт">
             <form onSubmit={handleSubmit(onSubmit)}>

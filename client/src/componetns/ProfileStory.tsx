@@ -2,17 +2,19 @@ import React, {useState} from "react"
 import classNames from "classnames"
 import Grid from "@material-ui/core/Grid"
 import {IconButton, Menu, MenuItem, Typography} from "@material-ui/core"
-import CommentIcon from "@material-ui/icons/RateReview"
-import RepostIcon from "@material-ui/icons/Repeat"
-import LikeIcon from "@material-ui/icons/FavoriteBorderOutlined"
-import ShareIcon from "@material-ui/icons/OpenInBrowserOutlined"
 import Paper from "@material-ui/core/Paper"
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import {formatDate} from "../utils/formatDate"
 import {useDispatch, useSelector} from "react-redux"
 import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actionCreators"
 import {useProfileStyles} from "../pages/Profile/ProfileStyle"
-import {selectUserDataID, selectUserLoadingStories} from "../store/reducers/users/selectors";
+import {selectUserDataID} from "../store/reducers/users/selectors";
+import {Emoji} from 'emoji-mart';
+import reactStringReplace from 'react-string-replace';
+import CommentIcon from "@material-ui/icons/RateReview";
+import RepostIcon from "@material-ui/icons/Repeat";
+import LikeIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import ShareIcon from "@material-ui/icons/ReplyOutlined";
 
 
 interface ProfileStoryProps {
@@ -24,10 +26,10 @@ interface ProfileStoryProps {
     createdAt: string
 }
 
-export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, classes, images, createdAt }: ProfileStoryProps): React.ReactElement => {
+export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, classes,
+                                                              images, createdAt }: ProfileStoryProps): React.ReactElement => {
     const dispatch = useDispatch()
     const userId = useSelector(selectUserDataID)
-    const loadingStoriesStatus = useSelector(selectUserLoadingStories)
     const [show, setShow] = useState<boolean>(true)
     //для доп-меню
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -57,7 +59,7 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
     }
 
     return (
-        <div className={show ? classes.storyWrapperHide : classes.storyWrapper} >
+        <div className={show ? classes.storyWrapperHide : classes.storyWrapper}>
             <Paper variant="outlined" className={classNames(classes.story, classes.storyHeader)}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
@@ -86,15 +88,21 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
                             </div>
                         </div>
                         <div onClick={showHiddenText}>
-                        <Typography variant="subtitle1" align='center' gutterBottom >
-                            {title}
-                        </Typography>
-                        <Typography variant="body1" gutterBottom >
-                            {text}
-                        </Typography>
-                        <div className={classes.imgWrapper}>
-                            {images && images.map((url) => <img src={url} key={url}/>  )}
-                        </div>
+                            <Typography variant="subtitle1" align='center' gutterBottom>
+                                {title}
+                            </Typography>
+                            <Typography variant="body1" gutterBottom>
+                                {text && (
+                                    <span>
+                                        {reactStringReplace(text, /:(.+?):/g, (match, i) => (
+                                            <Emoji key={i} emoji={match} set="apple" size={16}/>
+                                        ))}
+                                    </span>
+                                )}
+                            </Typography>
+                            <div className={classes.imgWrapper}>
+                                {images && images.map((url) => <img alt={url} src={url} key={url}/>)}
+                            </div>
                         </div>
                         <div className={classes.storyFooter}>
                             <div>

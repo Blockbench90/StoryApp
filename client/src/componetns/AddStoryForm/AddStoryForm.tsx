@@ -23,12 +23,11 @@ import {UploadImages} from "../UploadImages";
 import {uploadFile} from '../../utils/uploadFile'
 
 import 'emoji-mart/css/emoji-mart.css'
-import { Picker } from 'emoji-mart'
-import { Emoji } from 'emoji-mart'
-import reactStringReplace from 'react-string-replace';
+import {Emoji, Picker} from 'emoji-mart'
+
 
 import girl from "../../assets/gerl.jpg"
-
+import reactStringReplace from "react-string-replace";
 
 
 interface AddStoryFormProps {
@@ -53,10 +52,8 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
 
     const [title, setTitle] = React.useState<string | undefined>('')
     const [text, setText] = React.useState<string>('')
-    console.log('text =', text)
     const [images, setImages] = React.useState<ImageObj[]>([])
-    const [emoji, setEmoji] = React.useState<string>('')
-    console.log('emoji =', emoji)
+
     const [showPicker, setShowPicker] = React.useState<boolean>(false)
 
 
@@ -64,7 +61,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
     const textLimitPercent = Math.round((text.length / 3000) * 100);
 
     const toggleShowPicker = ():void => {
-        setShowPicker(!showPicker)
+        setShowPicker((showPicker) => !showPicker)
     }
 
     useEffect(() => {
@@ -77,16 +74,9 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
     }, [story])
 
     const addNewEmoji = (e: any): void => {
-            setEmoji(emoji + '' + e.colons)
-            setText((text + '' + e.colons).trim())
+            setText((text + '' + e.native).trim())
     }
-    const imgEmoji = (): any => {
-        const tot = reactStringReplace(emoji, /:(.+?):/g, (match, i) => (
-            <Emoji key={i} emoji={match} set="apple" size={16} />
-        ))
-        return tot
-    }
-    console.log("imgEmoji =", imgEmoji)
+
     const handleChangeTextareaTitle = (e: React.FormEvent<HTMLTextAreaElement>): void => {
         if (e.currentTarget) {
             setTitle(e.currentTarget.value);
@@ -151,8 +141,7 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
                         onChange={handleChangeTextarea}
                         className={classes.addFormTextarea}
                         placeholder="Рассказываете..."
-                        //@ts-ignore
-                        value={imgEmoji}
+                        value={text}
                         rowsMax={maxRows}
                     />
                 </div>
