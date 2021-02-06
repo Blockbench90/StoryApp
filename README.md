@@ -75,6 +75,9 @@
 ## Редактирование своей истории, только для авторизованного пользователя
 ![edit](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/edit.gif)
 
+## Смайлики в тексте
+![emoji](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/emoji.gif)
+
 ## Выход
 ![exitPrewei](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/exitPrewei.gif)
 
