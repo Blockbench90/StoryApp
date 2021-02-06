@@ -27,6 +27,7 @@ const App = () => {
     const token = !!window.localStorage.getItem('token')
 
     useEffect(() => {
+
         //запрос на логинизацию
         dispatch(FetchAuthAC());
         token ? history.push('/home') : history.push('/signin')
