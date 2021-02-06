@@ -18,9 +18,7 @@ interface ResponseApi {
 export const UserApi = {
     //залогиниться
     async signIn(postData: LoginFormProps): Promise<ResponseApi> {
-        console.log(postData)
         const { data } = await axios.post<ResponseApi>('/auth/login', { username: postData.email, password: postData.password })
-        console.log(data)
         return data;
     },
     //зарегистрироваться
@@ -38,8 +36,3 @@ export const UserApi = {
         return data
     }
 }
-//для проверки с консоли, потом убрать
-
-
-// @ts-ignore
-// window.AuthApi = AuthApi;

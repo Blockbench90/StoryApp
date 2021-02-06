@@ -9,7 +9,7 @@ import {Home} from "./pages/Home/Home";
 import {useStylesSignIn} from "./pages/SingIn/theme";
 import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutlined";
 import {CircularProgress} from "@material-ui/core";
-import {selectUserIsAuth, selectUserStatus} from "./store/reducers/users/selectors";
+import {selectUserStatus} from "./store/reducers/users/selectors";
 import {LoadingStatus} from "./store/types";
 import {FetchAuthAC} from "./store/reducers/users/actionCreators";
 import {Messages} from './pages/Messages/Messages';
@@ -29,12 +29,8 @@ const App = () => {
     useEffect(() => {
         //запрос на логинизацию
         dispatch(FetchAuthAC());
-    }, [dispatch]);
-
-    useEffect(() => {
-        //если и дата прилетела и статусы поменялись
         token ? history.push('/home') : history.push('/signin')
-    }, [token]);
+    }, [dispatch, token]);
 
     if (!token && !isReady) {
         return (

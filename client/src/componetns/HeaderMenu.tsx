@@ -1,9 +1,7 @@
 import React from 'react'
-import SearchIcon from '@material-ui/icons/Search'
 import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined'
 import MessageIcon from '@material-ui/icons/EmailOutlined'
 import BookmarkIcon from '@material-ui/icons/BookmarkBorderOutlined'
-import ListIcon from '@material-ui/icons/ListAltOutlined'
 import UserIcon from '@material-ui/icons/PermIdentityOutlined'
 import ImportContactsOutlinedIcon from '@material-ui/icons/ImportContactsOutlined'
 import CreateIcon from '@material-ui/icons/Create'
@@ -21,8 +19,7 @@ interface HeaderMenuProps {
     classes: ReturnType<typeof useHomeStyles>
 }
 
-export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps): React.ReactElement => {
-
+export const HeaderMenu: React.FC<HeaderMenuProps> = React.memo(({classes}: HeaderMenuProps): React.ReactElement => {
     const [visibleAddStory, setSetVisibleAddStory] = React.useState<boolean>(false);
 
     const handleClickOpenAddStory = () => {
@@ -86,18 +83,12 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
                 </ul>
             </div>
             <div>
-                <Button
-                    onClick={handleClickOpenAddStory}
-                    className={classes.sideMenuButton}
-                    variant="contained"
-                    color="secondary"
-                    fullWidth
-                    size='large'>
+                <Button onClick={handleClickOpenAddStory} className={classes.sideMenuButton}
+                        variant="contained" color="secondary" fullWidth size='large'>
                     <Hidden smDown>Опубликовать</Hidden>
-                    <Hidden mdUp>
-                        <CreateIcon/>
-                    </Hidden>
+                    <Hidden mdUp><CreateIcon/></Hidden>
                 </Button>
+
                 <ModalBlock onClose={onCloseAddStory} visible={visibleAddStory}>
                     <div style={{width: 550}}>
                         <AddStoryForm maxRows={15} onClose={onCloseAddStory}/>
@@ -106,4 +97,4 @@ export const HeaderMenu: React.FC<HeaderMenuProps> = ({classes}: HeaderMenuProps
             </div>
         </div>
     );
-};
+})

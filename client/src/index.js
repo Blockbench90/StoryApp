@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'emoji-mart/css/emoji-mart.css'
 
-
 import App from './App';
 import theme from "./theme";
 import {BrowserRouter as Router} from 'react-router-dom';
@@ -25,5 +24,3 @@ ReactDOM.render(
     </ThemeProvider>,
     document.getElementById('root')
 );
-
-//TODO: поработать над ререндером компонентов, какого черта они так часто и много перезагружаются

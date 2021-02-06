@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import {Paper, Typography} from "@material-ui/core"
-import {AddStoryForm} from "../../componetns/AddStoryForm/AddStoryForm"
 import {Story} from "../../componetns/Story"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import ModalMenu from "../../componetns/ModalMenu"

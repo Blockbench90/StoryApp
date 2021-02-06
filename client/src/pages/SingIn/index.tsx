@@ -7,14 +7,10 @@ import LoginModal from "./components/LoginModal"
 import RegistrationModal from "./components/RegistrationModal"
 
 import {useStylesSignIn} from "./theme";
-import {useSelector} from "react-redux";
-import {selectUserStatus} from "../../store/reducers/users/selectors";
 
 
 export const SignIn: React.FC = (): React.ReactElement => {
     const classes = useStylesSignIn();
-    const loadingStatus = useSelector(selectUserStatus)
-    console.log(loadingStatus)
     const [visibleModal, setVisibleModal] = useState<'signIn' | 'signUp'>();
 
     //для входа
@@ -57,12 +53,6 @@ export const SignIn: React.FC = (): React.ReactElement => {
                     <LoginModal open={visibleModal === 'signIn'} onClose={handleCloseModal}/>
                     {/*БЛОК "РЕГИСТРАЦИИ"*/}
                    <RegistrationModal open={visibleModal === 'signUp'} onClose={handleCloseModal}/>
-
-                    {/*{loadingStatus === LoadingStatus.SUCCESS &&*/}
-                    {/*(<Notification text={'Авторизация успешна!'} type={'success'}/>)}*/}
-
-                    {/*{loadingStatus === LoadingStatus.ERROR &&*/}
-                    {/*(<Notification text='Неверный логин или пароль' type='error'/>)}*/}
 
                 </div>
 
