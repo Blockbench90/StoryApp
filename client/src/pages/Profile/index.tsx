@@ -1,6 +1,5 @@
 import React, {useEffect} from "react"
 import {useProfileStyles} from "./ProfileStyle"
-import Grid from '@material-ui/core/Grid'
 import ScrollButton from "../../componetns/ScrollButton"
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -9,9 +8,10 @@ import {
     selectUserIsAuth,
     selectUserStories
 } from "../../store/reducers/users/selectors";
-import {FetchUserStoriesAC} from "../../store/reducers/users/actionCreators";
+import {FetchAuthAC, FetchUserStoriesAC} from "../../store/reducers/users/actionCreators";
 import {ProfileInfo} from "./ProfileInfo";
 import {ProfileStories} from "./ProfileStories";
+import Grid from '@material-ui/core/Grid'
 
 
 export const ProfilePage = () => {
@@ -26,6 +26,8 @@ export const ProfilePage = () => {
     useEffect(() => {
         if (userIsAuth) {
             dispatch(FetchUserStoriesAC(userData._id))
+        } else {
+            dispatch(FetchAuthAC())
         }
     }, [])
 

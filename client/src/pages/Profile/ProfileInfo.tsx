@@ -39,7 +39,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
     }
 
     return (
-        <Grid item xs={3}>
+        <Grid item xs={3} sm={12} md={3}>
             <Paper className={classes.paperLeft}>
                 <Avatar variant="rounded" className={classes.profileImage}>
                     <ProfileAvatar/>
@@ -75,19 +75,21 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
                             {data.follow}
                         </Typography>
                     </div>
-                    <Button
-                        onClick={logout}
-                        className={classes.logoutButton}
-                        variant="contained"
-                        color="secondary"
-                        fullWidth
-                        size='large'>
-                        <Hidden smDown>Выйти</Hidden>
-                        <Hidden mdUp>
-                            <CancelIcon/>
-                        </Hidden>
-                    </Button>
+
                 </div>
+                <Button
+                    onClick={logout}
+                    className={classes.logoutButton}
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                    size='large'>
+                    <Hidden smDown>Выйти</Hidden>
+                    <Hidden mdUp>
+                        <CancelIcon/>
+                    </Hidden>
+                </Button>
             </Paper>
+
         </Grid>)
 }

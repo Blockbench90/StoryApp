@@ -1,6 +1,7 @@
 import {AddFormState, StoriesState} from "./reducer";
 import {RootState} from "../../store";
 import {LoadingStatus} from "../../types";
+import {selectUserState} from "../users/selectors";
 //достать из глобального стейта, ветку stories
 export const selectStoriesState = (state: RootState): StoriesState => state.stories
 
@@ -18,3 +19,6 @@ export const selectIsStoriesLoaded = (state: RootState): boolean => selectLoadin
 
 //достать только items из отдельной ветки глобально стейта, stories
 export const selectStoriesItems = (state: RootState) => selectStoriesState(state).items;
+
+//булево значинеи, наличия данных в историях юзера
+export const selectStoriesIsItems = (state: RootState): boolean => !!selectStoriesState(state).items

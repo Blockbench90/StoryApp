@@ -18,7 +18,7 @@ export const ProfileStories: React.FC<ProfileStoriesProps> = ({isStories, storie
     const onClose = () => {}
     return (isStories
             ? (
-                <Grid item xs={9}>
+                <Grid item xs={9} sm={12} md={9}>
                     <Paper className={classes.paperRight}>
                         <Route path={'/profile'} exact>
                             <Paper>

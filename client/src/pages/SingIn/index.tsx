@@ -49,6 +49,8 @@ export const SignIn: React.FC = (): React.ReactElement => {
                     <Button onClick={handleClickOpenSignIn} variant="outlined"
                             color="primary" fullWidth>Войти</Button>
 
+
+
                     {/*БЛОК "ВОЙТИ"*/}
                     <LoginModal open={visibleModal === 'signIn'} onClose={handleCloseModal}/>
                     {/*БЛОК "РЕГИСТРАЦИИ"*/}

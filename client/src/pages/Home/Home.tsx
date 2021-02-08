@@ -9,19 +9,24 @@ import {FullStory} from "../../componetns/FullStory"
 import {useHomeStyles} from "./theme"
 import {useDispatch, useSelector} from "react-redux"
 import ScrollButton from "../../componetns/ScrollButton"
-import {selectIsStoriesLoaded, selectStoriesItems} from "../../store/reducers/stories/selectors"
+import {selectIsStoriesLoaded, selectStoriesIsItems, selectStoriesItems} from "../../store/reducers/stories/selectors"
 import {fetchStoriesAC} from "../../store/reducers/stories/actionCreators"
 
 
 export const Home: React.FC = (): React.ReactElement => {
     const classes = useHomeStyles()
     const dispatch = useDispatch()
+
     const stories = useSelector(selectStoriesItems)
+    const isStories = useSelector(selectStoriesIsItems)
     const isLoading = useSelector(selectIsStoriesLoaded)
 
     useEffect(() => {
+        if (!isStories){
         dispatch(fetchStoriesAC())
-    }, [dispatch])
+        }
+    }, [dispatch, isStories])
+
     return (
         <ScrollButton>
             <Paper className={classes.storyWrapper} variant="outlined">
