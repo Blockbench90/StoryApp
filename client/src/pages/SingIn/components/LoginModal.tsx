@@ -30,6 +30,9 @@ const LoginFormSchema = yup.object().shape({
     password: yup.string().min(6, '​Минимальная длина пароля 6 символов').required(),
 });
 
+
+//проверить правильность обработки статусов загрузки
+
 /*БЛОК "ВОЙТИ"*/
 const LoginModal: React.FC<LoginModalProps> = ({open, onClose}): React.ReactElement => {
     const classes = useStylesSignIn();
