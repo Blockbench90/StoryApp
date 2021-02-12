@@ -37,7 +37,6 @@ export function* fetchRegistrationRequest({payload}: FetchRegistrationAI) {
         yield call(UserApi.signUp, payload)
         //вместо даты, просто оповещаю пользователя, об успешной регистрации
         yield put(SetUserLoadingStatusStateAC(LoadingStatus.SUCCESS))
-        //TODO: придумать модальное окно, с предложением пройти верификацию через мыло
     } catch (error) {
         yield put(SetUserLoadingStatusStateAC(LoadingStatus.ERROR))
     }

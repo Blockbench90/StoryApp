@@ -11,7 +11,8 @@ export interface UserModelInterface {
   location?: string;
   about?: string;
   website?: string;
-  stories?: string[]
+  stories?: string[];
+  profileAvatar?: string[]
 }
 
 export type UserModelDocumentInterface = UserModelInterface & Document;
@@ -46,7 +47,8 @@ const UserSchema = new Schema<UserModelInterface>({
   location: String,
   about: String,
   website: String,
-  stories: [{type: Schema.Types.ObjectId, ref: 'Story'}]
+  stories: [{type: Schema.Types.ObjectId, ref: 'Story'}],
+  profileAvatar: [{type: String}]
 },
     {
   timestamps: true

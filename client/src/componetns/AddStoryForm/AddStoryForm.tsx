@@ -23,11 +23,10 @@ import {UploadImages} from "../UploadImages";
 import {uploadFile} from '../../utils/uploadFile'
 
 import 'emoji-mart/css/emoji-mart.css'
-import {Emoji, Picker} from 'emoji-mart'
+import {Picker} from 'emoji-mart'
 
 
 import girl from "../../assets/gerl.jpg"
-import reactStringReplace from "react-string-replace";
 
 
 interface AddStoryFormProps {

@@ -1,9 +1,9 @@
+// @ts-nocheck
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
-import ProfileAvatar from "../../componetns/ProfileAvatar";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
 import {useProfileStyles} from "./ProfileStyle";
 import {Story} from "../../store/reducers/stories/reducer";
 import {User} from "../../store/reducers/users/reducer";
@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import CancelIcon from '@material-ui/icons/Cancel';
 import {useHistory} from "react-router-dom";
+import {ProfileAvatar} from "../../componetns/ProfileAvatar";
 
 interface ProfileInfoProps {
     stories: Array<Story>
@@ -23,12 +24,6 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
     const history = useHistory()
     let countStories: number = 0
 
-    const data = {
-        avatar: "https://images.unsplash.com/photo-1578505574290-68739d054931?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-        status: 'Умная фраза',
-        followers: 10,
-        follow: 10
-    }
     if(stories !== undefined){
         countStories = stories.length
     }
@@ -42,7 +37,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
         <Grid item xs={3} sm={12} md={3}>
             <Paper className={classes.paperLeft}>
                 <Avatar variant="rounded" className={classes.profileImage}>
-                    <ProfileAvatar/>
+                    <ProfileAvatar profileAvatar={userData?.profileAvatar}/>
                 </Avatar>
 
                 <div className={classes.profileInfoContainer}>
@@ -51,7 +46,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
                     </Typography>
 
                     <Typography className={classes.userName} variant="h6" gutterBottom>
-                        {data.status}
+                        "some status"
                     </Typography>
                     <div className={classes.infoWrap}>
                         <Typography className={classes.userName} variant="h4" gutterBottom>
@@ -65,14 +60,14 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
                                         className={classes.userTag}>
                                 Подписаны:
                             </Typography>
-                            {data.followers}
+                            10
                         </Typography>
                         <Typography className={classes.userName} variant="h4" gutterBottom>
                             <Typography align={"center"} variant="subtitle2" gutterBottom
                                         className={classes.userTag}>
                                 Отслеживаю:
                             </Typography>
-                            {data.follow}
+                            10
                         </Typography>
                     </div>
 

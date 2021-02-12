@@ -57,7 +57,8 @@ app.post('/auth/login', passport.authenticate('local'), UserCtrl.afterLogin);
 
 
 //загрузка файлов
-app.post('/upload', upload.single('image'), UploadFileCtrl.upload);
+app.post('/upload/file', upload.single('image'), UploadFileCtrl.upload);
+app.post('/upload/avatar', upload.single('image'), UploadFileCtrl.uploadAvatar);
 
 //слушьть порт 8888, ну или тот, который указан в конфигурации
 app.listen(process.env.PORT, (): void => {
