@@ -3,8 +3,6 @@ import classNames from "classnames"
 import Grid from "@material-ui/core/Grid"
 import {IconButton, Menu, MenuItem, Typography} from "@material-ui/core"
 import Paper from "@material-ui/core/Paper"
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import CommentIcon from "@material-ui/icons/RateReview";
 import RepostIcon from "@material-ui/icons/Repeat";
@@ -17,6 +15,7 @@ import {useProfileStyles} from "../pages/Profile/ProfileStyle"
 import {selectUserDataID} from "../store/reducers/users/selectors";
 import {Emoji} from 'emoji-mart';
 import reactStringReplace from 'react-string-replace';
+import TextRotateVerticalIcon from '@material-ui/icons/TextRotateVertical';
 
 
 interface ProfileStoryProps {
@@ -128,14 +127,6 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
                                     <ShareIcon style={{fontSize: 20}}/>
                                 </IconButton>
                             </div>
-                        </div>
-                        <div>
-                            <IconButton color='primary' >
-                                <ArrowDropUpIcon style={{fontSize: 20}}/>
-                            </IconButton>
-                            <IconButton color='primary' >
-                                <ArrowDropDownIcon style={{fontSize: 20}}/>
-                            </IconButton>
                         </div>
                     </Grid>
 

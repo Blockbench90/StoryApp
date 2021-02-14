@@ -79,7 +79,6 @@ class StoriesController {
    //создать сторис
     try {
       const user = req.user as UserModelInterface;
-
       if (user?._id) {
         const errors = validationResult(req);
 

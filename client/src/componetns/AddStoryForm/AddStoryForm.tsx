@@ -98,7 +98,6 @@ export const AddStoryForm: React.FC<AddStoryFormProps> = ({maxRows, onClose}: Ad
         }
         //собрать данные из локального стора и отправить в базу
         const data: NewStory = {title, text, images: result}
-        console.log('Data сразу после запроса в форме добавления =', data)
         dispatch(fetchAddStoryAC(data))
         //обнулить локально
         setTitle('')

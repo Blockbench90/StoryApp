@@ -1,6 +1,7 @@
 import {axios} from "./axios";
 import {LoginFormProps} from "../pages/SingIn/components/LoginModal";
 import { RegisterFormProps } from "../pages/SingIn/components/RegistrationModal";
+import {Story} from "../store/reducers/stories/reducer";
 
 
 //небольшая поднастройка, для токена
@@ -35,9 +36,13 @@ export const UserApi = {
         const {data} = await axios.get<ResponseApi>(`/profile/${userId}`)
         return data
     },
-    async uploadProfileAvatar(url: string): Promise<ResponseApi>{
-        console.log('url в начале запроса =', url)
-        const data = await axios.post<ResponseApi>('/upload/avatar', url)
+    // async addStory(payload: {title?: string, text: string, images?: string[]}): Promise<any>{
+    //     const { data } = await axios.post<Response<Story>>('/stories', payload)
+    //     console.log('data.data в апишке, после запроса на бек =', data.data)
+    //     return data.data
+    async uploadProfileAvatar(payload: string[]): Promise<ResponseApi>{
+        console.log('url в начале запроса =', payload)
+        const data = await axios.post<ResponseApi>('/user/avatar', payload)
         console.log('data после отправки запроса =', data)
         return data.data
     }

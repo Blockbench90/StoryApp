@@ -14,7 +14,7 @@ export const useProfileStyles = makeStyles((theme) => ({
         top: '20px',
         position: 'sticky',
         backgroundColor: 'rgba(29, 100, 100, 0.6)',
-        width: '17vw',
+        width: '14vw',
         height: '50vh',
         margin: theme.spacing(1),
         textAlign: 'center',
@@ -238,6 +238,6 @@ export const useProfileStyles = makeStyles((theme) => ({
         flex: 1
     },
     logoutButton: {
-        margin: '50px 0 0 0'
-    }
+        margin: '80px 0 0 0'
+    },
 }));

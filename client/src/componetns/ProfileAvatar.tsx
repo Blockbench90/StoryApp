@@ -8,8 +8,8 @@ import {ImageObj} from './AddStoryForm/AddStoryForm';
 import {UploadAvatars} from "./UploadAvatar";
 import logo from "../assets/profileAvatar.png"
 import CircularProgress from "@material-ui/core/CircularProgress";
-import {uploadAvatar} from "../utils/uploadAvatar";
-import { UserApi } from '../restApi/userApi';
+import {UserApi} from '../restApi/userApi';
+import {uploadFile} from "../utils/uploadFile";
 
 
 //Обертка для Аватара Пользователя
@@ -45,6 +45,9 @@ const useProfileAvatarStyles = makeStyles((theme) => ({
 interface ProfileAvatarProps {
     profileAvatar: string[]
 }
+interface Result {
+    payload: string[]
+}
 
 export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({profileAvatar}) => {
     const theme = useTheme();
@@ -53,6 +56,7 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({profileAvatar}) => 
     const [avatar, setAvatar] = React.useState<ImageObj[]>([])
     const [newAvatar, setNewAvatar] = React.useState<string>('')
     console.log('avatar =',avatar, 'newAvatar =', newAvatar)
+
     if (!profileAvatar) {
         return <CircularProgress/>
     }
@@ -71,12 +75,13 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps> = ({profileAvatar}) => 
         let result = [];
         for (let i = 0; i < avatar.length; i++) {
             const file = avatar[i].file;
-            const { url } = await uploadAvatar(file);
+            const { url } = await uploadFile(file);
             result.push( url);
         }
-        setNewAvatar(result[0])
-        await UserApi.uploadProfileAvatar(result[0])
+        // setNewAvatar(result[0])
         console.log('result сразу после запроса в форме добавления =', result)
+
+        await UserApi.uploadProfileAvatar(result)
 
     };
 
