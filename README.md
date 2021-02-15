@@ -78,6 +78,10 @@
 ## Смайлики в тексте
 ![emoji](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/emoji.gif)
 
+## Добавление аватарки пользователя
+![avatar](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/addProfileAvatar.gif)
+
+
 ## Выход
 ![exitPrewei](https://github.com/Blockbench90/StoryApp/blob/main/assetsMD/exitPrewei.gif)
 
