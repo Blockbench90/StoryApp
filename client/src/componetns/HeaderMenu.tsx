@@ -1,4 +1,6 @@
 import React from 'react'
+import {NavLink} from "react-router-dom"
+
 import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined'
 import MessageIcon from '@material-ui/icons/EmailOutlined'
 import BookmarkIcon from '@material-ui/icons/BookmarkBorderOutlined'
@@ -8,8 +10,8 @@ import CreateIcon from '@material-ui/icons/Create'
 import Hidden from '@material-ui/core/Hidden'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
-import {NavLink} from "react-router-dom"
 import {Tooltip} from "@material-ui/core"
+
 import {useHomeStyles} from "../pages/Home/theme"
 import {ModalBlock} from "./ModalBlock";
 import {AddStoryForm} from "./AddStoryForm/AddStoryForm";
@@ -20,6 +22,7 @@ interface HeaderMenuProps {
 }
 
 export const HeaderMenu: React.FC<HeaderMenuProps> = React.memo(({classes}: HeaderMenuProps): React.ReactElement => {
+
     const [visibleAddStory, setSetVisibleAddStory] = React.useState<boolean>(false);
 
     const handleClickOpenAddStory = () => {

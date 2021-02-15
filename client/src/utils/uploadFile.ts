@@ -18,3 +18,20 @@ export const uploadFile = async (image: File): Promise<UploadFileReturnProps> =>
     })
     return data
 }
+
+export const eventUpload = (e: Event, onChangeImages: (prev: any) => void): void => {
+    if (e.target) {
+        const target = e.target as HTMLInputElement;
+        const file = target.files?.[0];
+        if (file) {
+            const fileObj = new Blob([file]);
+            onChangeImages((prev: any) => [
+                ...prev,
+                {
+                    blobUrl: URL.createObjectURL(fileObj),
+                    file,
+                },
+            ]);
+        }
+    }
+}

@@ -4,6 +4,7 @@ import ImageOutlinedIcon from '@material-ui/icons/ImageOutlined';
 import {ImageObj} from "./AddStoryForm/AddStoryForm";
 import {ImageList} from "./ImageList";
 import {useHomeStyles} from "../pages/Home/theme";
+import {eventUpload} from "../utils/uploadFile";
 
 
 
@@ -26,21 +27,9 @@ export const UploadImages: React.FC<UploadImageProps> = ({ images, onChangeImage
         onChangeImages((prev) => prev.filter((obj) => obj.blobUrl !== url));
     };
 
+
     const handleChangeFileInput = React.useCallback((event: Event) => {
-        if (event.target) {
-            const target = event.target as HTMLInputElement;
-            const file = target.files?.[0];
-            if (file) {
-                const fileObj = new Blob([file]);
-                onChangeImages((prev) => [
-                    ...prev,
-                    {
-                        blobUrl: URL.createObjectURL(fileObj),
-                        file,
-                    },
-                ]);
-            }
-        }
+        eventUpload(event, onChangeImages)
     }, []);
 
     React.useEffect(() => {

@@ -1,6 +1,8 @@
 import React from 'react';
-import {IconButton} from '@material-ui/core';
-import CreateIcon from '@material-ui/icons/Create';
+
+import {IconButton, Tooltip} from '@material-ui/core';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+
 import {ImageObj} from "./AddStoryForm/AddStoryForm";
 
 
@@ -17,7 +19,6 @@ export const UploadAvatars: React.FC<UploadImageProps> = ({ images, onChangeImag
             inputRef.current.click();
         }
     };
-
 
     const handleChangeAvatar = React.useCallback((event: Event) => {
         if (event.target) {
@@ -49,12 +50,14 @@ export const UploadAvatars: React.FC<UploadImageProps> = ({ images, onChangeImag
 
     return (
         <div style={{position: 'absolute', zIndex: 1, marginLeft: '75%'}}>
-            {(images.length > 7)
+            {(images.length > 0)
                 ? null
                 : <IconButton onClick={handleClickImage} color="primary">
-                    <CreateIcon style={{ fontSize: 26 }} />
+                    <Tooltip title='Добавить аватарку' interactive arrow placement='right-start'>
+                        <AddCircleIcon style={{ fontSize: 26 }} />
+                    </Tooltip>
                   </IconButton>}
             <input ref={inputRef} type="file" id="upload-input" hidden />
         </div>
     );
-};
+}

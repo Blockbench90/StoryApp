@@ -1,17 +1,14 @@
 import React, {useEffect} from "react"
+import {useDispatch, useSelector} from "react-redux";
+
+import Grid from '@material-ui/core/Grid'
+
 import {useProfileStyles} from "./ProfileStyle"
 import ScrollButton from "../../componetns/ScrollButton"
-import {useDispatch, useSelector} from "react-redux";
-import {
-    selectUserData,
-    selectUserDataStories,
-    selectUserIsAuth,
-    selectUserStories
-} from "../../store/reducers/users/selectors";
+import { selectUserData, selectUserDataStories, selectUserIsAuth, selectUserStories } from "../../store/reducers/users/selectors";
 import {FetchAuthAC, FetchUserStoriesAC} from "../../store/reducers/users/actionCreators";
 import {ProfileInfo} from "./ProfileInfo";
 import {ProfileStories} from "./ProfileStories";
-import Grid from '@material-ui/core/Grid'
 
 
 export const ProfilePage = () => {
@@ -36,8 +33,11 @@ export const ProfilePage = () => {
         <ScrollButton>
             <div className={classes.wrapper}>
                 <Grid container spacing={2}>
+
                     <ProfileInfo stories={stories} userData={userData}/>
+
                     <ProfileStories stories={stories} isStories={isStories}/>
+
                 </Grid>
             </div>
         </ScrollButton>

@@ -16,10 +16,12 @@ interface ProfileStoriesProps {
 export const ProfileStories: React.FC<ProfileStoriesProps> = ({isStories, stories }: ProfileStoriesProps): React.ReactElement => {
     const classes = useProfileStyles()
     const onClose = () => {}
+
     return (isStories
             ? (
                 <Grid item xs={9} sm={12} md={9}>
                     <Paper className={classes.paperRight}>
+
                         <Route path={'/profile'} exact>
                             <Paper>
                                 <div className={classes.addForm}>
@@ -28,11 +30,13 @@ export const ProfileStories: React.FC<ProfileStoriesProps> = ({isStories, storie
                                 <div className={classes.addFormBottomLine}/>
                             </Paper>
                         </Route>
+
                         {([...stories].reverse().map((story) =>
                             <ProfileStory key={story._id} classes={classes} _id={story._id} title={story.title} images={story.images}
                                           text={story.text} createdAt={story.createdAt}/>
                                           ))
                         }
+
                     </Paper>
                 </Grid>
             )

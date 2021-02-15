@@ -36,10 +36,6 @@ export const UserApi = {
         const {data} = await axios.get<ResponseApi>(`/profile/${userId}`)
         return data
     },
-    // async addStory(payload: {title?: string, text: string, images?: string[]}): Promise<any>{
-    //     const { data } = await axios.post<Response<Story>>('/stories', payload)
-    //     console.log('data.data в апишке, после запроса на бек =', data.data)
-    //     return data.data
     async uploadProfileAvatar(payload: string[]): Promise<ResponseApi>{
         console.log('url в начале запроса =', payload)
         const data = await axios.post<ResponseApi>('/user/avatar', payload)

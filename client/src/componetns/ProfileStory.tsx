@@ -1,5 +1,9 @@
 import React, {useState} from "react"
+import {useDispatch, useSelector} from "react-redux"
 import classNames from "classnames"
+import {Emoji} from 'emoji-mart';
+import reactStringReplace from 'react-string-replace';
+
 import Grid from "@material-ui/core/Grid"
 import {IconButton, Menu, MenuItem, Typography} from "@material-ui/core"
 import Paper from "@material-ui/core/Paper"
@@ -8,14 +12,11 @@ import CommentIcon from "@material-ui/icons/RateReview";
 import RepostIcon from "@material-ui/icons/Repeat";
 import LikeIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import ShareIcon from "@material-ui/icons/ReplyOutlined";
+
 import {formatDate} from "../utils/formatDate"
-import {useDispatch, useSelector} from "react-redux"
 import {deleteStoryByIdAC, fetchEditStoryAC} from "../store/reducers/story/actionCreators"
 import {useProfileStyles} from "../pages/Profile/ProfileStyle"
 import {selectUserDataID} from "../store/reducers/users/selectors";
-import {Emoji} from 'emoji-mart';
-import reactStringReplace from 'react-string-replace';
-import TextRotateVerticalIcon from '@material-ui/icons/TextRotateVertical';
 
 
 interface ProfileStoryProps {
@@ -56,7 +57,6 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
     const handleClickDelete = () => {
         dispatch(deleteStoryByIdAC({_id, userId}))
         handleClose()
-        // dispatch(FetchUserStoriesAC(userId))
     }
 
     return (
@@ -64,7 +64,9 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
             <Paper variant="outlined" className={classNames(classes.story, classes.storyHeader)}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
+
                         <div className={classes.storyCon}>
+
                             <div className={classes.storyHed}>
                                 <Typography><b>@</b>&nbsp;
                                     <span className={classes.storyUserName}>Создано</span>&nbsp;
@@ -72,26 +74,33 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
                                     <span className={classes.storyUserName}>назад</span>&nbsp;
                                 </Typography>
                             </div>
+
                             <div>
                                 <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true"
                                             onClick={handleClick}>
                                     <MoreVertIcon/>
                                 </IconButton>
+
                                 <Menu id="long-menu" anchorEl={anchorEl} keepMounted open={open} variant='selectedMenu'
                                       onClose={handleClose}>
                                     <MenuItem onClick={handleClickEdit}>
                                         Редактировать
                                     </MenuItem>
+
                                     <MenuItem onClick={handleClickDelete}>
                                         Удалить
                                     </MenuItem>
                                 </Menu>
                             </div>
+
                         </div>
+
                         <div onClick={showHiddenText}>
+
                             <Typography variant="subtitle1" align='center' gutterBottom>
                                 {title}
                             </Typography>
+
                             <Typography variant="body1" gutterBottom>
                                 {text && (
                                     <span>
@@ -101,27 +110,33 @@ export const ProfileStory: React.FC<ProfileStoryProps> = ({_id, title, text, cla
                                     </span>
                                 )}
                             </Typography>
+
                             <div className={classes.imgWrapper}>
                                 {images && images.map((url) => <img alt={url} src={url} key={url}/>)}
                             </div>
+
                         </div>
                         <div className={classes.storyFooter}>
+
                             <div>
                                 <IconButton color='primary'>
                                     <CommentIcon style={{fontSize: 20}}/>
                                 </IconButton>
                                 <span>1</span>
                             </div>
+
                             <div>
                                 <IconButton color='primary'>
                                     <RepostIcon style={{fontSize: 20}}/>
                                 </IconButton>
                             </div>
+
                             <div>
                                 <IconButton color='primary'>
                                     <LikeIcon style={{fontSize: 20}}/>
                                 </IconButton>
                             </div>
+
                             <div>
                                 <IconButton color='primary'>
                                     <ShareIcon style={{fontSize: 20}}/>

@@ -107,19 +107,13 @@ class UserController {
   //добавить аватарку
   async avatar(req: express.Request, res: express.Response): Promise<void> {
     try {
-      console.log( 'req.body in server =',req.body)
-      console.log( 'req.user in server =',req.user)
+
       const image = req.body
       const user = req.user as UserModelInterface;
-      //TODO: зараза, дублирует ввод данных на добавление, ИСПРАВИТЬ
-      const options = {
-        "upsert": true,
-          "new": true
-      }
 
       const data = await UserModel.findOneAndUpdate(
           {_id: user._id},
-          {$push: {profileAvatar: image[0]}}, options,
+          {$addToSet: {profileAvatar: image[0]}},
           function (error, success) {
             if (error) {
               console.log('Error with update profileAvatar', error);
@@ -133,8 +127,6 @@ class UserController {
         status: 'success',
         data: data
       });
-
-      // const user = await UserModel.create(data)
 
     } catch (error) {
       res.status(500).json({

@@ -1,17 +1,19 @@
 // @ts-nocheck
 import React from "react";
+import {useHistory} from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
-import {useProfileStyles} from "./ProfileStyle";
-import {Story} from "../../store/reducers/stories/reducer";
-import {User} from "../../store/reducers/users/reducer";
 import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import CancelIcon from '@material-ui/icons/Cancel';
-import {useHistory} from "react-router-dom";
-import {ProfileAvatar} from "../../componetns/ProfileAvatar";
+import Typography from "@material-ui/core/Typography";
+
+import {useProfileStyles} from "./ProfileStyle";
+import {Story} from "../../store/reducers/stories/reducer";
+import {User} from "../../store/reducers/users/reducer";
+import {ProfileAvatar} from "./ProfileAvatar";
 
 interface ProfileInfoProps {
     stories: Array<Story>
@@ -19,9 +21,10 @@ interface ProfileInfoProps {
 }
 
 
-export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: ProfileInfoProps): React.ReactElement => {
+export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}) => {
     const classes = useProfileStyles()
     const history = useHistory()
+
     let countStories: number = 0
 
     if(stories !== undefined){
@@ -36,6 +39,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
     return (
         <Grid item xs={3} sm={12} md={3}>
             <Paper className={classes.paperLeft}>
+
                 <Avatar variant="rounded" className={classes.profileImage}>
                     <ProfileAvatar profileAvatar={userData?.profileAvatar}/>
                 </Avatar>
@@ -72,6 +76,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({userData, stories}: Pro
                     </div>
 
                 </div>
+
                 <Button
                     onClick={logout}
                     className={classes.logoutButton}
