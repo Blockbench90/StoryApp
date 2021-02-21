@@ -13,6 +13,9 @@ import {createStoryValidations} from './validations/createStory';
 import {UploadFileCtrl} from "./controllers/UploadFileController";
 
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
 
 //подключаю мультер как мидлваре для обработки загрузки файлов на cloudinary
 const multer = require('multer')
@@ -57,13 +60,17 @@ app.get('/auth/verify', registerValidations, UserCtrl.verify);
 //залогиниться
 app.post('/auth/login', passport.authenticate('local'), UserCtrl.afterLogin);
 
-
-
-
 //загрузка файлов
 app.post('/upload', upload.single('image'), UploadFileCtrl.upload);
 
+io.on('connection', (socket: any) => {
+    console.log('socket connected', socket.id)
+})
+
 //слушьть порт 8888, ну или тот, который указан в конфигурации
-app.listen(process.env.PORT, (): void => {
+server.listen(process.env.PORT, (error: any): void => {
+    if(error){
+        throw Error(error)
+    }
     console.log('SERVER RUNNING!');
 });

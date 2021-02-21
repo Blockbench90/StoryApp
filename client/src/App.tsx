@@ -13,6 +13,8 @@ import {selectUserStatus} from "./store/reducers/users/selectors";
 import {LoadingStatus} from "./store/types";
 import {Messages} from './pages/Messages/Messages';
 import {Bookmarks} from "./pages/Bookmarks/Bookmarks";
+import { io } from "socket.io-client";
+
 
 
 const App = () => {
@@ -23,6 +25,9 @@ const App = () => {
     //говорит к полной готовности загрузки
     const isReady = loadingStatus === LoadingStatus.LOADING
     const token = !!window.localStorage.getItem('token')
+
+    const socket = io()
+    console.log(socket)
 
     useEffect(() => {
         token ? history.push('/home') : history.push('/signin')

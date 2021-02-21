@@ -40,9 +40,11 @@ const useProfileAvatarStyles = makeStyles((theme) => ({
         }
     },
     img: {
+        width: '100%',
+        // width: '220px',
+        height: '300px',
         objectFit: 'cover',
         overflow: 'hidden',
-        width: '100%',
     },
 }));
 
